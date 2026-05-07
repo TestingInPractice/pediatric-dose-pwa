@@ -1,0 +1,13 @@
+{
+  "name": "pediatric-dose-pwa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  }
+}

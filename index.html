@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Дозировки">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1976d2">
+  <meta name="description" content="Калькулятор детских дозировок лекарств. Расчёт по весу с 4-уровневой проверкой.">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+
+  <title>Детский калькулятор дозировок</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header">
+      <div class="header-title">💊 Калькулятор дозировок</div>
+      <div class="header-version" id="version-badge">v<span id="data-version">0.0.0</span></div>
+    </header>
+
+    <main class="app-main" id="app-main">
+      <section id="screen-calculator" class="screen active">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label" for="drug-select">Препарат</label>
+              <select id="drug-select" class="form-select">
+                <option value="">— Выберите препарат —</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="weight-input">Вес ребёнка (кг)</label>
+              <div class="weight-input-group">
+                <input
+                  type="number"
+                  id="weight-input"
+                  class="form-input weight-input"
+                  placeholder="0"
+                  min="0.5"
+                  max="150"
+                  step="0.1"
+                  inputmode="decimal"
+                >
+                <span class="weight-unit">кг</span>
+              </div>
+            </div>
+
+            <button id="calc-btn" class="btn btn-primary btn-block" disabled>
+              Рассчитать
+            </button>
+          </div>
+        </div>
+
+        <div id="result-section" class="result-section hidden">
+          <div class="card result-card">
+            <div class="card-header">📋 Результат расчёта</div>
+            <div class="card-body">
+              <div id="result-drug" class="result-drug"></div>
+              <div id="result-weight" class="result-weight"></div>
+              <div class="result-doses" id="result-doses"></div>
+            </div>
+          </div>
+
+          <div id="validation-section" class="validation-section hidden">
+            <div class="card">
+              <div class="card-header">🔍 Проверка расчёта</div>
+              <div class="card-body" id="validation-levels"></div>
+            </div>
+          </div>
+
+          <div id="instruction-section" class="instruction-section hidden">
+            <div class="card">
+              <div class="card-header">📄 Инструкция (ГРЛС)</div>
+              <div class="card-body" id="instruction-body"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="error-section" class="error-section hidden"></div>
+      </section>
+
+      <section id="screen-history" class="screen">
+        <div class="card">
+          <div class="card-header">📜 История расчётов</div>
+          <div class="card-body" id="history-list">
+            <p class="text-muted">История пуста</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-settings" class="screen">
+        <div class="card">
+          <div class="card-header">⚙️ Настройки</div>
+          <div class="card-body">
+            <div class="settings-item">
+              <span>Версия данных</span>
+              <span id="settings-version">—</span>
+            </div>
+            <div class="settings-item">
+              <span>Последнее обновление</span>
+              <span id="settings-updated">—</span>
+            </div>
+            <button id="update-btn" class="btn btn-secondary btn-block">
+              🔄 Проверить обновления
+            </button>
+            <button id="export-btn" class="btn btn-secondary btn-block">
+              📤 Экспорт истории
+            </button>
+            <button id="clear-btn" class="btn btn-danger btn-block">
+              🗑 Очистить историю
+            </button>
+          </div>
+        </div>
+
+        <div class="card disclaimer-card">
+          <div class="card-body">
+            <p class="disclaimer-text">
+              ⚠️ Калькулятор предназначен для ознакомительных целей.
+              Перед применением любых лекарств проконсультируйтесь с врачом.
+              Все расчёты проверяйте по официальной инструкции к препарату.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="app-nav" id="app-nav">
+      <button class="nav-btn active" data-screen="calculator" aria-label="Калькулятор">
+        <span class="nav-icon">💊</span>
+        <span class="nav-label">Расчёт</span>
+      </button>
+      <button class="nav-btn" data-screen="history" aria-label="История">
+        <span class="nav-icon">📜</span>
+        <span class="nav-label">История</span>
+      </button>
+      <button class="nav-btn" data-screen="settings" aria-label="Настройки">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Настройки</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- CDN: Dexie.js for IndexedDB -->
+  <script src="https://unpkg.com/dexie@3.2.6/dist/dexie.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/level2_rules.js"></script>
+  <script src="js/level4_images.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/updater.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
