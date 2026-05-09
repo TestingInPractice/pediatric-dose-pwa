@@ -353,7 +353,15 @@
 
     body.querySelectorAll('.confirm-item-btn:not([disabled])').forEach(btn => {
       btn.addEventListener('click', async () => {
-        await DB.confirmAdministration(parseInt(btn.dataset.id));
+        const id = parseInt(btn.dataset.id);
+        const record = await DB.db.history.get(id);
+        if (record && record.patient_id != null && !record.episode_id) {
+          const activeEp = await DB.getActiveEpisode(record.patient_id);
+          if (activeEp) {
+            await DB.db.history.update(id, { episode_id: activeEp.id });
+          }
+        }
+        await DB.confirmAdministration(id);
         btn.closest('.pending-item').remove();
         if (!body.querySelector('.pending-item')) body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
       });
@@ -806,7 +814,10 @@
     });
 
     const histFiltered = episodeId
-      ? historyItems.filter(h => h.episode_id === episodeId)
+      ? historyItems.filter(h =>
+          h.episode_id === episodeId ||
+          (h.timestamp && diaryActiveEpisode && h.timestamp >= diaryActiveEpisode.startDate)
+        )
       : historyItems.filter(h => !h.episode_id);
 
     histFiltered.forEach(h => {
