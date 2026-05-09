@@ -34,6 +34,7 @@
               <select id="patient-select" class="form-select">
                 <option value="">— Без профиля —</option>
               </select>
+              <div id="episode-indicator" class="episode-indicator hidden"></div>
             </div>
             <div class="form-group">
               <label class="form-label" for="drug-select">Препарат</label>
@@ -94,8 +95,12 @@
       <!-- History Screen -->
       <section id="screen-history" class="screen">
         <div class="card">
-          <div class="card-header">📜 История приёмов</div>
+          <div class="card-header">📜 История</div>
           <div class="card-body">
+            <div class="history-mode-switcher" style="display:flex;gap:6px;margin-bottom:10px">
+              <button class="filter-chip active" id="hist-mode-drugs" data-mode="drugs">💊 Препараты</button>
+              <button class="filter-chip" id="hist-mode-episodes" data-mode="episodes">📋 Эпизоды</button>
+            </div>
             <div class="history-filters" id="history-filters">
               <button class="filter-chip active" data-days="">Всё</button>
               <button class="filter-chip" data-days="1">Сегодня</button>

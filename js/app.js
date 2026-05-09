@@ -226,12 +226,25 @@
     const patientSelect = $('patient-select'), calcBtn = $('calc-btn');
     const confirmBtn = $('go-to-confirm-btn');
 
-    patientSelect.addEventListener('change', () => {
+    patientSelect.addEventListener('change', async () => {
       currentPatientId = patientSelect.value ? parseInt(patientSelect.value) : null;
       const patient = patients.find(p => p.id === currentPatientId);
       if (patient && patient.weight) weightInput.value = patient.weight;
+      await updateEpisodeIndicator();
       checkReady();
     });
+
+    async function updateEpisodeIndicator() {
+      const indicator = $('episode-indicator');
+      if (!currentPatientId) { indicator.classList.add('hidden'); return; }
+      const active = await DB.getActiveEpisode(currentPatientId);
+      if (active) {
+        indicator.classList.remove('hidden');
+        indicator.innerHTML = `🤒 <span class="episode-indicator-name">${active.name}</span>`;
+      } else {
+        indicator.classList.add('hidden');
+      }
+    }
 
     function checkReady() { calcBtn.disabled = !(weightInput.value && drugSelect.value); }
     weightInput.addEventListener('input', checkReady);
@@ -431,9 +444,25 @@
         renderHistory();
       });
     });
+
+    $('hist-mode-drugs').addEventListener('click', () => {
+      $('hist-mode-drugs').classList.add('active');
+      $('hist-mode-episodes').classList.remove('active');
+      $('history-filters').classList.remove('hidden');
+      renderHistory();
+    });
+    $('hist-mode-episodes').addEventListener('click', () => {
+      $('hist-mode-episodes').classList.add('active');
+      $('hist-mode-drugs').classList.remove('active');
+      $('history-filters').classList.add('hidden');
+      renderEpisodesList();
+    });
   }
 
   function renderHistory() {
+    const isEpisodes = $('hist-mode-episodes').classList.contains('active');
+    if (isEpisodes) { renderEpisodesList(); return; }
+
     DB.getHistory(200).then(all => {
       const container = $('history-list');
       container.innerHTML = '';
@@ -478,6 +507,38 @@
     if (isoDay === todayStr) return 'Сегодня';
     if (isoDay === yesterdayStr) return 'Вчера';
     return new Date(isoDay + 'T00:00:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+  }
+
+  async function renderEpisodesList() {
+    const container = $('history-list');
+    container.innerHTML = '<div class="spinner" style="margin:20px auto"></div>';
+
+    const allPatients = await DB.getPatients();
+    let allEpisodes = [];
+    for (const p of allPatients) {
+      const eps = await DB.getEpisodes(p.id);
+      eps.forEach(e => { e._patient = p; });
+      allEpisodes = allEpisodes.concat(eps);
+    }
+    allEpisodes.sort((a, b) => (a.startDate < b.startDate ? 1 : -1));
+
+    if (!allEpisodes.length) { container.innerHTML = '<p class="text-muted">Нет эпизодов</p>'; return; }
+
+    // fetch all history and symptoms for counts
+    container.innerHTML = allEpisodes.map(ep => {
+      const start = new Date(ep.startDate).toLocaleDateString('ru-RU');
+      const end = ep.endDate ? new Date(ep.endDate).toLocaleDateString('ru-RU') : 'продолжается';
+      const pName = ep._patient ? ep._patient.name : '—';
+      const status = ep.endDate ? '✅ Завершён' : '🟢 Активен';
+      return `<div class="episode-history-item">
+        <div class="episode-history-header">
+          <span class="episode-history-name">🤒 ${ep.name}</span>
+          <span class="episode-history-status">${status}</span>
+        </div>
+        <div class="episode-history-meta">${pName} · ${start} — ${end}</div>
+        ${ep.notes ? `<div class="episode-history-notes">${ep.notes}</div>` : ''}
+      </div>`;
+    }).join('');
   }
 
   // ===================== SETTINGS =====================
@@ -818,7 +879,7 @@
           h.episode_id === episodeId ||
           (h.timestamp && diaryActiveEpisode && h.timestamp >= diaryActiveEpisode.startDate)
         )
-      : historyItems.filter(h => !h.episode_id);
+      : historyItems;
 
     histFiltered.forEach(h => {
       events.push({
@@ -891,6 +952,10 @@
 
         const cssType = e.type === 'drug' ? 'drug' : e.type;
         const time = formatTime(e.timestamp);
+        const isSymptom = e.type !== 'drug';
+        const deleteBtn = isSymptom
+          ? `<button class="timeline-del-btn" data-symptom-id="${d.id || ''}" data-history-id="">✕</button>`
+          : `<button class="timeline-del-btn" data-history-id="${d.id || ''}" data-symptom-id="">✕</button>`;
         html += `<div class="timeline-event type-${cssType}">
           <div class="timeline-event-emoji">${emoji}</div>
           <div class="timeline-event-body">
@@ -898,11 +963,28 @@
             ${desc ? `<div class="timeline-event-desc">${desc}</div>` : ''}
             <div class="timeline-event-time">${time}</div>
           </div>
+          ${deleteBtn}
         </div>`;
       });
     });
 
     container.innerHTML = html;
+
+    container.querySelectorAll('.timeline-del-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const symptomId = btn.dataset.symptomId;
+        const historyId = btn.dataset.historyId;
+        if (symptomId) {
+          await DB.deleteSymptom(parseInt(symptomId));
+          renderDiaryTimeline();
+        } else if (historyId) {
+          if (!confirm('Удалить запись о приёме из истории?')) return;
+          if (!confirm('Вы уверены? Вся ответственность за удаление лежит на вас.')) return;
+          await DB.deleteHistoryItem(parseInt(historyId));
+          renderDiaryTimeline();
+        }
+      });
+    });
 
     if (temps.length >= 2) {
       renderTempChart(temps);
