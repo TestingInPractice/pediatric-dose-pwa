@@ -159,6 +159,7 @@
               <div class="form-label">📜 История приёмов</div>
               <div id="detail-patient-history" class="patient-history-list"><p class="text-muted">Нет записей</p></div>
             </div>
+            <button id="detail-report-btn" class="btn btn-secondary btn-block" style="margin-top:12px">📋 Доктор-репорт</button>
           </div>
         </div>
       </section>
@@ -170,6 +171,14 @@
           <div class="card-body">
             <div class="settings-item"><span>Версия данных</span><span id="settings-version">—</span></div>
             <div class="settings-item"><span>Последнее обновление</span><span id="settings-updated">—</span></div>
+            <div class="settings-item">
+              <span>🌗 Тема</span>
+              <div class="theme-switcher" id="theme-switcher">
+                <button class="filter-chip active" data-theme="light">☀️</button>
+                <button class="filter-chip" data-theme="auto">🔄</button>
+                <button class="filter-chip" data-theme="dark">🌙</button>
+              </div>
+            </div>
             <button id="update-btn" class="btn btn-secondary btn-block">🔄 Проверить обновления</button>
             <button id="export-btn" class="btn btn-secondary btn-block">📤 Экспорт истории</button>
             <button id="clear-btn" class="btn btn-danger btn-block">🗑 Очистить историю</button>
@@ -181,10 +190,40 @@
           </div>
         </div>
       </section>
+
+      <!-- Diary Screen -->
+      <section id="screen-diary" class="screen">
+        <div class="card">
+          <div class="card-header">📋 Дневник</div>
+          <div class="card-body">
+            <div id="diary-patient-selector" class="diary-patient-selector"></div>
+            <div id="diary-episode-header" class="diary-episode-header"></div>
+            <div id="diary-quick-actions" class="diary-quick-actions hidden">
+              <button class="quick-btn" data-action="temperature">🌡</button>
+              <button class="quick-btn" data-action="vomit">🤮</button>
+              <button class="quick-btn" data-action="stool">💩</button>
+              <button class="quick-btn" data-action="symptom">🤒</button>
+            </div>
+            <div id="diary-timeline" class="diary-timeline"><p class="text-muted">Выберите ребёнка</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div id="diary-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modal-title" id="diary-modal-title"></span>
+            <button class="modal-close" id="diary-modal-close">✕</button>
+          </div>
+          <div class="modal-body" id="diary-modal-body"></div>
+        </div>
+      </div>
     </main>
 
     <nav class="app-nav" id="app-nav">
       <button class="nav-btn active" data-screen="calculator" aria-label="Калькулятор"><span class="nav-icon">💊</span><span class="nav-label">Расчёт</span></button>
+      <button class="nav-btn" data-screen="diary" aria-label="Дневник"><span class="nav-icon">📋</span><span class="nav-label">Дневник</span></button>
       <button class="nav-btn" data-screen="profiles" aria-label="Дети"><span class="nav-icon">👶</span><span class="nav-label">Дети</span></button>
       <button class="nav-btn" data-screen="history" aria-label="История"><span class="nav-icon">📜</span><span class="nav-label">История</span></button>
       <button class="nav-btn" data-screen="settings" aria-label="Настройки"><span class="nav-icon">⚙️</span><span class="nav-label">Настройки</span></button>
