@@ -9,6 +9,12 @@ const ASSETS = [
   BASE + 'js/level2_rules.js',
   BASE + 'js/level4_images.js',
   BASE + 'js/db.js',
+  BASE + 'js/store.js',
+  BASE + 'js/ui.js',
+  BASE + 'js/diary.js',
+  BASE + 'js/report.js',
+  BASE + 'js/growth_data.js',
+  BASE + 'js/growth_charts.js',
   BASE + 'js/updater.js',
   BASE + 'js/app.js',
   BASE + 'icons/icon-192x192.png',
@@ -50,5 +56,18 @@ self.addEventListener('fetch', (event) => {
 
   event.respondWith(
     caches.match(event.request).then((cached) => cached || fetch(event.request))
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      if (clientList.length > 0) {
+        clientList[0].focus();
+      } else {
+        clients.openWindow(BASE);
+      }
+    })
   );
 });

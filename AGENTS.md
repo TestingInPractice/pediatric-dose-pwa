@@ -10,47 +10,250 @@
   3. Move issue to "Done" on project board: `gh project item-edit --id <item-id> --field Status --value Done`
   4. Close issue: `gh issue close <number> --repo TestingInPractice/pediatric-dose-pwa --comment "<summary>"`
 
-## Project Overview
+---
 
-PWA-калькулятор детских дозировок с 4-уровневой системой проверки ошибок:
+## Architecture Workflow
 
-- **L1** — Автотесты (проверяют формулы при CI/CD)
-- **L2** — Экспертная система (правила из инструкций)
-- **L3** — ML-модель (ONNX Runtime Web)
-- **L4** — Скриншоты инструкций из ГРЛС (сверка глазами)
-
-Чистый JavaScript. Zero Backend. Работает полностью офлайн на телефоне.
-
-## Directory Layout
+Every feature goes through: **Spec → Diagram → Model → Implementation → Review**
 
 ```
-pediatric-dose-pwa/
-├── index.html                  ← SPA entry
-├── manifest.json               ← PWA config
-├── service-worker.js           ← кэш + офлайн
-├── css/
-│   └── style.css               ← mobile-first
-├── js/
-│   ├── app.js                  ← маршрутизация, init
-│   ├── calculator.js           ← расчёт доз (единая формула)
-│   ├── level2_rules.js         ← экспертная система
-│   ├── level3_onnx.js          ← ML-модель
-│   ├── level4_images.js        ← скриншоты инструкций
-│   ├── db.js                   ← IndexedDB (Dexie.js)
-│   └── updater.js              ← проверка/скачивание обновлений
-├── model/
-│   └── validator.onnx          ← ML-модель ~3MB
-├── data/
-│   ├── manifest.json           ← { version, updated }
-│   ├── drugs.json              ← вся БД препаратов
-│   └── images/                 ← скриншоты из ГРЛС
-├── icons/
-│   ├── icon-192x192.png
-│   └── icon-512x512.png
-├── tests/
-│   └── test_calculator.js      ← L1: тесты формул
-└── AGENTS.md
+┌────────────────────────────────────────────────────────┐
+│ 1. SPECIFICATION                                       │
+│    Define: what, why, constraints, edge cases           │
+│    Output: short spec in issue / AGENTS.md section      │
+├────────────────────────────────────────────────────────┤
+│ 2. ARCHITECTURE DIAGRAM                                 │
+│    Draw: component diagram, data flow, screen flow      │
+│    Output: mermaid diagram in AGENTS.md                  │
+├────────────────────────────────────────────────────────┤
+│ 3. DATA MODEL                                           │
+│    Define: entities, fields, types, relationships, DB   │
+│    Output: entity schema in AGENTS.md                   │
+├────────────────────────────────────────────────────────┤
+│ 4. IMPLEMENTATION                                       │
+│    Code: per module boundary, each < 200 lines          │
+│    Test: unit + integration                             │
+├────────────────────────────────────────────────────────┤
+│ 5. REVIEW                                               │
+│    Check: data flow, error states, offline, dark mode   │
+│    Update AGENTS.md with lessons learned                │
+└────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Architecture Diagrams
+
+### Component Diagram
+
+```mermaid
+graph TB
+    subgraph "HTML Shell"
+        HTML[index.html]
+        CSS[style.css]
+    end
+
+    subgraph "Application Core"
+        APP[app.js<br/>bootstrap + screens]
+        ROUTER[Router<br/>navigateTo]
+        STORE[Store<br/>state management]
+    end
+
+    subgraph "Screens"
+        CALC[Calculator<br/>dose calculation]
+        DIARY[DiaryScreen<br/>timeline + symptoms]
+        PROF[Profiles<br/>patient CRUD]
+        HIST[History<br/>drug + episode log]
+        SETT[Settings<br/>theme + export]
+        CONFIRM[Confirm<br/>pending + intervals]
+    end
+
+    subgraph "Shared UI"
+        UI[UI helpers<br/>modal, formats, labels]
+        THEME[Theme<br/>dark/light/auto]
+        REPORT[generateReport<br/>doctor report]
+    end
+
+    subgraph "Engine"
+        DB[db.js<br/>IndexedDB via Dexie]
+        CALC_ENG[calculator.js<br/>dose formulas]
+        L2[level2_rules.js<br/>expert rules]
+    end
+
+    subgraph "Data"
+        DRUGS[drugs.json<br/>16 drugs, 10 categories]
+        INDEXEDDB[(IndexedDB<br/>PediatricDoseDB_v2)]
+        SW[service-worker.js<br/>offline cache]
+    end
+
+    HTML --> APP
+    APP --> ROUTER
+    APP --> STORE
+    APP --> CALC
+    APP --> DIARY
+    APP --> PROF
+    APP --> HIST
+    APP --> SETT
+    APP --> CONFIRM
+    APP --> UI
+    APP --> THEME
+    APP --> REPORT
+
+    CALC --> CALC_ENG
+    CALC --> L2
+    CALC --> DB
+
+    DIARY --> DB
+    PROF --> DB
+    HIST --> DB
+    CONFIRM --> DB
+    REPORT --> DB
+
+    STORE --> DB
+    STORE --> DRUGS
+
+    DB --> INDEXEDDB
+    HTML --> SW
+```
+
+### Data Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Screen
+    participant Store
+    participant DB
+    participant Calculator
+
+    Note over User,Calculator: === CREATE EPISODE ===
+    User->>Screen: Нажать "Заболел"
+    Screen->>Store: episode name
+    Store->>DB: addEpisode()
+    DB-->>Store: episode_id
+    Store-->>Screen: diaryActiveEpisode
+    Screen-->>User: Показать эпиод
+
+    Note over User,Calculator: === CALCULATE DOSE ===
+    User->>Screen: Выбрать препарат, вес
+    Screen->>Calculator: calculateDose(drug, weight)
+    Calculator-->>Screen: { dose_ml, dose_mg }
+    Screen->>User: Показать результат
+    Screen->>DB: saveCalculation({..., episode_id})
+    DB-->>Screen: history_id
+    Screen->>Store: currentResult
+
+    Note over User,Calculator: === CONFIRM ===
+    User->>Screen: ✅ Подтвердить
+    Screen->>DB: confirmAdministration(id)
+    Screen->>DB: update episode_id (if missing)
+    DB-->>Screen: ok
+
+    Note over User,Calculator: === DIARY TIMELINE ===
+    User->>Screen: Открыть Дневник
+    Screen->>DB: getSymptoms(patient, episode)
+    Screen->>DB: getHistory(patient)
+    DB-->>Screen: events[]
+    Screen->>Screen: merge + sort + render
+    Screen-->>User: Timeline + temp chart
+```
+
+### Data Model
+
+```mermaid
+erDiagram
+    PATIENT ||--o{ EPISODE : has
+    PATIENT ||--o{ HISTORY_ITEM : has
+    EPISODE ||--o{ SYMPTOM : contains
+    EPISODE ||--o{ HISTORY_ITEM : contains
+
+    PATIENT {
+        int id PK
+        string name
+        string birthDate
+        float weight
+        float height
+        string allergies
+        string createdAt
+    }
+
+    EPISODE {
+        int id PK
+        int patient_id FK
+        string name
+        string startDate
+        string endDate "null if active"
+        string notes
+        string createdAt
+    }
+
+    SYMPTOM {
+        int id PK
+        int patient_id FK
+        int episode_id FK "null if no episode"
+        string type "temperature|vomit|stool|symptom"
+        float value "temp or bristol type"
+        string method "underarm|oral|rectal"
+        string notes "symptom description"
+        string severity "mild|moderate|severe"
+        string timestamp
+    }
+
+    HISTORY_ITEM {
+        int id PK
+        int patient_id FK
+        int episode_id FK "null if no episode"
+        int drug_id FK
+        string drug_name
+        float weight
+        float dose_ml
+        float dose_mg
+        bool confirmed
+        string timestamp
+    }
+```
+
+### Screen Navigation
+
+```mermaid
+graph LR
+    CALC[💊 Расчёт] -->|confirm| CONFIRM[⏳ Подтверждение]
+    CALC -->|nav| DIARY[📋 Дневник]
+    CALC -->|nav| PROF[👶 Дети]
+    CALC -->|nav| HIST[📜 История]
+    CALC -->|nav| SETT[⚙️ Настройки]
+    DIARY -->|nav| CALC
+    PROF -->|nav| CALC
+    HIST -->|nav| CALC
+    SETT -->|nav| CALC
+    CONFIRM -->|back| CALC
+
+    PROF -->|patient detail| PROF
+    HIST -->|mode switch| HIST
+```
+
+---
+
+## Module Boundaries
+
+| Module | File | Lines | Responsibility |
+|--------|------|-------|----------------|
+| Store | `js/store.js` | ~80 | State + data loading |
+| UI | `js/ui.js` | ~120 | Modal, theme, formats, labels |
+| Diary | `js/diary.js` | ~430 | Diary screen, episodes, symptoms, timeline, chart |
+| Report | `js/report.js` | ~110 | Doctor report generation |
+| App | `js/app.js` | ~500 | Bootstrap, router, calculator, profiles, history, settings |
+| Calculator | `js/calculator.js` | 87 | Dose formula engine |
+| DB | `js/db.js` | 220 | IndexedDB CRUD (Dexie) |
+| Rules | `js/level2_rules.js` | — | Expert system L2 |
+
+**Rules:**
+- Each module < 200 lines (app.js is larger but acts as orchestrator)
+- No circular dependencies: Store → DB, Diary → Store+DB+UI, App → all
+- Shared state only through Store, never globals
+- DOM queries only through `$()` / `qsa()` (defined in store.js)
+
+---
 
 ## Developer Commands
 
@@ -65,50 +268,43 @@ npm run test
 open http://localhost:3000
 ```
 
-## Architecture Notes
-
-### 4 уровня проверки
-
-| L | Механизм | Технология | Офлайн |
-|---|----------|-----------|--------|
-| 1 | Автотесты | Vitest / CI | — |
-| 2 | Экспертная система | JS rules engine | ✅ |
-| 3 | ML-модель | ONNX Runtime Web (WASM) | ✅ |
-| 4 | Фото инструкции | PNG из ГРЛС | ✅ |
-
-### Формула расчёта
-
-```
-standard_dose_ml = weight × mls_var
-standard_dose_mg = weight × mgs_var
-high_dose_ml = standard_dose_ml × high_modifier
-suppositories_count = (weight × mgs_var) / dose_per_unit
-max_daily_ml = (weight × mgs_max) / range2_dose
-```
-
-### Обновление данных
-
-- В приложении кнопка «Проверить обновления»
-- Скачивает drugs.json + images/ с GitHub Releases
-- Дата последнего обновления в настройках
-
 ## Key Constraints
 
 - **Zero backend** — всё работает в браузере, никаких серверов
 - **Офлайн first** — полная функциональность без интернета
 - **HTTPS обязателен** для Service Worker на iOS
-- Данные синхронизируются через GitHub Releases (не API)
+- **Каждый модуль < 200 строк** — иначе декомпозировать
+- **Все изменения через Store** — никаких мутаций на лету
 
-## Local Config (NEVER COMMIT)
+## Directory Layout
 
 ```
+pediatric-dose-pwa/
+├── index.html                  ← SPA entry
+├── manifest.json               ← PWA config
+├── service-worker.js           ← кэш + офлайн
+├── css/
+│   └── style.css               ← mobile-first
+├── js/
+│   ├── store.js                ← состояние + загрузка данных
+│   ├── ui.js                   ← модалка, тема, форматеры
+│   ├── diary.js                ← дневник, эпизоды, симптомы
+│   ├── report.js               ← доктор-репорт
+│   ├── app.js                  ← bootstrap, роутер, экраны
+│   ├── calculator.js           ← расчёт доз
+│   ├── db.js                   ← IndexedDB (Dexie.js)
+│   ├── level2_rules.js         ← экспертная система
+│   ├── level3_onnx.js          ← ML-модель
+│   ├── level4_images.js        ← скриншоты инструкций
+│   └── updater.js              ← проверка/скачивание обновлений
+├── data/
+│   ├── manifest.json
+│   ├── drugs.json              ← 16 препаратов, 10 категорий
+│   └── images/
+├── icons/
+│   ├── icon-192x192.png
+│   └── icon-512x512.png
+├── tests/
+│   └── calculator.test.js      ← 22 тестов
+└── AGENTS.md
 ```
-
-### Required GitHub PAT token settings:
-- **Type:** Fine-grained personal access token
-- **Permissions:**
-  - `Contents` — Read (для скачивания обновлений)
-  - `Metadata` — Read-only (automatic)
-- **Expiration:** 90 days
-
-Set this in your local `.env` file. Never commit tokens to git.
