@@ -1,17 +1,18 @@
 const CACHE_NAME = 'dose-calc-v1';
+const BASE = self.location.pathname.replace(/service-worker\.js$/, '');
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/css/style.css',
-  '/js/calculator.js',
-  '/js/level2_rules.js',
-  '/js/level4_images.js',
-  '/js/db.js',
-  '/js/updater.js',
-  '/js/app.js',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  BASE,
+  BASE + 'index.html',
+  BASE + 'manifest.json',
+  BASE + 'css/style.css',
+  BASE + 'js/calculator.js',
+  BASE + 'js/level2_rules.js',
+  BASE + 'js/level4_images.js',
+  BASE + 'js/db.js',
+  BASE + 'js/updater.js',
+  BASE + 'js/app.js',
+  BASE + 'icons/icon-192x192.png',
+  BASE + 'icons/icon-512x512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -32,10 +33,9 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-
   if (event.request.method !== 'GET') return;
 
-  if (url.pathname.startsWith('/data/')) {
+  if (url.pathname.startsWith(BASE + 'data/')) {
     event.respondWith(
       fetch(event.request)
         .then((res) => {
