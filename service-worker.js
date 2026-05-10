@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dose-calc-v5';
+const CACHE_NAME = 'dose-calc-v6';
 const BASE = self.location.pathname.replace(/service-worker\.js$/, '');
 const ASSETS = [
   BASE,
