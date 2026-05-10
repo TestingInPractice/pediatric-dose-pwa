@@ -1,13 +1,11 @@
 const Level4Images = {
   getImagePath(drug) {
     if (!drug) return null;
-    if (drug.image) return `data/images/${drug.image}`;
-    const id = drug.id;
-    return `data/images/${id}.png`;
+    return `data/images/${drug.id}.png`;
   },
 
   hasFile(drug) {
-    return !!this.getImagePath(drug);
+    return !!drug;
   },
 
   renderTable(drug, weight) {
@@ -40,21 +38,17 @@ const Level4Images = {
   },
 
   getImageHtml(drug) {
-    const path = this.getImagePath(drug);
-    if (!path) return '';
-    const ext = path.split('.').pop().toLowerCase();
-    if (ext === 'pdf') {
-      return `<a href="${path}" target="_blank" class="instruction-pdf-link">📄 Открыть PDF-инструкцию (L4)</a>`;
-    }
-    return `<img src="${path}" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'">`;
+    if (!drug) return '';
+    const id = drug.id;
+    const pdf = `data/images/${id}.pdf`;
+    const png = `data/images/${id}.png`;
+    return `<a href="${pdf}" target="_blank" class="instruction-pdf-link" style="margin-bottom:8px">📄 Открыть PDF-инструкцию</a>
+      <img src="${png}" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'" style="margin-top:4px">`;
   },
 
   getImageIcon(drug) {
-    const path = this.getImagePath(drug);
-    if (!path) return '<span class="grls-dot miss" title="Нет файла"></span>';
-    const ext = path.split('.').pop().toLowerCase();
-    const icon = ext === 'pdf' ? '📄' : '🖼️';
-    return `<span class="grls-dot ok" title="Файл: ${path}">${icon}</span>`;
+    if (!drug) return '<span class="grls-dot miss" title="Нет файла"></span>';
+    return '<span class="grls-dot ok" title="Файл инструкции есть">📄</span>';
   }
 };
 
