@@ -3,6 +3,7 @@
 
   async function init() {
     try { await DB.init(); } catch (e) { console.error('DB init failed:', e); }
+    localStorage.removeItem('dose_pwa_drugs');
     bindNav();
     bindCalculator();
     bindConfirm();
@@ -12,7 +13,7 @@
     $('diary-modal-close').addEventListener('click', UI.closeModal);
     $('diary-modal').addEventListener('click', e => { if (e.target === $('diary-modal')) UI.closeModal(); });
     Theme.init();
-    Store.loadData();
+    await Store.loadData();
     Store.loadPatients().then(() => Store.renderPatientSelect());
   }
 
