@@ -42,8 +42,10 @@ const Level4Images = {
     const id = drug.id;
     const pdf = `data/images/${id}.pdf`;
     const png = `data/images/${id}.png`;
-    return `<a href="${pdf}" target="_blank" class="instruction-pdf-link" style="margin-bottom:8px">📄 Открыть PDF-инструкцию</a>
-      <img src="${png}" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'" style="margin-top:4px">`;
+    return `<div class="l4-container">
+      <img src="${png}" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'">
+      <iframe src="${pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="instruction-pdf-embed" onerror="this.style.display='none'"></iframe>
+    </div>`;
   },
 
   getImageIcon(drug) {
