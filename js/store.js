@@ -18,15 +18,6 @@
 
     async loadData() {
       try {
-        const stored = localStorage.getItem('dose_pwa_drugs');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          this.drugs = parsed.drugs || [];
-          this.categories = parsed.categories || [];
-          this.renderDrugSelect();
-          this.updateVersion();
-          return;
-        }
         const resp = await fetch('data/drugs.json?_=' + Date.now());
         const data = await resp.json();
         this.drugs = data.drugs || [];
@@ -35,8 +26,16 @@
         this.renderDrugSelect();
         this.updateVersion();
       } catch (e) {
-        if (typeof UI !== 'undefined') UI.showError('Ошибка загрузки данных: ' + e.message);
-        else console.error(e);
+        const stored = localStorage.getItem('dose_pwa_drugs');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          this.drugs = parsed.drugs || [];
+          this.categories = parsed.categories || [];
+          this.renderDrugSelect();
+          this.updateVersion();
+        } else if (typeof UI !== 'undefined') {
+          UI.showError('Ошибка загрузки данных: ' + e.message);
+        }
       }
     },
 
