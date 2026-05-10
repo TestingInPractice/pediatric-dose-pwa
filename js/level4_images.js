@@ -40,12 +40,10 @@ const Level4Images = {
   getImageHtml(drug) {
     if (!drug) return '';
     const id = drug.id;
-    const pdf = `data/images/${id}.pdf`;
-    const png = `data/images/${id}.png`;
-    return `<div class="l4-container">
-      <img src="${png}" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'">
-      <iframe src="${pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="instruction-pdf-embed" onerror="this.style.display='none'"></iframe>
-    </div>`;
+    if (id >= 1 && id <= 10) {
+      return `<iframe src="data/images/${id}.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="instruction-pdf-embed"></iframe>`;
+    }
+    return `<img src="data/images/${id}.png" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'">`;
   },
 
   getImageIcon(drug) {
