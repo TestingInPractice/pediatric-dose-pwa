@@ -564,7 +564,7 @@
       html += `<tr><td class="grls-drug-name">${d.name}</td>`;
       fields.forEach(f => {
         const val = grls[f];
-        const ok = val && val !== 'https://grls.rosminzdrav.ru/' && val !== 'различные производители';
+        const ok = val && val.trim() !== '' && (f !== 'url' || val !== 'https://grls.rosminzdrav.ru/');
         if (ok) drugScore++;
         html += `<td><span class="grls-dot ${ok ? 'ok' : 'miss'}"></span></td>`;
       });
@@ -579,7 +579,7 @@
     body.innerHTML = html;
 
     const overall = Math.round(totalScore / maxScore * 100);
-    summary.textContent = `${Store.drugs.filter(d => { const g=d.grls||{}; return fields.every(f => g[f]&&g[f]!=='https://grls.rosminzdrav.ru/'&&g[f]!=='различные производители'); }).length}/${Store.drugs.length} полных`;
+    summary.textContent = `${Store.drugs.filter(d => { const g=d.grls||{}; return fields.every(f => g[f]&&g[f].trim()!==''&&(f!=='url'||g[f]!=='https://grls.rosminzdrav.ru/')); }).length}/${Store.drugs.length} полных`;
     section.classList.remove('hidden');
   }
 
