@@ -197,10 +197,15 @@
                 <button class="filter-chip" data-theme="dark">🌙</button>
               </div>
             </div>
+            <button id="data-mgmt-btn" class="btn btn-secondary btn-block" onclick="renderGrlsTable()">📊 Данные ГРЛС</button>
             <button id="update-btn" class="btn btn-secondary btn-block">🔄 Проверить обновления</button>
             <button id="export-btn" class="btn btn-secondary btn-block">📤 Экспорт истории</button>
             <button id="clear-btn" class="btn btn-danger btn-block">🗑 Очистить историю</button>
           </div>
+        </div>
+        <div id="grls-table-section" class="card hidden">
+          <div class="card-header">📊 Данные ГРЛС <span class="grls-summary" id="grls-summary"></span></div>
+          <div class="card-body" id="grls-table-body"></div>
         </div>
         <div class="card disclaimer-card">
           <div class="card-body">

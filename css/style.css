@@ -332,6 +332,22 @@ html, body {
   color: var(--color-primary);
 }
 
+.instruction-pdf-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.instruction-pdf-link:hover {
+  opacity: 0.9;
+}
+
 /* Error */
 .error-section {
   margin-top: 12px;
@@ -360,6 +376,22 @@ html, body {
 }
 
 .settings-item:last-child { border-bottom: none; }
+
+.grls-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.grls-table th { text-align: left; padding: 6px 4px; font-size: 11px; color: var(--color-text-secondary); border-bottom: 2px solid var(--color-border); }
+.grls-table td { padding: 6px 4px; border-bottom: 1px solid var(--color-border); vertical-align: middle; }
+.grls-table tr:last-child td { border-bottom: none; }
+.grls-drug-name { font-weight: 600; font-size: 12px; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grls-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 1px; }
+.grls-dot.ok { background: var(--color-success); }
+.grls-dot.miss { background: var(--color-border); }
+.grls-dot.partial { background: var(--color-warning); }
+.grls-progress { height: 4px; border-radius: 2px; background: var(--color-border); min-width: 40px; }
+.grls-progress-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
+.grls-complete { color: var(--color-success); }
+.grls-partial { color: var(--color-warning); }
+.grls-none { color: var(--color-danger); }
+.grls-summary { font-size: 13px; font-weight: 400; color: var(--color-text-secondary); }
 
 .disclaimer-text {
   font-size: 12px;

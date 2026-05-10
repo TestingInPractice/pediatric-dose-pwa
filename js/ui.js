@@ -72,6 +72,17 @@
     severityLabel(s) {
       const map = { mild: '🌱 Слабо', moderate: '🌿 Средне', severe: '🔥 Сильно' };
       return map[s] || '';
+    },
+
+    formatDose(h) {
+      if (!h) return '—';
+      if (h.dose_form === 'суппозитории' && h.dose_qty != null) {
+        return `${h.dose_qty} шт (${h.dose_mg || '?'} мг)`;
+      }
+      const ml = h.dose_ml != null ? h.dose_ml + ' мл' : null;
+      const mg = h.dose_mg != null ? h.dose_mg + ' мг' : null;
+      if (ml && mg) return `${ml} · ${mg}`;
+      return ml || mg || '—';
     }
   };
 

@@ -1,9 +1,13 @@
 const Level4Images = {
   getImagePath(drug) {
-    if (drug && drug.image) {
-      return `data/images/${drug.image}`;
-    }
-    return null;
+    if (!drug) return null;
+    if (drug.image) return `data/images/${drug.image}`;
+    const id = drug.id;
+    return `data/images/${id}.png`;
+  },
+
+  hasFile(drug) {
+    return !!this.getImagePath(drug);
   },
 
   renderTable(drug, weight) {
@@ -38,7 +42,19 @@ const Level4Images = {
   getImageHtml(drug) {
     const path = this.getImagePath(drug);
     if (!path) return '';
+    const ext = path.split('.').pop().toLowerCase();
+    if (ext === 'pdf') {
+      return `<a href="${path}" target="_blank" class="instruction-pdf-link">📄 Открыть PDF-инструкцию (L4)</a>`;
+    }
     return `<img src="${path}" alt="Инструкция ${drug.name}" class="instruction-image" onerror="this.style.display='none'">`;
+  },
+
+  getImageIcon(drug) {
+    const path = this.getImagePath(drug);
+    if (!path) return '<span class="grls-dot miss" title="Нет файла"></span>';
+    const ext = path.split('.').pop().toLowerCase();
+    const icon = ext === 'pdf' ? '📄' : '🖼️';
+    return `<span class="grls-dot ok" title="Файл: ${path}">${icon}</span>`;
   }
 };
 

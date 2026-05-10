@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-05-08",
+  "version": "1.1.0",
+  "updated": "2026-05-09",
   "categories": [
     { "id": 1, "name": "Жаропонижающие / Обезболивающие" },
     { "id": 2, "name": "Антибиотики" },
@@ -31,8 +31,15 @@
       "min_age_months": 1,
       "min_weight_kg": 3,
       "contraindications": "Возраст до 1 месяца. Печёночная недостаточность.",
-      "instructions": "Разовая доза 10-15 мг/кг массы тела. Максимальная суточная доза 60 мг/кг. Приём 3-4 раза в день с интервалом 4-6 часов.",
+      "instructions": "Разовая доза для детей с массой тела менее 60 кг: 10-15 мг/кг массы тела. Максимальная суточная доза: 60 мг/кг массы тела. Кратность приема: 3-4 раза в сутки с интервалом 4-6 часов. Препарат принимать внутрь после еды, запивая водой.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=343f01d1-bbda-436f-978c-d1a23dc670eb",
+      "grls": {
+        "reg_number": "ЛП-№(003420)-(РГ-RU)",
+        "inn": "Парацетамол",
+        "manufacturer": "различные производители",
+        "atx": "N02BE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=343f01d1-bbda-436f-978c-d1a23dc670eb"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id224735/",
       "image": "paracetamol_120.png",
       "dose_table": [
@@ -61,8 +68,15 @@
       "min_age_months": 6,
       "min_weight_kg": 7,
       "contraindications": "Возраст до 6 лет для Форте.",
-      "instructions": "Разовая доза 10-15 мг/кг. Максимальная суточная доза 60 мг/кг. Для детей старше 6 лет.",
+      "instructions": "Разовая доза для детей с массой тела менее 60 кг: 10-15 мг/кг массы тела. Максимальная суточная доза: 60 мг/кг массы тела. Кратность приема: 3-4 раза в сутки с интервалом 4-6 часов.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=86c53657-c25d-4d2b-b0ad-92fa25ed74e4",
+      "grls": {
+        "reg_number": "",
+        "inn": "Парацетамол",
+        "manufacturer": "",
+        "atx": "N02BE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=86c53657-c25d-4d2b-b0ad-92fa25ed74e4"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id521602/",
       "image": "paracetamol_forte.png",
       "dose_table": [
@@ -89,8 +103,15 @@
       "min_age_months": 3,
       "min_weight_kg": 5,
       "contraindications": "Возраст до 3 месяцев, масса тела менее 5 кг.",
-      "instructions": "Разовая доза 5-10 мг/кг. Максимальная суточная доза 30 мг/кг. Интервал между приёмами 6-8 часов.",
+      "instructions": "Разовая доза для детей: 5-10 мг/кг массы тела 3 раза в сутки. Максимальная суточная доза: 30 мг/кг. Интервал между приемами 6-8 часов. Препарат принимать внутрь после еды.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=a1ab07d8-6779-4029-9b52-04aa390eb440",
+      "grls": {
+        "reg_number": "",
+        "inn": "Ибупрофен",
+        "manufacturer": "",
+        "atx": "M01AE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=a1ab07d8-6779-4029-9b52-04aa390eb440"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id250621/",
       "image": "ibuprofen_100.png",
       "dose_table": [
@@ -118,8 +139,15 @@
       "min_age_months": 12,
       "min_weight_kg": 10,
       "contraindications": "Возраст до 1 года, масса тела менее 10 кг.",
-      "instructions": "Разовая доза 5-10 мг/кг. Максимальная суточная доза 30 мг/кг. Интервал 6-8 часов.",
+      "instructions": "Разовая доза для детей: 5-10 мг/кг массы тела 3 раза в сутки. Максимальная суточная доза: 30 мг/кг. Интервал между приемами 6-8 часов.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=a1ab07d8-6779-4029-9b52-04aa390eb440",
+      "grls": {
+        "reg_number": "",
+        "inn": "Ибупрофен",
+        "manufacturer": "",
+        "atx": "M01AE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=a1ab07d8-6779-4029-9b52-04aa390eb440"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id514767/",
       "image": "ibuprofen_forte.png",
       "dose_table": [
@@ -143,8 +171,15 @@
       "min_age_months": 1,
       "min_weight_kg": 3,
       "contraindications": "Период новорождённости (до 1 мес).",
-      "instructions": "Разовая доза 10-15 мг/кг. Максимальная суточная доза 60 мг/кг. 2-3 раза в сутки.",
+      "instructions": "Ректально. Разовая доза 10-15 мг/кг массы тела. Максимальная суточная доза 60 мг/кг. 2-3 раза в сутки с интервалом 4-6 часов.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=320c8322-457d-4e3f-8418-13ab434a203b",
+      "grls": {
+        "reg_number": "",
+        "inn": "Парацетамол",
+        "manufacturer": "",
+        "atx": "N02BE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=320c8322-457d-4e3f-8418-13ab434a203b"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id206253/",
       "image": "cefekon_50.png",
       "dose_table": [
@@ -167,8 +202,15 @@
       "min_age_months": 3,
       "min_weight_kg": 7,
       "contraindications": "Возраст до 3 мес.",
-      "instructions": "Разовая доза 10-15 мг/кг. Максимальная суточная доза 60 мг/кг.",
+      "instructions": "Ректально. Разовая доза 10-15 мг/кг массы тела. Максимальная суточная доза 60 мг/кг. 2-3 раза в сутки с интервалом 4-6 часов.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=320c8322-457d-4e3f-8418-13ab434a203b",
+      "grls": {
+        "reg_number": "",
+        "inn": "Парацетамол",
+        "manufacturer": "",
+        "atx": "N02BE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=320c8322-457d-4e3f-8418-13ab434a203b"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id206254/",
       "image": "cefekon_100.png",
       "dose_table": [
@@ -191,8 +233,15 @@
       "min_age_months": 36,
       "min_weight_kg": 17,
       "contraindications": "Для детей с 3 лет.",
-      "instructions": "Разовая доза 10-15 мг/кг. С 3 лет.",
+      "instructions": "Ректально. Разовая доза 10-15 мг/кг массы тела. Максимальная суточная доза 60 мг/кг. 2-3 раза в сутки с интервалом 4-6 часов.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=320c8322-457d-4e3f-8418-13ab434a203b",
+      "grls": {
+        "reg_number": "",
+        "inn": "Парацетамол",
+        "manufacturer": "",
+        "atx": "N02BE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=320c8322-457d-4e3f-8418-13ab434a203b"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id206255/",
       "image": "cefekon_250.png",
       "dose_table": [
@@ -214,8 +263,15 @@
       "min_age_months": 3,
       "min_weight_kg": 6,
       "contraindications": "Возраст до 3 мес, вес менее 6 кг.",
-      "instructions": "Максимальная суточная доза 30 мг/кг. Интервал 6-8 часов.",
+      "instructions": "Ректально. Доза зависит от возраста и массы тела ребенка. Разовая доза 5-10 мг/кг. Максимальная суточная доза 30 мг/кг. Интервал между введениями 6-8 часов.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=e9ee3f13-8126-4c0c-94f3-9e6069827956",
+      "grls": {
+        "reg_number": "",
+        "inn": "Ибупрофен",
+        "manufacturer": "",
+        "atx": "M01AE01",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=e9ee3f13-8126-4c0c-94f3-9e6069827956"
+      },
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id509733/",
       "image": "ibuprofen_supp_60.png",
       "dose_table": [
@@ -240,8 +296,15 @@
       "min_age_months": 3,
       "min_weight_kg": 4,
       "contraindications": "Аллергия на пенициллины.",
-      "instructions": "Стандартная доза 45 мг/кг/сут в 2-3 приёма. При отите 80-90 мг/кг/сут.",
+      "instructions": "Внутрь. Детям до 2 лет: 20 мг/кг/сут в 3 приема. Детям 2-5 лет: по 125 мг 3 раза/сут. Детям 5-10 лет: по 250 мг 3 раза/сут. Детям старше 10 лет (масса тела более 40 кг): по 250-500 мг 3 раза/сут. Курс 5-12 дней.",
       "grls_link": "https://grls.rosminzdrav.ru/",
+      "grls": {
+        "reg_number": "П N011641/02",
+        "inn": "Амоксициллин",
+        "manufacturer": "Хемофарм А.Д. (Сербия)",
+        "atx": "J01CA04",
+        "url": "https://grls.rosminzdrav.ru/"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -266,8 +329,15 @@
       "min_age_months": 1,
       "min_weight_kg": 3,
       "contraindications": "Аллергия на пенициллины.",
-      "instructions": "Стандартная доза 45 мг/кг/сут. Для детей до 3 мес 30 мг/кг/сут.",
+      "instructions": "Внутрь. Детям до 2 лет: 20 мг/кг/сут в 3 приема. Детям 2-5 лет: по 125 мг 3 раза/сут. Детям 5-10 лет: по 250 мг 3 раза/сут. Курс 5-12 дней.",
       "grls_link": "https://grls.rosminzdrav.ru/",
+      "grls": {
+        "reg_number": "П N011641/02",
+        "inn": "Амоксициллин",
+        "manufacturer": "Хемофарм А.Д. (Сербия)",
+        "atx": "J01CA04",
+        "url": "https://grls.rosminzdrav.ru/"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -293,8 +363,15 @@
       "min_age_months": 1,
       "min_weight_kg": 3,
       "contraindications": "Возраст до 1 месяца. Бронхиальная астма.",
-      "instructions": "Разовая доза 0.03-0.05 мг/кг. 1 мл = 20 капель. Максимальная суточная доза 0.1 мг/кг. Принимать 3 раза в день.",
-      "grls_link": "",
+      "instructions": "Внутрь. 20 капель = 1 мл = 1 мг диметиндена. Дети от 1 мес до 12 лет: суточная доза 0,1 мг/кг (2 капли на кг), разделенная на 3 приема. Дети старше 12 лет и взрослые: 3-6 мг/сут (60-120 капель) в 3 приема (по 20-40 капель 3 раза/день). Пациентам, склонным к сонливости: 40 капель на ночь и 20 капель утром. Максимальный курс без врача: 7 дней.",
+      "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=c69b1858-0c5a-4ed4-8729-a2349b47444e",
+      "grls": {
+        "reg_number": "ЛП-№(004051)-(РГ-RU)",
+        "inn": "Диметинден",
+        "manufacturer": "ГСК Консьюмер Хелскер САРЛ (Швейцария)",
+        "atx": "R06AB03",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=c69b1858-0c5a-4ed4-8729-a2349b47444e"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -322,8 +399,15 @@
       "min_age_months": 6,
       "min_weight_kg": 7,
       "contraindications": "Возраст до 6 месяцев. Тяжёлая почечная недостаточность.",
-      "instructions": "С 6 до 12 мес: 2.5 мг (0.25 мл) 1 раз в день. С 1 года до 6 лет: 2.5 мг 2 раза в день. Старше 6 лет: 5 мг (0.5 мл) 2 раза в день.",
-      "grls_link": "",
+      "instructions": "Внутрь. Дети 6-12 мес: 2,5 мг (5 капель) 1 раз/сут. Дети 1-2 лет: 2,5 мг (5 капель) до 2 раз/сут. Дети 2-6 лет: 2,5 мг (5 капель) 2 раза/сут или 5 мг (10 капель) 1 раз/сут. Дети старше 6 лет и взрослые: 10 мг (20 капель) 1 раз/сут или 5 мг 2 раза/сут. При почечной недостаточности требуется коррекция дозы.",
+      "grls_link": "https://grls.rosminzdrav.ru/",
+      "grls": {
+        "reg_number": "П N011930/01",
+        "inn": "Цетиризин",
+        "manufacturer": "ЮСБ Фарма С.п.А. (Италия) / Эйсика Фармасьютикалз С.р.л.",
+        "atx": "R06AE07",
+        "url": "https://grls.rosminzdrav.ru/"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -350,8 +434,15 @@
       "min_age_months": 0,
       "min_weight_kg": 3,
       "contraindications": "Индивидуальная непереносимость.",
-      "instructions": "Детям до 2 лет: 7.5 мг (2.5 мл) 2 раза. 2-5 лет: 7.5 мг 3 раза. 6-12 лет: 15 мг (5 мл) 2-3 раза.",
-      "grls_link": "",
+      "instructions": "Внутрь после еды. Дети до 2 лет: 2,5 мл 2 раза/сут (15 мг/сут). Дети 2-5 лет: 2,5 мл 3 раза/сут (22,5 мг/сут). Дети 6-12 лет: 5 мл 2-3 раза/сут (30-45 мг/сут). Дети старше 12 лет: 10 мл 3 раза/сут (90 мг/сут). Курс лечения 5-7 дней.",
+      "grls_link": "https://grls.rosminzdrav.ru/",
+      "grls": {
+        "reg_number": "ЛП-002739",
+        "inn": "Амброксол",
+        "manufacturer": "различные производители",
+        "atx": "R05CB06",
+        "url": "https://grls.rosminzdrav.ru/"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -379,8 +470,15 @@
       "min_age_months": 24,
       "min_weight_kg": 12,
       "contraindications": "Возраст до 2 лет. Язвенная болезнь.",
-      "instructions": "Детям 2-5 лет: 100 мг (1 пакетик) 2-3 раза. 6-14 лет: 200 мг (2 пакетика) 2 раза в день. Пакетик растворить в 50 мл воды.",
-      "grls_link": "",
+      "instructions": "Внутрь после еды. Содержимое пакетика растворить в 50 мл воды. Дети 2-6 лет: по 100 мг 2-3 раза/сут (200-300 мг/сут). Дети 6-14 лет: по 100 мг 3 раза/сут или по 200 мг 2 раза/сут (300-400 мг/сут). Подростки старше 14 лет и взрослые: по 200 мг 2-3 раза/сут (400-600 мг/сут). Дополнительный прием жидкости усиливает муколитический эффект. Курс 5-10 дней.",
+      "grls_link": "https://grls.rosminzdrav.ru/",
+      "grls": {
+        "reg_number": "ЛП-№(005201)-(РГ-RU)",
+        "inn": "Ацетилцистеин",
+        "manufacturer": "Сандоз д.д. (Словения)",
+        "atx": "R05CB01",
+        "url": "https://grls.rosminzdrav.ru/"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -407,8 +505,15 @@
       "min_age_months": 0,
       "min_weight_kg": 2,
       "contraindications": "Гиперкальциемия.",
-      "instructions": "Профилактика: 1-2 капли (500-1000 МЕ) в день. Лечение: 4-10 капель (2000-5000 МЕ) в день. 1 мл = 30 капель. 1 капля = 500 МЕ.",
-      "grls_link": "",
+      "instructions": "Внутрь, в ложечке жидкости. 1 капля содержит около 500 МЕ витамина D3. Профилактика рахита: доношенные с 4 нед жизни по 500 МЕ (1 капля)/сут; недоношенные: 1000-1500 МЕ (2-3 капли)/сут. Лечение рахита: 2000-5000 МЕ (4-10 капель)/сут в течение 4-6 нед. Лечение остеопороза: 500-1000 МЕ (1-2 капли)/сут.",
+      "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=cc647934-3d15-4216-8b19-87c63932ff5f",
+      "grls": {
+        "reg_number": "П N014088/01",
+        "inn": "Колекальциферол (витамин D3)",
+        "manufacturer": "Фармацевтический завод «ПОЛЬФАРМА» АО (Польша)",
+        "atx": "A11CC05",
+        "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=cc647934-3d15-4216-8b19-87c63932ff5f"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [
@@ -436,8 +541,15 @@
       "min_age_months": 0,
       "min_weight_kg": 2,
       "contraindications": "Гемосидероз, гемохроматоз, анемии не связанные с дефицитом железа.",
-      "instructions": "Лечение ЖДА: 3-6 мг/кг/сут. Профилактика: 1-2 мг/кг/сут. 1 мл = 50 мг железа. 1 мл = 20 капель.",
-      "grls_link": "",
+      "instructions": "Внутрь, во время или после еды. 1 мл = 20 капель = 50 мг железа; 1 капля = 2,5 мг железа. Лечение ЖДА: дети до 1 года: 25-50 мг/сут (10-20 капель); дети 1-12 лет: 50-100 мг/сут (20-40 капель); дети старше 12 лет и взрослые: 100-300 мг/сут (40-120 капель). Лечение латентного дефицита железа: половина указанной дозы. Можно смешивать с соками или детским питанием.",
+      "grls_link": "https://grls.rosminzdrav.ru/",
+      "grls": {
+        "reg_number": "П N011981/01",
+        "inn": "Железа(III) гидроксид полимальтозат",
+        "manufacturer": "Вифор (Интернэшнл) Инк. (Швейцария)",
+        "atx": "B03AB05",
+        "url": "https://grls.rosminzdrav.ru/"
+      },
       "pharmacy_link": "",
       "image": null,
       "dose_table": [

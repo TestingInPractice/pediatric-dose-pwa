@@ -105,6 +105,7 @@
         const id = await DB.saveCalculation({
           patient_id: Store.currentPatientId, drug_id: drug.id, drug_name: drug.name,
           weight, dose_ml: result.standard_dose_ml, dose_mg: result.standard_dose_mg,
+          dose_form: drug.form || null, dose_qty: result.suppositories_min || null,
           episode_id: episodeId
         });
         Store.currentResult.dbId = id;
@@ -161,8 +162,11 @@
       if (!foundMatch) html += `<tr class="highlight-row"><td colspan="3">Ваш вес (${weight} кг) — сверьтесь с таблицей</td></tr>`;
       html += `</tbody></table>`;
     }
-    if (drug.grls_link) html += `<div class="instruction-source">📎 ГРЛС: <a href="${drug.grls_link}" target="_blank" rel="noopener">открыть инструкцию</a></div>`;
+    const grlsUrl = drug.grls?.url || drug.grls_link;
+    if (grlsUrl) html += `<div class="instruction-source">📎 ГРЛС: <a href="${grlsUrl}" target="_blank" rel="noopener">открыть инструкцию</a></div>`;
     if (drug.pharmacy_link) html += `<div class="instruction-source">💊 Аптека: <a href="${drug.pharmacy_link}" target="_blank" rel="noopener">проверить цену</a></div>`;
+    const l4html = Level4Images.getImageHtml(drug);
+    if (l4html) html += `<div class="validation-level" style="margin-top:12px"><span class="level-icon">🖼️</span><div class="level-content"><div class="level-title">L4: Визуальная проверка (скриншот инструкции)</div><div class="level-desc">${l4html}</div></div></div>`;
     body.innerHTML = html;
     section.classList.remove('hidden');
   }
@@ -207,7 +211,7 @@
       return `<div class="pending-item card" data-id="${h.id}"><div class="card-body">${intervalHtml}
         <div class="confirm-detail-row"><span class="confirm-detail-label">Ребёнок</span><span class="confirm-detail-value">${patient ? patient.name : '—'}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Препарат</span><span class="confirm-detail-value">${h.drug_name || 'Препарат #' + h.drug_id}</span></div>
-        <div class="confirm-detail-row"><span class="confirm-detail-label">Доза</span><span class="confirm-detail-value">${h.dose_ml || '?'} мл (${h.dose_mg || '?'} мг)</span></div>
+        <div class="confirm-detail-row"><span class="confirm-detail-label">Доза</span><span class="confirm-detail-value">${UI.formatDose(h)}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Время расчёта</span><span class="confirm-detail-value">${UI.formatDate(h.timestamp)}</span></div>
         <div class="pending-actions">
           <button class="btn ${canConfirm ? 'btn-primary' : 'btn-danger'} confirm-item-btn" data-id="${h.id}" ${canConfirm ? '' : 'disabled'}>${canConfirm ? '✅ Подтвердить' : '⚠️ Слишком рано'}</button>
@@ -360,7 +364,7 @@
       histContainer.innerHTML = history.map(h => `
         <div class="patient-history-item">
           <div class="drug-name">${h.drug_name || 'Препарат #' + h.drug_id}</div>
-          <div class="history-meta">${h.dose_ml ? h.dose_ml + ' мл' : ''} ${h.dose_mg ? '· ' + h.dose_mg + ' мг' : ''} · ${UI.formatDate(h.timestamp)}</div>
+          <div class="history-meta">${UI.formatDose(h)} · ${UI.formatDate(h.timestamp)}</div>
         </div>
       `).join('');
     }
@@ -464,7 +468,7 @@
           const div = document.createElement('div');
           div.className = 'history-item';
           div.innerHTML = `<div class="history-drug">${h.drug_name || 'Препарат'}</div>
-            <div class="history-meta">${h.dose_ml || '?'} мл · ${h.dose_mg || '?'} мг · ${UI.formatTime(h.timestamp)}${patient ? ' · ' + patient.name : ''} · ✅ Принято</div>
+            <div class="history-meta">${UI.formatDose(h)} · ${UI.formatTime(h.timestamp)}${patient ? ' · ' + patient.name : ''} · ✅ Принято</div>
             <button class="btn btn-sm btn-danger history-delete-btn" data-id="${h.id}" style="margin-top:4px">🗑 Удалить</button>`;
           container.appendChild(div);
         });
@@ -538,6 +542,48 @@
       }
     });
   }
+
+  function renderGrlsTable() {
+    const section = $('grls-table-section');
+    const body = $('grls-table-body');
+    const summary = $('grls-summary');
+    const isVisible = !section.classList.contains('hidden');
+    if (isVisible) { section.classList.add('hidden'); return; }
+
+    const fields = ['reg_number', 'inn', 'manufacturer', 'atx', 'url'];
+    const fieldLabels = { reg_number: 'РУ', inn: 'МНН', manufacturer: 'Произв.', atx: 'АТХ', url: 'Ссылка' };
+    let totalScore = 0, maxScore = Store.drugs.length * fields.length;
+
+    let html = '<table class="grls-table"><thead><tr><th>Препарат</th>';
+    fields.forEach(f => { html += `<th>${fieldLabels[f]}</th>`; });
+    html += '<th>L4</th><th>Полнота</th></tr></thead><tbody>';
+
+    Store.drugs.forEach(d => {
+      const grls = d.grls || {};
+      let drugScore = 0;
+      html += `<tr><td class="grls-drug-name">${d.name}</td>`;
+      fields.forEach(f => {
+        const val = grls[f];
+        const ok = val && val !== 'https://grls.rosminzdrav.ru/' && val !== 'различные производители';
+        if (ok) drugScore++;
+        html += `<td><span class="grls-dot ${ok ? 'ok' : 'miss'}"></span></td>`;
+      });
+      html += `<td>${Level4Images.getImageIcon(d)}</td>`;
+      totalScore += drugScore;
+      const pct = Math.round(drugScore / fields.length * 100);
+      html += `<td><div class="grls-progress"><div class="grls-progress-fill" style="width:${pct}%;background:${pct===100?'var(--color-success)':pct>0?'var(--color-warning)':'var(--color-border)'}"></div></div></td>`;
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    body.innerHTML = html;
+
+    const overall = Math.round(totalScore / maxScore * 100);
+    summary.textContent = `${Store.drugs.filter(d => { const g=d.grls||{}; return fields.every(f => g[f]&&g[f]!=='https://grls.rosminzdrav.ru/'&&g[f]!=='различные производители'); }).length}/${Store.drugs.length} полных`;
+    section.classList.remove('hidden');
+  }
+
+  window.renderGrlsTable = renderGrlsTable;
 
   document.addEventListener('DOMContentLoaded', init);
 })();
