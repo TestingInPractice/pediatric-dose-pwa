@@ -251,24 +251,11 @@
         }
         await DB.confirmAdministration(id);
         const pendingItem = btn.closest('.pending-item');
-        const patientName = record.patient_id ? (Store.patients.find(p => p.id === record.patient_id)?.name || 'Ребёнок') : 'Ребёнок';
         pendingItem.innerHTML = `<div class="confirm-success">
           <span class="confirm-success-icon">✅</span>
           <div class="confirm-success-text">Подтверждено</div>
-          <div style="margin-top:8px">
-            <button class="btn btn-sm btn-primary remind-btn" data-patient="${patientName}" data-drug="${record.drug_name || ''}" data-ml="${record.dose_ml || ''}" data-mg="${record.dose_mg || ''}">🔔 Напомнить через 4 ч</button>
-          </div>
         </div>`;
-        pendingItem.querySelector('.remind-btn').onclick = async () => {
-          const btn2 = pendingItem.querySelector('.remind-btn');
-          const granted = await Reminder.requestPermission();
-          if (!granted) { btn2.textContent = '❌ Нет разрешения'; return; }
-          const pName = btn2.dataset.patient || 'Ребёнок';
-          Reminder.schedule(pName, btn2.dataset.drug, btn2.dataset.ml, btn2.dataset.mg, 4);
-          btn2.textContent = '🔔 Напомним через 4 ч';
-          btn2.disabled = true;
-        };
-        setTimeout(() => { if (pendingItem.parentNode) pendingItem.remove(); if (!body.querySelector('.pending-item')) body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>'; }, 8000);
+        setTimeout(() => renderConfirmScreen(), 1200);
       });
     });
 
