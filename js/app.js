@@ -14,7 +14,7 @@
     $('diary-modal').addEventListener('click', e => { if (e.target === $('diary-modal')) UI.closeModal(); });
     Theme.init();
     await Store.loadData();
-    Store.loadPatients().then(() => Store.renderPatientSelect());
+    Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
   }
 
   function navigateTo(screen) {
@@ -36,6 +36,9 @@
         if (btn.dataset.screen === 'profiles') renderPatientsList();
         if (btn.dataset.screen === 'history') renderHistory();
         if (btn.dataset.screen === 'diary') DiaryScreen.render();
+        if (btn.dataset.screen === 'calculator') {
+          Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
+        }
       });
     });
   }
@@ -67,7 +70,16 @@
       }
     }
 
-    function checkReady() { calcBtn.disabled = !(weightInput.value && drugSelect.value); }
+    function checkReady() {
+      const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+      const hasPatientData = patient && patient.birthDate;
+      calcBtn.disabled = !(weightInput.value && drugSelect.value && hasPatientData);
+      const msg = $('calc-block-msg');
+      if (!Store.patients.length) { msg.textContent = '👶 Добавьте ребёнка в разделе Дети'; msg.classList.remove('hidden'); }
+      else if (!patient) { msg.textContent = '👶 Выберите ребёнка'; msg.classList.remove('hidden'); }
+      else if (!patient.birthDate) { msg.textContent = '📅 Заполните дату рождения в профиле ребёнка'; msg.classList.remove('hidden'); }
+      else { msg.classList.add('hidden'); }
+    }
     weightInput.addEventListener('input', checkReady);
     drugSelect.addEventListener('change', checkReady);
     calcBtn.addEventListener('click', handleCalculate);
@@ -82,12 +94,17 @@
     const drug = Store.drugs.find(d => d.id === drugId);
     if (!drug) return;
 
+    const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+    if (!patient) { UI.showError('Выберите ребёнка из списка'); return; }
+    if (!patient.birthDate) { UI.showError('У ребёнка не указана дата рождения. Заполните её в профиле.'); return; }
+    const ageMonths = UI.getAgeMonths(patient.birthDate);
+
     try {
       const result = Calculator.calculateDose(drug, weight);
       Store.currentResult = { drug, weight, result, timestamp: new Date().toISOString() };
 
       renderResult(drug, weight, result);
-      renderValidationLevels(drug, weight, result);
+      renderValidationLevels(drug, weight, result, ageMonths);
       renderInstruction(drug, weight);
 
       $('result-section').classList.remove('hidden');
@@ -134,9 +151,9 @@
 
   // ===================== VALIDATION =====================
 
-  function renderValidationLevels(drug, weight, result) {
+  function renderValidationLevels(drug, weight, result, ageMonths) {
     const container = $('validation-levels'), section = $('validation-section');
-    const l2 = Level2Rules.validate(drug, weight, result);
+    const l2 = Level2Rules.validate(drug, weight, result, ageMonths);
     let html = `<div class="validation-level"><span class="level-icon">${l2.status === 'pass' ? '✅' : '⚠️'}</span><div class="level-content"><div class="level-title">L2: Экспертная система (правила)</div>`;
     l2.checks.forEach(c => { const icon = c.status === 'pass' ? '✅' : c.status === 'error' ? '🚫' : 'ℹ️'; html += `<div class="level-desc">${icon} ${c.detail}</div>`; });
     html += `</div></div><div class="validation-level"><span class="level-icon">🔲</span><div class="level-content"><div class="level-title">L3: ML-модель (ONNX)</div><div class="level-desc">Будет добавлена в следующем обновлении</div></div></div>
@@ -325,6 +342,8 @@
       allergies: $('patient-allergies').value.trim() || ''
     };
     if (!data.name) { alert('Введите имя ребёнка'); return; }
+    if (!data.birthDate) { alert('Введите дату рождения'); return; }
+    if (new Date(data.birthDate) > new Date()) { alert('Дата рождения не может быть в будущем'); return; }
     if (id) { await DB.updatePatient(parseInt(id), data); }
     else { await DB.addPatient(data); }
     $('patient-form-card').classList.add('hidden');

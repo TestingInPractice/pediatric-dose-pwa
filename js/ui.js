@@ -46,10 +46,15 @@
       return new Date(isoDay + 'T00:00:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
     },
 
+    getAgeMonths(birthDate) {
+      if (!birthDate) return null;
+      const now = new Date(), birth = new Date(birthDate);
+      return (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth());
+    },
+
     calcAge(birthDate) {
       if (!birthDate) return '?';
-      const now = new Date(), birth = new Date(birthDate);
-      const months = (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth());
+      const months = this.getAgeMonths(birthDate);
       if (months < 1) return '0 мес';
       if (months < 12) return months + ' мес';
       const years = Math.floor(months / 12), rem = months % 12;

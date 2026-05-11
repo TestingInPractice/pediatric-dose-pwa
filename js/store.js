@@ -71,14 +71,21 @@
       const select = $('patient-select');
       if (!select) return;
       const currentVal = select.value;
-      select.innerHTML = '<option value="">— Без профиля —</option>';
+      select.innerHTML = '';
       this.patients.forEach(p => {
         const opt = document.createElement('option');
         opt.value = p.id;
         opt.textContent = `${p.name} (${UI.calcAge(p.birthDate)}, ${p.weight || '?'} кг)`;
         select.appendChild(opt);
       });
-      if (currentVal && this.patients.find(p => p.id == currentVal)) select.value = currentVal;
+      if (this.patients.length) {
+        if (currentVal && this.patients.find(p => p.id == currentVal)) {
+          select.value = currentVal;
+        } else {
+          select.value = this.patients[0].id;
+          select.dispatchEvent(new Event('change'));
+        }
+      }
     }
   };
 

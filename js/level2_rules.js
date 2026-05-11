@@ -1,15 +1,34 @@
 const Level2Rules = {
-  validate(drug, weight, calculatedDose) {
+  validate(drug, weight, calculatedDose, patientAgeMonths) {
     const checks = [];
     let allPassed = true;
 
     if (drug.min_age_months != null) {
-      checks.push({
-        icon: '👶',
-        title: 'Возрастное ограничение',
-        status: 'info',
-        detail: `Препарат разрешён с ${drug.min_age_months} мес.`
-      });
+      if (patientAgeMonths != null) {
+        if (patientAgeMonths < drug.min_age_months) {
+          allPassed = false;
+          checks.push({
+            icon: '🚫',
+            title: 'Возрастное ограничение',
+            status: 'error',
+            detail: `Ребёнку ${patientAgeMonths} мес., а препарат разрешён только с ${drug.min_age_months} мес.`
+          });
+        } else {
+          checks.push({
+            icon: '✅',
+            title: 'Возрастное ограничение',
+            status: 'pass',
+            detail: `${patientAgeMonths} мес. ≥ ${drug.min_age_months} мес.`
+          });
+        }
+      } else {
+        checks.push({
+          icon: 'ℹ️',
+          title: 'Возрастное ограничение',
+          status: 'info',
+          detail: `Препарат разрешён с ${drug.min_age_months} мес. (укажите дату рождения в профиле)`
+        });
+      }
     }
 
     if (drug.min_weight_kg != null && weight < drug.min_weight_kg) {
