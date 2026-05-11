@@ -549,15 +549,27 @@
       URL.revokeObjectURL(url);
     });
     $('update-btn').addEventListener('click', async () => {
-      $('update-btn').textContent = '⏳ Проверка...'; $('update-btn').disabled = true;
+      $('update-btn').textContent = '⏳ Очистка кэша...'; $('update-btn').disabled = true;
       try {
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+        const theme = localStorage.getItem('dose_pwa_theme');
+        localStorage.clear();
+        if (theme) localStorage.setItem('dose_pwa_theme', theme);
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map(r => r.unregister()));
+        }
         const resp = await fetch('data/manifest.json?_=' + Date.now());
         const remote = await resp.json();
         $('settings-version').textContent = remote.version;
         $('settings-updated').textContent = remote.updated;
-        $('update-btn').textContent = '✅ Актуальная версия';
+        $('update-btn').textContent = '✅ Перезагрузка...';
+        setTimeout(() => location.reload(), 800);
       } catch (e) {
-        $('update-btn').textContent = '❌ Ошибка обновления';
+        $('update-btn').textContent = '❌ Ошибка';
         setTimeout(() => { $('update-btn').textContent = '🔄 Проверить обновления'; $('update-btn').disabled = false; }, 2000);
       }
     });
