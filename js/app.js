@@ -359,6 +359,8 @@
       if (confirm(`Удалить профиль ${p.name} и всю историю приёмов?`)) {
         await DB.deletePatient(p.id);
         $('patient-detail-card').classList.add('hidden');
+        if (Store.currentPatientId === p.id) Store.currentPatientId = null;
+        if (Store.diaryPatientId === p.id) Store.diaryPatientId = null;
         await Store.loadPatients();
         Store.renderPatientSelect();
         renderPatientsList();

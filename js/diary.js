@@ -10,6 +10,15 @@
       const select = $('diary-patient-select');
       if (Store.diaryPatientId && Store.patients.find(p => p.id === Store.diaryPatientId)) {
         select.value = Store.diaryPatientId;
+      } else {
+        Store.diaryPatientId = null;
+      }
+
+      if (!Store.patients.length) {
+        $('diary-episode-header').innerHTML = '';
+        $('diary-quick-actions').classList.add('hidden');
+        $('diary-timeline').innerHTML = '<p class="text-muted">👶 Добавьте ребёнка в разделе Дети</p>';
+        return;
       }
 
       select.addEventListener('change', async () => {
@@ -94,6 +103,7 @@
     },
 
     showStartEpisodeModal() {
+      if (!Store.diaryPatientId) return;
       UI.openModal('Новый эпизод', `<div class="form-group">
         <label class="form-label">Название</label>
         <input type="text" class="form-input" id="episode-name-input" placeholder="Например: ОРВИ, Отит..." autofocus>
@@ -106,6 +116,7 @@
 
       $('episode-start-cancel').onclick = UI.closeModal;
       $('episode-start-save').onclick = async () => {
+        if (!Store.diaryPatientId) { UI.closeModal(); return; }
         const name = ($('episode-name-input').value || '').trim() || 'Болезнь';
         await DB.addEpisode({ patient_id: Store.diaryPatientId, name, startDate: new Date().toISOString() });
         UI.closeModal();
