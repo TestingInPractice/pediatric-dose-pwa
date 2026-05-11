@@ -2,16 +2,46 @@
   "version": "1.1.0",
   "updated": "2026-05-09",
   "categories": [
-    { "id": 1, "name": "Жаропонижающие / Обезболивающие" },
-    { "id": 2, "name": "Антибиотики" },
-    { "id": 3, "name": "Ректальные суппозитории" },
-    { "id": 4, "name": "Антигистаминные" },
-    { "id": 5, "name": "Сорбенты" },
-    { "id": 6, "name": "Регидратанты" },
-    { "id": 7, "name": "Пробиотики" },
-    { "id": 8, "name": "Витамин D" },
-    { "id": 9, "name": "Муколитики" },
-    { "id": 10, "name": "Железо" }
+    {
+      "id": 1,
+      "name": "Жаропонижающие / Обезболивающие"
+    },
+    {
+      "id": 2,
+      "name": "Антибиотики"
+    },
+    {
+      "id": 3,
+      "name": "Ректальные суппозитории"
+    },
+    {
+      "id": 4,
+      "name": "Антигистаминные"
+    },
+    {
+      "id": 5,
+      "name": "Сорбенты"
+    },
+    {
+      "id": 6,
+      "name": "Регидратанты"
+    },
+    {
+      "id": 7,
+      "name": "Пробиотики"
+    },
+    {
+      "id": 8,
+      "name": "Витамин D"
+    },
+    {
+      "id": 9,
+      "name": "Муколитики"
+    },
+    {
+      "id": 10,
+      "name": "Железо"
+    }
   ],
   "drugs": [
     {
@@ -43,12 +73,42 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id224735/",
       "image": "paracetamol_120.png",
       "dose_table": [
-        { "weight_min": 3, "weight_max": 5, "dose_ml": 2.5, "dose_mg": 60 },
-        { "weight_min": 5, "weight_max": 7, "dose_ml": 3.75, "dose_mg": 90 },
-        { "weight_min": 7, "weight_max": 9, "dose_ml": 5.0, "dose_mg": 120 },
-        { "weight_min": 9, "weight_max": 11, "dose_ml": 6.25, "dose_mg": 150 },
-        { "weight_min": 11, "weight_max": 13, "dose_ml": 7.5, "dose_mg": 180 },
-        { "weight_min": 13, "weight_max": 15, "dose_ml": 8.75, "dose_mg": 210 }
+        {
+          "weight_min": 3,
+          "weight_max": 5,
+          "dose_ml": 2.5,
+          "dose_mg": 60
+        },
+        {
+          "weight_min": 5,
+          "weight_max": 7,
+          "dose_ml": 3.75,
+          "dose_mg": 90
+        },
+        {
+          "weight_min": 7,
+          "weight_max": 9,
+          "dose_ml": 5,
+          "dose_mg": 120
+        },
+        {
+          "weight_min": 9,
+          "weight_max": 11,
+          "dose_ml": 6.25,
+          "dose_mg": 150
+        },
+        {
+          "weight_min": 11,
+          "weight_max": 13,
+          "dose_ml": 7.5,
+          "dose_mg": 180
+        },
+        {
+          "weight_min": 13,
+          "weight_max": 15,
+          "dose_ml": 8.75,
+          "dose_mg": 210
+        }
       ]
     },
     {
@@ -80,10 +140,30 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id521602/",
       "image": "paracetamol_forte.png",
       "dose_table": [
-        { "weight_min": 7, "weight_max": 10, "dose_ml": 2.5, "dose_mg": 125 },
-        { "weight_min": 10, "weight_max": 15, "dose_ml": 3.75, "dose_mg": 187.5 },
-        { "weight_min": 15, "weight_max": 20, "dose_ml": 5.0, "dose_mg": 250 },
-        { "weight_min": 20, "weight_max": 25, "dose_ml": 6.25, "dose_mg": 312.5 }
+        {
+          "weight_min": 7,
+          "weight_max": 10,
+          "dose_ml": 2.5,
+          "dose_mg": 125
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 15,
+          "dose_ml": 3.75,
+          "dose_mg": 187.5
+        },
+        {
+          "weight_min": 15,
+          "weight_max": 20,
+          "dose_ml": 5,
+          "dose_mg": 250
+        },
+        {
+          "weight_min": 20,
+          "weight_max": 25,
+          "dose_ml": 6.25,
+          "dose_mg": 312.5
+        }
       ]
     },
     {
@@ -115,11 +195,36 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id250621/",
       "image": "ibuprofen_100.png",
       "dose_table": [
-        { "weight_min": 5, "weight_max": 6, "dose_ml": 1.25, "dose_mg": 25 },
-        { "weight_min": 6, "weight_max": 8, "dose_ml": 2.0, "dose_mg": 40 },
-        { "weight_min": 8, "weight_max": 10, "dose_ml": 2.5, "dose_mg": 50 },
-        { "weight_min": 10, "weight_max": 13, "dose_ml": 3.75, "dose_mg": 75 },
-        { "weight_min": 13, "weight_max": 16, "dose_ml": 5.0, "dose_mg": 100 }
+        {
+          "weight_min": 5,
+          "weight_max": 6,
+          "dose_ml": 1.25,
+          "dose_mg": 25
+        },
+        {
+          "weight_min": 6,
+          "weight_max": 8,
+          "dose_ml": 2,
+          "dose_mg": 40
+        },
+        {
+          "weight_min": 8,
+          "weight_max": 10,
+          "dose_ml": 2.5,
+          "dose_mg": 50
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 13,
+          "dose_ml": 3.75,
+          "dose_mg": 75
+        },
+        {
+          "weight_min": 13,
+          "weight_max": 16,
+          "dose_ml": 5,
+          "dose_mg": 100
+        }
       ]
     },
     {
@@ -151,10 +256,30 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id514767/",
       "image": "ibuprofen_forte.png",
       "dose_table": [
-        { "weight_min": 10, "weight_max": 12, "dose_ml": 1.25, "dose_mg": 50 },
-        { "weight_min": 12, "weight_max": 15, "dose_ml": 2.0, "dose_mg": 80 },
-        { "weight_min": 15, "weight_max": 18, "dose_ml": 2.5, "dose_mg": 100 },
-        { "weight_min": 18, "weight_max": 22, "dose_ml": 3.0, "dose_mg": 120 }
+        {
+          "weight_min": 10,
+          "weight_max": 12,
+          "dose_ml": 1.25,
+          "dose_mg": 50
+        },
+        {
+          "weight_min": 12,
+          "weight_max": 15,
+          "dose_ml": 2,
+          "dose_mg": 80
+        },
+        {
+          "weight_min": 15,
+          "weight_max": 18,
+          "dose_ml": 2.5,
+          "dose_mg": 100
+        },
+        {
+          "weight_min": 18,
+          "weight_max": 22,
+          "dose_ml": 3,
+          "dose_mg": 120
+        }
       ]
     },
     {
@@ -183,9 +308,24 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id206253/",
       "image": "cefekon_50.png",
       "dose_table": [
-        { "weight_min": 3, "weight_max": 5, "dose_ml": 1, "dose_mg": 50 },
-        { "weight_min": 5, "weight_max": 7, "dose_ml": 1, "dose_mg": 50 },
-        { "weight_min": 7, "weight_max": 10, "dose_ml": 2, "dose_mg": 100 }
+        {
+          "weight_min": 3,
+          "weight_max": 5,
+          "dose_ml": 1,
+          "dose_mg": 50
+        },
+        {
+          "weight_min": 5,
+          "weight_max": 7,
+          "dose_ml": 1,
+          "dose_mg": 50
+        },
+        {
+          "weight_min": 7,
+          "weight_max": 10,
+          "dose_ml": 2,
+          "dose_mg": 100
+        }
       ]
     },
     {
@@ -214,9 +354,24 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id206254/",
       "image": "cefekon_100.png",
       "dose_table": [
-        { "weight_min": 7, "weight_max": 10, "dose_ml": 1, "dose_mg": 100 },
-        { "weight_min": 10, "weight_max": 14, "dose_ml": 1, "dose_mg": 100 },
-        { "weight_min": 14, "weight_max": 20, "dose_ml": 2, "dose_mg": 200 }
+        {
+          "weight_min": 7,
+          "weight_max": 10,
+          "dose_ml": 1,
+          "dose_mg": 100
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 14,
+          "dose_ml": 1,
+          "dose_mg": 100
+        },
+        {
+          "weight_min": 14,
+          "weight_max": 20,
+          "dose_ml": 2,
+          "dose_mg": 200
+        }
       ]
     },
     {
@@ -245,8 +400,18 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id206255/",
       "image": "cefekon_250.png",
       "dose_table": [
-        { "weight_min": 17, "weight_max": 25, "dose_ml": 1, "dose_mg": 250 },
-        { "weight_min": 25, "weight_max": 35, "dose_ml": 1, "dose_mg": 250 }
+        {
+          "weight_min": 17,
+          "weight_max": 25,
+          "dose_ml": 1,
+          "dose_mg": 250
+        },
+        {
+          "weight_min": 25,
+          "weight_max": 35,
+          "dose_ml": 1,
+          "dose_mg": 250
+        }
       ]
     },
     {
@@ -275,9 +440,24 @@
       "pharmacy_link": "https://www.eapteka.ru/volgograd/goods/id509733/",
       "image": "ibuprofen_supp_60.png",
       "dose_table": [
-        { "weight_min": 6, "weight_max": 8, "dose_ml": 1, "dose_mg": 60 },
-        { "weight_min": 8, "weight_max": 10, "dose_ml": 1, "dose_mg": 60 },
-        { "weight_min": 10, "weight_max": 12, "dose_ml": 2, "dose_mg": 120 }
+        {
+          "weight_min": 6,
+          "weight_max": 8,
+          "dose_ml": 1,
+          "dose_mg": 60
+        },
+        {
+          "weight_min": 8,
+          "weight_max": 10,
+          "dose_ml": 1,
+          "dose_mg": 60
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 12,
+          "dose_ml": 2,
+          "dose_mg": 120
+        }
       ]
     },
     {
@@ -306,11 +486,26 @@
         "url": "https://grls.rosminzdrav.ru/"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "amoxicillin_250.png",
       "dose_table": [
-        { "weight_min": 4, "weight_max": 7, "dose_ml": 2.5, "dose_mg": 125 },
-        { "weight_min": 7, "weight_max": 11, "dose_ml": 3.75, "dose_mg": 187.5 },
-        { "weight_min": 11, "weight_max": 15, "dose_ml": 5.0, "dose_mg": 250 }
+        {
+          "weight_min": 4,
+          "weight_max": 7,
+          "dose_ml": 2.5,
+          "dose_mg": 125
+        },
+        {
+          "weight_min": 7,
+          "weight_max": 11,
+          "dose_ml": 3.75,
+          "dose_mg": 187.5
+        },
+        {
+          "weight_min": 11,
+          "weight_max": 15,
+          "dose_ml": 5,
+          "dose_mg": 250
+        }
       ]
     },
     {
@@ -339,11 +534,26 @@
         "url": "https://grls.rosminzdrav.ru/"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "amoxicillin_125.png",
       "dose_table": [
-        { "weight_min": 3, "weight_max": 5, "dose_ml": 2.5, "dose_mg": 62.5 },
-        { "weight_min": 5, "weight_max": 8, "dose_ml": 3.75, "dose_mg": 93.75 },
-        { "weight_min": 8, "weight_max": 11, "dose_ml": 5.0, "dose_mg": 125 }
+        {
+          "weight_min": 3,
+          "weight_max": 5,
+          "dose_ml": 2.5,
+          "dose_mg": 62.5
+        },
+        {
+          "weight_min": 5,
+          "weight_max": 8,
+          "dose_ml": 3.75,
+          "dose_mg": 93.75
+        },
+        {
+          "weight_min": 8,
+          "weight_max": 11,
+          "dose_ml": 5,
+          "dose_mg": 125
+        }
       ]
     },
     {
@@ -373,13 +583,38 @@
         "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=c69b1858-0c5a-4ed4-8729-a2349b47444e"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "fenistil.png",
       "dose_table": [
-        { "weight_min": 3, "weight_max": 6, "dose_ml": 0.15, "dose_mg": 0.15 },
-        { "weight_min": 6, "weight_max": 10, "dose_ml": 0.3, "dose_mg": 0.3 },
-        { "weight_min": 10, "weight_max": 15, "dose_ml": 0.5, "dose_mg": 0.5 },
-        { "weight_min": 15, "weight_max": 20, "dose_ml": 0.75, "dose_mg": 0.75 },
-        { "weight_min": 20, "weight_max": 30, "dose_ml": 1.0, "dose_mg": 1.0 }
+        {
+          "weight_min": 3,
+          "weight_max": 6,
+          "dose_ml": 0.15,
+          "dose_mg": 0.15
+        },
+        {
+          "weight_min": 6,
+          "weight_max": 10,
+          "dose_ml": 0.3,
+          "dose_mg": 0.3
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 15,
+          "dose_ml": 0.5,
+          "dose_mg": 0.5
+        },
+        {
+          "weight_min": 15,
+          "weight_max": 20,
+          "dose_ml": 0.75,
+          "dose_mg": 0.75
+        },
+        {
+          "weight_min": 20,
+          "weight_max": 30,
+          "dose_ml": 1,
+          "dose_mg": 1
+        }
       ]
     },
     {
@@ -409,12 +644,32 @@
         "url": "https://grls.rosminzdrav.ru/"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "zirtek.png",
       "dose_table": [
-        { "weight_min": 7, "weight_max": 10, "dose_ml": 0.25, "dose_mg": 2.5 },
-        { "weight_min": 10, "weight_max": 15, "dose_ml": 0.25, "dose_mg": 2.5 },
-        { "weight_min": 15, "weight_max": 22, "dose_ml": 0.5, "dose_mg": 5.0 },
-        { "weight_min": 22, "weight_max": 30, "dose_ml": 0.5, "dose_mg": 5.0 }
+        {
+          "weight_min": 7,
+          "weight_max": 10,
+          "dose_ml": 0.25,
+          "dose_mg": 2.5
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 15,
+          "dose_ml": 0.25,
+          "dose_mg": 2.5
+        },
+        {
+          "weight_min": 15,
+          "weight_max": 22,
+          "dose_ml": 0.5,
+          "dose_mg": 5
+        },
+        {
+          "weight_min": 22,
+          "weight_max": 30,
+          "dose_ml": 0.5,
+          "dose_mg": 5
+        }
       ]
     },
     {
@@ -444,13 +699,38 @@
         "url": "https://grls.rosminzdrav.ru/"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "ambroxol.png",
       "dose_table": [
-        { "weight_min": 3, "weight_max": 7, "dose_ml": 2.5, "dose_mg": 7.5 },
-        { "weight_min": 7, "weight_max": 12, "dose_ml": 2.5, "dose_mg": 7.5 },
-        { "weight_min": 12, "weight_max": 17, "dose_ml": 5.0, "dose_mg": 15 },
-        { "weight_min": 17, "weight_max": 25, "dose_ml": 5.0, "dose_mg": 15 },
-        { "weight_min": 25, "weight_max": 35, "dose_ml": 10.0, "dose_mg": 30 }
+        {
+          "weight_min": 3,
+          "weight_max": 7,
+          "dose_ml": 2.5,
+          "dose_mg": 7.5
+        },
+        {
+          "weight_min": 7,
+          "weight_max": 12,
+          "dose_ml": 2.5,
+          "dose_mg": 7.5
+        },
+        {
+          "weight_min": 12,
+          "weight_max": 17,
+          "dose_ml": 5,
+          "dose_mg": 15
+        },
+        {
+          "weight_min": 17,
+          "weight_max": 25,
+          "dose_ml": 5,
+          "dose_mg": 15
+        },
+        {
+          "weight_min": 25,
+          "weight_max": 35,
+          "dose_ml": 10,
+          "dose_mg": 30
+        }
       ]
     },
     {
@@ -480,12 +760,32 @@
         "url": "https://grls.rosminzdrav.ru/"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "acc_100.png",
       "dose_table": [
-        { "weight_min": 12, "weight_max": 17, "dose_ml": 1, "dose_mg": 100 },
-        { "weight_min": 17, "weight_max": 25, "dose_ml": 1, "dose_mg": 100 },
-        { "weight_min": 25, "weight_max": 35, "dose_ml": 2, "dose_mg": 200 },
-        { "weight_min": 35, "weight_max": 50, "dose_ml": 2, "dose_mg": 200 }
+        {
+          "weight_min": 12,
+          "weight_max": 17,
+          "dose_ml": 1,
+          "dose_mg": 100
+        },
+        {
+          "weight_min": 17,
+          "weight_max": 25,
+          "dose_ml": 1,
+          "dose_mg": 100
+        },
+        {
+          "weight_min": 25,
+          "weight_max": 35,
+          "dose_ml": 2,
+          "dose_mg": 200
+        },
+        {
+          "weight_min": 35,
+          "weight_max": 50,
+          "dose_ml": 2,
+          "dose_mg": 200
+        }
       ]
     },
     {
@@ -515,13 +815,38 @@
         "url": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=cc647934-3d15-4216-8b19-87c63932ff5f"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "aquadetrim.png",
       "dose_table": [
-        { "weight_min": 2, "weight_max": 5, "dose_ml": 0.033, "dose_mg": 500 },
-        { "weight_min": 5, "weight_max": 10, "dose_ml": 0.033, "dose_mg": 500 },
-        { "weight_min": 10, "weight_max": 15, "dose_ml": 0.067, "dose_mg": 1000 },
-        { "weight_min": 15, "weight_max": 25, "dose_ml": 0.067, "dose_mg": 1000 },
-        { "weight_min": 25, "weight_max": 40, "dose_ml": 0.1, "dose_mg": 1500 }
+        {
+          "weight_min": 2,
+          "weight_max": 5,
+          "dose_ml": 0.033,
+          "dose_mg": 500
+        },
+        {
+          "weight_min": 5,
+          "weight_max": 10,
+          "dose_ml": 0.033,
+          "dose_mg": 500
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 15,
+          "dose_ml": 0.067,
+          "dose_mg": 1000
+        },
+        {
+          "weight_min": 15,
+          "weight_max": 25,
+          "dose_ml": 0.067,
+          "dose_mg": 1000
+        },
+        {
+          "weight_min": 25,
+          "weight_max": 40,
+          "dose_ml": 0.1,
+          "dose_mg": 1500
+        }
       ]
     },
     {
@@ -551,13 +876,38 @@
         "url": "https://grls.rosminzdrav.ru/"
       },
       "pharmacy_link": "",
-      "image": null,
+      "image": "maltofer.png",
       "dose_table": [
-        { "weight_min": 2, "weight_max": 5, "dose_ml": 0.2, "dose_mg": 10 },
-        { "weight_min": 5, "weight_max": 10, "dose_ml": 0.6, "dose_mg": 30 },
-        { "weight_min": 10, "weight_max": 15, "dose_ml": 0.9, "dose_mg": 45 },
-        { "weight_min": 15, "weight_max": 25, "dose_ml": 1.5, "dose_mg": 75 },
-        { "weight_min": 25, "weight_max": 40, "dose_ml": 2.0, "dose_mg": 100 }
+        {
+          "weight_min": 2,
+          "weight_max": 5,
+          "dose_ml": 0.2,
+          "dose_mg": 10
+        },
+        {
+          "weight_min": 5,
+          "weight_max": 10,
+          "dose_ml": 0.6,
+          "dose_mg": 30
+        },
+        {
+          "weight_min": 10,
+          "weight_max": 15,
+          "dose_ml": 0.9,
+          "dose_mg": 45
+        },
+        {
+          "weight_min": 15,
+          "weight_max": 25,
+          "dose_ml": 1.5,
+          "dose_mg": 75
+        },
+        {
+          "weight_min": 25,
+          "weight_max": 40,
+          "dose_ml": 2,
+          "dose_mg": 100
+        }
       ]
     }
   ]
