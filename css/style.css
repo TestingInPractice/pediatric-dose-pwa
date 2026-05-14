@@ -118,6 +118,23 @@ html, body {
 .nav-icon {
   font-size: 22px;
   margin-bottom: 2px;
+  position: relative;
+}
+
+.nav-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: var(--color-danger, #e53935);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0 4px;
 }
 
 .nav-label {
@@ -531,10 +548,12 @@ html, body {
 .tracker-alert.warning { background: #fff3e0; color: var(--color-warning); }
 .tracker-alert.success { background: #e8f5e9; color: var(--color-success); }
 .tracker-alert.info { background: #e3f2fd; color: var(--color-primary); }
+.tracker-alert.danger { background: #ffebee; color: var(--color-danger); }
 
 :root.dark .tracker-alert.warning { background: #3e2e1a; }
 :root.dark .tracker-alert.success { background: #1a3e1a; }
 :root.dark .tracker-alert.info { background: #1a2a3e; }
+:root.dark .tracker-alert.danger { background: #3e1a1a; }
 
 :root.dark .instruction-table th {
   background: #2a2a2a;

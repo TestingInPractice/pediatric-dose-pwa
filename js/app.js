@@ -14,6 +14,7 @@
     $('diary-modal').addEventListener('click', e => { if (e.target === $('diary-modal')) UI.closeModal(); });
     Theme.init();
     await Store.loadData();
+    updateConfirmNavBadge();
     Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
   }
 
@@ -22,7 +23,7 @@
     const target = $(`screen-${screen}`);
     if (target) target.classList.add('active');
     qsa('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.screen === screen));
-    if (screen !== 'calculator') {
+    if (screen !== 'calculator' && screen !== 'confirm') {
       $('result-section').classList.add('hidden');
       $('go-to-confirm-btn').classList.add('hidden');
       Store.currentResult = null;
@@ -36,11 +37,26 @@
         if (btn.dataset.screen === 'profiles') renderPatientsList();
         if (btn.dataset.screen === 'history') renderHistory();
         if (btn.dataset.screen === 'diary') DiaryScreen.render();
+        if (btn.dataset.screen === 'confirm') renderConfirmScreen();
         if (btn.dataset.screen === 'calculator') {
           Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
         }
       });
     });
+  }
+
+  async function updateConfirmNavBadge() {
+    const badge = $('confirm-nav-badge');
+    if (!badge) return;
+    try {
+      const pending = await DB.getPending();
+      if (pending.length > 0) {
+        badge.textContent = pending.length > 9 ? '9+' : pending.length;
+        badge.style.display = 'inline';
+      } else {
+        badge.style.display = 'none';
+      }
+    } catch (_) { badge.style.display = 'none'; }
   }
 
   // ===================== CALCULATOR =====================
@@ -223,13 +239,14 @@
     const body = $('confirm-body');
     const pending = await DB.getPending();
 
-    if (!pending.length) { body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>'; return; }
+    if (!pending.length) { body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>'; updateConfirmNavBadge(); return; }
 
     const pendingHtml = await Promise.all(pending.map(async h => {
       const patient = Store.patients.find(p => p.id === h.patient_id);
       const drug = Store.drugs.find(d => d.id === h.drug_id);
-      let intervalHtml = '', canConfirm = true;
+      let intervalHtml = '', l3Html = '', canConfirm = true;
 
+      // Interval check
       const recentConfirmed = (patient && drug) ? await DB.getRecentConfirmed(patient.id, 12) : [];
       const lastSameDrug = recentConfirmed.find(r => r.drug_id === h.drug_id);
       const lastSameCategory = drug ? recentConfirmed.find(r => { const rd = Store.drugs.find(d => d.id === r.drug_id); return rd && rd.category_id === drug.category_id; }) : null;
@@ -253,18 +270,38 @@
         intervalHtml = `<div class="tracker-alert info">ℹ️ Первый приём для этого ребёнка.</div>`;
       }
 
-      return `<div class="pending-item card" data-id="${h.id}"><div class="card-body">${intervalHtml}
+      // L3 check
+      if (drug && h.dose_mg != null && h.weight > 0 && typeof L3 !== 'undefined' && L3.validate) {
+        const dosePerKg = h.dose_mg / h.weight;
+        if (dosePerKg > 0) {
+          try {
+            const l3res = await L3.validate(drug.id, 0, h.weight, dosePerKg);
+            if (l3res && l3res.level === 1) {
+              l3Html = `<div class="tracker-alert danger">⬆️ L3: доза выше 95% реальных назначений (p${l3res.percentile}). Подтверждение заблокировано.</div>`;
+              canConfirm = false;
+            } else if (l3res && l3res.level === -1) {
+              l3Html = `<div class="tracker-alert warning">⏳ ${l3res.message}</div>`;
+            } else if (l3res) {
+              l3Html = `<div class="tracker-alert success">✅ ${l3res.message}</div>`;
+            }
+          } catch (_) {}
+        }
+      }
+
+      const confirmDisabled = !canConfirm;
+      return `<div class="pending-item card" data-id="${h.id}"><div class="card-body">${intervalHtml}${l3Html}
         <div class="confirm-detail-row"><span class="confirm-detail-label">Ребёнок</span><span class="confirm-detail-value">${patient ? patient.name : '—'}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Препарат</span><span class="confirm-detail-value">${h.drug_name || 'Препарат #' + h.drug_id}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Доза</span><span class="confirm-detail-value">${UI.formatDose(h)}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Время расчёта</span><span class="confirm-detail-value">${UI.formatDate(h.timestamp)}</span></div>
         <div class="pending-actions">
-          <button class="btn ${canConfirm ? 'btn-primary' : 'btn-danger'} confirm-item-btn" data-id="${h.id}" ${canConfirm ? '' : 'disabled'}>${canConfirm ? '✅ Подтвердить' : '⚠️ Слишком рано'}</button>
+          <button class="btn ${confirmDisabled ? 'btn-danger' : 'btn-primary'} confirm-item-btn" data-id="${h.id}" ${confirmDisabled ? 'disabled' : ''}>${confirmDisabled ? '🚫 Заблокировано' : '✅ Подтвердить'}</button>
           <button class="btn btn-secondary reject-item-btn" data-id="${h.id}">✕ Отклонить</button>
         </div></div></div>`;
     }));
 
     body.innerHTML = pendingHtml.join('');
+    updateConfirmNavBadge();
 
     body.querySelectorAll('.confirm-item-btn:not([disabled])').forEach(btn => {
       btn.addEventListener('click', async () => {
@@ -292,6 +329,7 @@
         await DB.deleteHistoryItem(parseInt(btn.dataset.id));
         btn.closest('.pending-item').remove();
         if (!body.querySelector('.pending-item')) body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
+        updateConfirmNavBadge();
       });
     });
   }
