@@ -8,6 +8,7 @@ const ASSETS = [
   BASE + 'js/calculator.js',
   BASE + 'js/level2_rules.js',
   BASE + 'js/level4_images.js',
+  BASE + 'js/level3_onnx.js',
   BASE + 'js/db.js',
   BASE + 'js/store.js',
   BASE + 'js/ui.js',

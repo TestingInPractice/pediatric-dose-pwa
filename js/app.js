@@ -156,10 +156,37 @@
     const l2 = Level2Rules.validate(drug, weight, result, ageMonths);
     let html = `<div class="validation-level"><span class="level-icon">${l2.status === 'pass' ? '✅' : '⚠️'}</span><div class="level-content"><div class="level-title">L2: Экспертная система (правила)</div>`;
     l2.checks.forEach(c => { const icon = c.status === 'pass' ? '✅' : c.status === 'error' ? '🚫' : 'ℹ️'; html += `<div class="level-desc">${icon} ${c.detail}</div>`; });
-    html += `</div></div><div class="validation-level"><span class="level-icon">🔲</span><div class="level-content"><div class="level-title">L3: ML-модель (ONNX)</div><div class="level-desc">Будет добавлена в следующем обновлении</div></div></div>
+    html += `</div></div><div class="validation-level" id="l3-level"><span class="level-icon">⏳</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Загрузка данных...</div></div></div>
       <div style="margin-top:8px;font-weight:600;font-size:14px">${l2.status === 'pass' ? '✅ Все проверки пройдены' : '⚠️ Есть предупреждения'}</div>`;
     container.innerHTML = html;
     section.classList.remove('hidden');
+
+    const l3div = document.getElementById('l3-level');
+    if (l3div) {
+      if (typeof L3 !== 'undefined' && L3.validate) {
+        const dosePerKg = result.standard_dose_mg != null && weight > 0 ? result.standard_dose_mg / weight : 0;
+        if (dosePerKg > 0) {
+          const drugId = L3.getDrugIdForModel(drug);
+          if (drugId !== null) {
+            L3.validate(drugId, ageMonths, weight, dosePerKg).then(l3res => {
+              if (!l3res || l3res.level === -1) {
+                l3div.innerHTML = `<span class="level-icon">${l3res ? l3res.icon : '⏳'}</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">${l3res ? l3res.message : 'Статистика недоступна'}</div></div>`;
+              } else {
+                l3div.innerHTML = `<span class="level-icon">${l3res.icon}</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">${l3res.message}</div></div>`;
+              }
+            }).catch(() => {
+              l3div.innerHTML = `<span class="level-icon">⚠️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Ошибка загрузки данных</div></div>`;
+            });
+          } else {
+            l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет данных FAERS для этого препарата</div></div>`;
+          }
+        } else {
+          l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет дозы для анализа</div></div>`;
+        }
+      } else {
+        l3div.innerHTML = `<span class="level-icon">⏳</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Модуль L3 не загружен</div></div>`;
+      }
+    }
   }
 
   function renderInstruction(drug, weight) {

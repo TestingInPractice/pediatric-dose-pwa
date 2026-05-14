@@ -78,12 +78,22 @@ graph TB
         DB[db.js<br/>IndexedDB via Dexie]
         CALC_ENG[calculator.js<br/>dose formulas]
         L2[level2_rules.js<br/>expert rules]
+        L3[level3_onnx.js<br/>ONNX inference]
+    end
+
+    subgraph "ML Pipeline (Python)"
+        DL[01_download_faers.py<br/>openFDA → CSV]
+        PF[02_parse_and_filter.py<br/>parse doses, age filter]
+        ST[03_compute_stats.py<br/>compute percentiles]
+        EV[05_evaluate.py<br/>show stats]
     end
 
     subgraph "Data"
         DRUGS[drugs.json<br/>16 drugs, 10 categories]
         INDEXEDDB[(IndexedDB<br/>PediatricDoseDB_v2)]
         SW[service-worker.js<br/>offline cache]
+        TRAINING[data/training/*.csv<br/>FAERS training data]
+        STATS[data/l3_stats.json<br/>FAERS stats → PWA]
     end
 
     HTML --> APP
@@ -101,6 +111,7 @@ graph TB
 
     CALC --> CALC_ENG
     CALC --> L2
+    CALC --> L3
     CALC --> DB
 
     DIARY --> DB
@@ -114,6 +125,12 @@ graph TB
 
     DB --> INDEXEDDB
     HTML --> SW
+    L3 --> STATS
+
+    DL --> PF
+    PF --> ST
+    ST --> STATS
+    ST --> EV
 ```
 
 ### Data Flow
@@ -125,14 +142,29 @@ sequenceDiagram
     participant Store
     participant DB
     participant Calculator
+    participant L3Stats
 
-    Note over User,Calculator: === CREATE EPISODE ===
-    User->>Screen: Нажать "Заболел"
-    Screen->>Store: episode name
-    Store->>DB: addEpisode()
-    DB-->>Store: episode_id
-    Store-->>Screen: diaryActiveEpisode
-    Screen-->>User: Показать эпиод
+    Note over User,L3Stats: === L3 PIPELINE (offline) ===
+    participant Python
+    participant FAERS
+    FAERS->>Python: openFDA API (CC0)
+    Python->>Python: download → filter → compute percentiles
+    Python->>L3Stats: data/l3_stats.json
+
+    Note over User,L3Stats: === CALCULATE DOSE ===
+    User->>Screen: Выбрать препарат, вес
+    Screen->>Calculator: calculateDose(drug, weight)
+    Calculator-->>Screen: { dose_ml, dose_mg }
+    Screen->>User: Показать результат
+    Screen->>L3Stats: validate(drugId, dosePerKg)
+    L3Stats-->>Screen: { level, message, icon, percentile }
+    Screen->>User: L3: "p75 — доза в типичном диапазоне"
+
+    Note over User,L3Model: === CONFIRM ===
+    User->>Screen: ✅ Подтвердить
+    Screen->>DB: confirmAdministration(id)
+    Screen->>DB: update episode_id (if missing)
+    DB-->>Screen: ok
 
     Note over User,Calculator: === CALCULATE DOSE ===
     User->>Screen: Выбрать препарат, вес
@@ -246,6 +278,7 @@ graph LR
 | Calculator | `js/calculator.js` | 87 | Dose formula engine |
 | DB | `js/db.js` | 220 | IndexedDB CRUD (Dexie) |
 | Rules | `js/level2_rules.js` | — | Expert system L2 |
+| L3 Stats | `js/level3_onnx.js` | ~90 | Percentile-based dose validation via FAERS stats |
 
 **Rules:**
 - Each module < 200 lines (app.js is larger but acts as orchestrator)
@@ -255,6 +288,60 @@ graph LR
 
 ---
 
+## L3 Pipeline (FAERS → Stats JSON)
+
+L3 использует реальные данные из FAERS (FDA Adverse Event Reporting System) — открытая база CC0, без регистрации. Вместо ML-модели (слишком мало педиатрических данных с весом — ~400 строк) используется статистический подход: для каждого активного ингредиента вычисляются перцентили доз (p5, p25, p50, p75, p95). L3-модуль в PWA сравнивает назначенную дозу с этими перцентилями.
+
+### Pipeline шаги
+
+```bash
+pip install -r model/requirements.txt
+
+# 1. Скачать FAERS данные для всех 16 препаратов
+python model/01_download_faers.py
+
+# 2. Распарсить дозы, отфильтровать 0-18 лет
+python model/02_parse_and_filter.py
+
+# 3. Вычислить перцентили → data/l3_stats.json
+python model/03_compute_stats.py
+
+# 4. Оценить результаты
+python model/05_evaluate.py
+```
+
+### Output: `data/l3_stats.json`
+
+```json
+{
+  "version": "1.0.0",
+  "source": "FAERS (openFDA)",
+  "by_generic": {
+    "paracetamol": {
+      "count": 17,
+      "dose_mg_per_kg": {
+        "n": 17, "mean": 9.77, "p50": 10.00,
+        "p5": 0.43, "p95": 19.01
+      }
+    },
+    "ibuprofen": {
+      "count": 42,
+      "dose_mg_per_kg": {
+        "n": 42, "mean": 8.87, "p50": 7.80,
+        "p5": 0.38, "p95": 13.64
+      }
+    }
+  }
+}
+```
+
+### Data source
+
+- **FAERS** (openFDA API): CC0, без регистрации
+- **668k** отчётов по парацетамолу, **279k** по ибупрофену
+- **402** педиатрических записей после фильтрации (возраст 0-18, вес 1-200 кг, доза ≤100 мг/кг)
+- Данные сохраняются в `data/training/*.csv` и `data/l3_stats.json` (версионируются в git)
+
 ## Developer Commands
 
 ```bash
@@ -263,6 +350,13 @@ npx serve .
 
 # Запустить тесты
 npm run test
+
+# FAERS pipeline (требуется Python 3.10+)
+pip install -r model/requirements.txt
+python model/01_download_faers.py
+python model/02_parse_and_filter.py
+python model/03_compute_stats.py
+python model/05_evaluate.py
 
 # Открыть в браузере
 open http://localhost:3000
@@ -300,7 +394,14 @@ pediatric-dose-pwa/
 ├── data/
 │   ├── manifest.json
 │   ├── drugs.json              ← 16 препаратов, 10 категорий
-│   └── images/
+│   ├── images/                 ← L4 скриншоты инструкций (PNG)
+│   └── training/               ← FAERS training data (CSV, в git)
+├── model/
+│   ├── requirements.txt        ← Python deps (pandas, xgboost, onnx)
+│   ├── 01_download_faers.py    ← Download FAERS via openFDA API
+│   ├── 02_parse_and_filter.py  ← Parse doses, filter pediatric
+│   ├── 03_compute_stats.py     ← Compute percentiles per generic
+│   └── 05_evaluate.py          ← Show stats by drug/generic
 ├── icons/
 │   ├── icon-192x192.png
 │   └── icon-512x512.png

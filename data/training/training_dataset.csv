@@ -1,0 +1,942 @@
+drug_id,drug_name,generic_name,age_months,weight_kg,sex,dose_mg,dose_per_kg,indication,indication_fever,route,dose_text,reactions
+1,Парацетамол суспензия 120мг/5мл,paracetamol,204.0,48.5,1,325.0,6.7,PREMEDICATION,0,048,325.0 MG,Chest discomfort|Face oedema|Dyspnoea|Infusion related reaction|Hyperhidrosis
+1,Парацетамол суспензия 120мг/5мл,paracetamol,216.0,136.2,1,500.0,3.67,PRODUCT USED FOR UNKNOWN INDICATION,0,048,500.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,52.0,2,325.0,6.25,,0,048,325 MG CAPLET,Viral infection|Device related infection|Headache|Nausea|Cold sweat
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,43.0,2,500.0,11.63,PREMEDICATION,0,048,500.0 MG,Anaphylactic reaction|Cough|Abscess|Infusion related reaction|Flushing
+1,Парацетамол суспензия 120мг/5мл,paracetamol,168.0,50.8,1,500.0,9.84,PREMEDICATION,0,048,500.0 MG,Nausea|Flushing|Infusion related reaction|Pyrexia|Crohn^s disease
+1,Парацетамол суспензия 120мг/5мл,paracetamol,180.0,50.0,2,500.0,10.0,SUICIDE ATTEMPT,0,048,500.0 MG,Convulsion|Electrocardiogram QRS complex prolonged|Electrocardiogram QT prolonged|Sinus tachycardia|Toxicity to various agents
+1,Парацетамол суспензия 120мг/5мл,paracetamol,180.0,59.6,2,650.0,10.91,PREMEDICATION,0,048,650.0 MG,Anaphylactic reaction|Infusion related reaction
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,26.3,1,500.0,19.01,PRODUCT USED FOR UNKNOWN INDICATION,0,065,500.0 MG,Viral infection|Body temperature increased
+1,Парацетамол суспензия 120мг/5мл,paracetamol,180.0,70.5,2,650.0,9.22,,0,048,650.0 MG,Cholelithiasis|Cholecystitis acute
+1,Парацетамол суспензия 120мг/5мл,paracetamol,96.0,20.9,2,250.0,11.96,PREMEDICATION,0,048,250.0 MG,Atlantoaxial instability
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,43.0,2,650.0,15.12,PREMEDICATION,0,048,650.0 MG,Crohn^s disease
+1,Парацетамол суспензия 120мг/5мл,paracetamol,180.0,42.7,1,500.0,11.71,DISCOMFORT,0,048,500.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+1,Парацетамол суспензия 120мг/5мл,paracetamol,48.0,67.2,1,165.0,2.46,,0,048,160 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+1,Парацетамол суспензия 120мг/5мл,paracetamol,204.0,54.7,1,650.0,11.88,PREMEDICATION,0,048,650.0 MG,Back pain
+1,Парацетамол суспензия 120мг/5мл,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+1,Парацетамол суспензия 120мг/5мл,paracetamol,120.0,38.6,2,650.0,16.84,PREMEDICATION,0,048,650.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+1,Парацетамол суспензия 120мг/5мл,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+1,Парацетамол суспензия 120мг/5мл,paracetamol,144.0,35.0,2,15.0,0.43,,0,050,"15MG/KG/DOSE*35, EVERY 6 HOURS PRN",Intestinal obstruction|Vomiting|Wrong technique in drug usage process|Gastrointestinal obstruction|Bezoar
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,63.5,1,500.0,7.87,SPORTS INJURY,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,63.5,1,500.0,7.87,HEADACHE,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+1,Парацетамол суспензия 120мг/5мл,paracetamol,168.0,85.6,1,650.0,7.59,PAIN,0,048,650.0 MG,Burning sensation|Chills|Pruritus|Flushing|Pain
+1,Парацетамол суспензия 120мг/5мл,paracetamol,144.0,65.1,1,1000.0,15.36,PREMEDICATION,0,048,1000.0 MG,Dyspnoea|Presyncope|Erythema
+1,Парацетамол суспензия 120мг/5мл,paracetamol,216.0,51.0,2,17.0,0.33,PHARYNGEAL ULCERATION,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+1,Парацетамол суспензия 120мг/5мл,paracetamol,216.0,51.0,2,17.0,0.33,ANALGESIC THERAPY,0,048,APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+1,Парацетамол суспензия 120мг/5мл,paracetamol,216.0,51.0,2,17.0,0.33,PAIN,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+1,Парацетамол суспензия 120мг/5мл,paracetamol,36.0,12.2,2,160.0,13.11,PREMEDICATION,0,,160.0 MG,Extravasation
+1,Парацетамол суспензия 120мг/5мл,paracetamol,48.0,14.2,2,160.0,11.28,Pain,0,048,160.0 MG,Blood lactate dehydrogenase increased|Lipase increased|Lipase increased|Abdominal pain|Abdominal pain
+1,Парацетамол суспензия 120мг/5мл,paracetamol,0.0,3.7,1,52.0,14.09,,0,048,52.0 MG,Hydrocele|Ear infection|Large for dates baby|Respiratory syncytial virus infection|Croup infectious
+1,Парацетамол суспензия 120мг/5мл,paracetamol,168.0,55.8,2,10.0,0.18,HEADACHE,0,048,"TWICE BETWEEN 7PM AND 11PM, TOOK 10 TABLETS OF PARACETAMOL",Accidental overdose|Hepatic enzyme increased|Fatigue|Acute hepatic failure|Dyspnoea
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,57.5,1,325.0,5.65,PRODUCT USED FOR UNKNOWN INDICATION,0,065,325.0 MG,Seizure|Inflammation
+1,Парацетамол суспензия 120мг/5мл,paracetamol,60.0,16.3,2,650.0,39.83,,0,,650.0 MG,Coeliac disease|Joint swelling
+1,Парацетамол суспензия 120мг/5мл,paracetamol,132.0,28.0,1,160.0,5.71,PAIN,0,,"160 MG, Q4H PRN",Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+1,Парацетамол суспензия 120мг/5мл,paracetamol,204.0,47.6,2,325.0,6.82,PAIN,0,048,325.0 MG,Metabolic acidosis|Respiratory failure|Ventricular arrhythmia|Acute hepatic failure|Leukocytosis
+1,Парацетамол суспензия 120мг/5мл,paracetamol,120.0,29.0,2,25.0,0.86,,0,048,25.0 MG,No therapeutic response|Crohn^s disease
+1,Парацетамол суспензия 120мг/5мл,paracetamol,132.0,63.0,2,500.0,7.94,ABDOMINAL PAIN,0,048,500.0 MG,Feeling abnormal|Haemorrhage|Adenotonsillectomy
+1,Парацетамол суспензия 120мг/5мл,paracetamol,12.0,9.2,1,125.0,13.59,UPPER RESPIRATORY TRACT INFECTION,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+1,Парацетамол суспензия 120мг/5мл,paracetamol,12.0,9.2,1,250.0,27.17,UPPER RESPIRATORY TRACT INFECTION,0,055,250 MG X 3 PRN RECTAL,Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+1,Парацетамол суспензия 120мг/5мл,paracetamol,12.0,9.2,1,125.0,13.59,DIARRHOEA,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+1,Парацетамол суспензия 120мг/5мл,paracetamol,180.0,54.4,2,10.0,0.18,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10 CAPLETS TAKEN ONCE,Intentional overdose|Headache
+1,Парацетамол суспензия 120мг/5мл,paracetamol,144.0,53.0,1,500.0,9.43,,0,,500.0 MG,Ear infection|Activities of daily living impaired|Bronchospasm|Adverse event|Cough
+1,Парацетамол суспензия 120мг/5мл,paracetamol,0.0,3.2,1,25.0,7.86,,0,064,25.0 MG,Congenital skin dimples
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,72.6,2,5000.0,68.89,PAIN,0,048,5000.0 MG,Acute hepatic failure|Anxiety|Abdominal pain|Pallor|Pain
+1,Парацетамол суспензия 120мг/5мл,paracetamol,108.0,29.0,1,80.0,2.76,OROPHARYNGEAL PAIN,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+1,Парацетамол суспензия 120мг/5мл,paracetamol,108.0,29.0,1,80.0,2.76,DYSPHAGIA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+1,Парацетамол суспензия 120мг/5мл,paracetamol,108.0,29.0,1,80.0,2.76,RHINORRHOEA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+1,Парацетамол суспензия 120мг/5мл,paracetamol,36.0,15.0,1,1.5,0.1,PREMEDICATION,0,048,1.5 TABLE SPOON,Fall|Lip infection|Lip injury
+1,Парацетамол суспензия 120мг/5мл,paracetamol,156.0,35.1,1,500.0,14.25,PREMEDICATION,0,065,500.0 MG,Feeling abnormal|Nausea|Dyspnoea|Erythema|Vomiting
+1,Парацетамол суспензия 120мг/5мл,paracetamol,216.0,62.0,2,1000.0,16.13,PREMEDICATION,0,048,1000.0 MG,Tremor|Chest discomfort|Infusion related reaction|Heart rate increased
+1,Парацетамол суспензия 120мг/5мл,paracetamol,168.0,79.0,1,650.0,8.23,,0,065,650.0 MG,Dehydration|Acute kidney injury|Hyponatraemia|Hypotension|Blood creatinine increased
+1,Парацетамол суспензия 120мг/5мл,paracetamol,96.0,18.9,1,290.0,15.34,PREMEDICATION,0,048,290.0 MG,Middle ear effusion|Pyrexia
+1,Парацетамол суспензия 120мг/5мл,paracetamol,204.0,64.0,2,650.0,10.16,PREMEDICATION,0,048,650.0 MG,Hypotension|Malaise|Injection site pain|Off label use|Mental disorder
+1,Парацетамол суспензия 120мг/5мл,paracetamol,192.0,76.8,1,650.0,8.46,PREMEDICATION,0,,650.0 MG,Glomerulonephritis membranoproliferative
+1,Парацетамол суспензия 120мг/5мл,paracetamol,216.0,39.8,2,850.0,21.34,PRODUCT USED FOR UNKNOWN INDICATION,0,065,850.0 MG,Myalgia|Off label use|Type 2 diabetes mellitus|Depression|Abnormal dreams
+1,Парацетамол суспензия 120мг/5мл,paracetamol,0.0,3.6,-1,1.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,064,"1 UNK, UNK",Ventricular septal defect|Ventricular hypertrophy|Mitral valve incompetence|Tricuspid valve incompetence|Atrial septal defect
+2,Парацетамол Форте 250мг/5мл,paracetamol,204.0,48.5,1,325.0,6.7,PREMEDICATION,0,048,325.0 MG,Chest discomfort|Face oedema|Dyspnoea|Infusion related reaction|Hyperhidrosis
+2,Парацетамол Форте 250мг/5мл,paracetamol,216.0,136.2,1,500.0,3.67,PRODUCT USED FOR UNKNOWN INDICATION,0,048,500.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,52.0,2,325.0,6.25,,0,048,325 MG CAPLET,Viral infection|Device related infection|Headache|Nausea|Cold sweat
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,43.0,2,500.0,11.63,PREMEDICATION,0,048,500.0 MG,Anaphylactic reaction|Cough|Abscess|Infusion related reaction|Flushing
+2,Парацетамол Форте 250мг/5мл,paracetamol,168.0,50.8,1,500.0,9.84,PREMEDICATION,0,048,500.0 MG,Nausea|Flushing|Infusion related reaction|Pyrexia|Crohn^s disease
+2,Парацетамол Форте 250мг/5мл,paracetamol,180.0,50.0,2,500.0,10.0,SUICIDE ATTEMPT,0,048,500.0 MG,Convulsion|Electrocardiogram QRS complex prolonged|Electrocardiogram QT prolonged|Sinus tachycardia|Toxicity to various agents
+2,Парацетамол Форте 250мг/5мл,paracetamol,180.0,59.6,2,650.0,10.91,PREMEDICATION,0,048,650.0 MG,Anaphylactic reaction|Infusion related reaction
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,26.3,1,500.0,19.01,PRODUCT USED FOR UNKNOWN INDICATION,0,065,500.0 MG,Viral infection|Body temperature increased
+2,Парацетамол Форте 250мг/5мл,paracetamol,180.0,70.5,2,650.0,9.22,,0,048,650.0 MG,Cholelithiasis|Cholecystitis acute
+2,Парацетамол Форте 250мг/5мл,paracetamol,96.0,20.9,2,250.0,11.96,PREMEDICATION,0,048,250.0 MG,Atlantoaxial instability
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,43.0,2,650.0,15.12,PREMEDICATION,0,048,650.0 MG,Crohn^s disease
+2,Парацетамол Форте 250мг/5мл,paracetamol,180.0,42.7,1,500.0,11.71,DISCOMFORT,0,048,500.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+2,Парацетамол Форте 250мг/5мл,paracetamol,48.0,67.2,1,165.0,2.46,,0,048,160 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+2,Парацетамол Форте 250мг/5мл,paracetamol,204.0,54.7,1,650.0,11.88,PREMEDICATION,0,048,650.0 MG,Back pain
+2,Парацетамол Форте 250мг/5мл,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+2,Парацетамол Форте 250мг/5мл,paracetamol,120.0,38.6,2,650.0,16.84,PREMEDICATION,0,048,650.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+2,Парацетамол Форте 250мг/5мл,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+2,Парацетамол Форте 250мг/5мл,paracetamol,144.0,35.0,2,15.0,0.43,,0,050,"15MG/KG/DOSE*35, EVERY 6 HOURS PRN",Intestinal obstruction|Vomiting|Wrong technique in drug usage process|Gastrointestinal obstruction|Bezoar
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,63.5,1,500.0,7.87,SPORTS INJURY,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,63.5,1,500.0,7.87,HEADACHE,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+2,Парацетамол Форте 250мг/5мл,paracetamol,168.0,85.6,1,650.0,7.59,PAIN,0,048,650.0 MG,Burning sensation|Chills|Pruritus|Flushing|Pain
+2,Парацетамол Форте 250мг/5мл,paracetamol,144.0,65.1,1,1000.0,15.36,PREMEDICATION,0,048,1000.0 MG,Dyspnoea|Presyncope|Erythema
+2,Парацетамол Форте 250мг/5мл,paracetamol,216.0,51.0,2,17.0,0.33,PHARYNGEAL ULCERATION,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+2,Парацетамол Форте 250мг/5мл,paracetamol,216.0,51.0,2,17.0,0.33,ANALGESIC THERAPY,0,048,APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+2,Парацетамол Форте 250мг/5мл,paracetamol,216.0,51.0,2,17.0,0.33,PAIN,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+2,Парацетамол Форте 250мг/5мл,paracetamol,36.0,12.2,2,160.0,13.11,PREMEDICATION,0,,160.0 MG,Extravasation
+2,Парацетамол Форте 250мг/5мл,paracetamol,48.0,14.2,2,160.0,11.28,Pain,0,048,160.0 MG,Blood lactate dehydrogenase increased|Lipase increased|Lipase increased|Abdominal pain|Abdominal pain
+2,Парацетамол Форте 250мг/5мл,paracetamol,0.0,3.7,1,52.0,14.09,,0,048,52.0 MG,Hydrocele|Ear infection|Large for dates baby|Respiratory syncytial virus infection|Croup infectious
+2,Парацетамол Форте 250мг/5мл,paracetamol,168.0,55.8,2,10.0,0.18,HEADACHE,0,048,"TWICE BETWEEN 7PM AND 11PM, TOOK 10 TABLETS OF PARACETAMOL",Accidental overdose|Hepatic enzyme increased|Fatigue|Acute hepatic failure|Dyspnoea
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,57.5,1,325.0,5.65,PRODUCT USED FOR UNKNOWN INDICATION,0,065,325.0 MG,Seizure|Inflammation
+2,Парацетамол Форте 250мг/5мл,paracetamol,60.0,16.3,2,650.0,39.83,,0,,650.0 MG,Coeliac disease|Joint swelling
+2,Парацетамол Форте 250мг/5мл,paracetamol,132.0,28.0,1,160.0,5.71,PAIN,0,,"160 MG, Q4H PRN",Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+2,Парацетамол Форте 250мг/5мл,paracetamol,204.0,47.6,2,325.0,6.82,PAIN,0,048,325.0 MG,Metabolic acidosis|Respiratory failure|Ventricular arrhythmia|Acute hepatic failure|Leukocytosis
+2,Парацетамол Форте 250мг/5мл,paracetamol,120.0,29.0,2,25.0,0.86,,0,048,25.0 MG,No therapeutic response|Crohn^s disease
+2,Парацетамол Форте 250мг/5мл,paracetamol,132.0,63.0,2,500.0,7.94,ABDOMINAL PAIN,0,048,500.0 MG,Feeling abnormal|Haemorrhage|Adenotonsillectomy
+2,Парацетамол Форте 250мг/5мл,paracetamol,12.0,9.2,1,125.0,13.59,UPPER RESPIRATORY TRACT INFECTION,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+2,Парацетамол Форте 250мг/5мл,paracetamol,12.0,9.2,1,250.0,27.17,UPPER RESPIRATORY TRACT INFECTION,0,055,250 MG X 3 PRN RECTAL,Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+2,Парацетамол Форте 250мг/5мл,paracetamol,12.0,9.2,1,125.0,13.59,DIARRHOEA,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+2,Парацетамол Форте 250мг/5мл,paracetamol,180.0,54.4,2,10.0,0.18,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10 CAPLETS TAKEN ONCE,Intentional overdose|Headache
+2,Парацетамол Форте 250мг/5мл,paracetamol,144.0,53.0,1,500.0,9.43,,0,,500.0 MG,Ear infection|Activities of daily living impaired|Bronchospasm|Adverse event|Cough
+2,Парацетамол Форте 250мг/5мл,paracetamol,0.0,3.2,1,25.0,7.86,,0,064,25.0 MG,Congenital skin dimples
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,72.6,2,5000.0,68.89,PAIN,0,048,5000.0 MG,Acute hepatic failure|Anxiety|Abdominal pain|Pallor|Pain
+2,Парацетамол Форте 250мг/5мл,paracetamol,108.0,29.0,1,80.0,2.76,OROPHARYNGEAL PAIN,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+2,Парацетамол Форте 250мг/5мл,paracetamol,108.0,29.0,1,80.0,2.76,DYSPHAGIA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+2,Парацетамол Форте 250мг/5мл,paracetamol,108.0,29.0,1,80.0,2.76,RHINORRHOEA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+2,Парацетамол Форте 250мг/5мл,paracetamol,36.0,15.0,1,1.5,0.1,PREMEDICATION,0,048,1.5 TABLE SPOON,Fall|Lip infection|Lip injury
+2,Парацетамол Форте 250мг/5мл,paracetamol,156.0,35.1,1,500.0,14.25,PREMEDICATION,0,065,500.0 MG,Feeling abnormal|Nausea|Dyspnoea|Erythema|Vomiting
+2,Парацетамол Форте 250мг/5мл,paracetamol,216.0,62.0,2,1000.0,16.13,PREMEDICATION,0,048,1000.0 MG,Tremor|Chest discomfort|Infusion related reaction|Heart rate increased
+2,Парацетамол Форте 250мг/5мл,paracetamol,168.0,79.0,1,650.0,8.23,,0,065,650.0 MG,Dehydration|Acute kidney injury|Hyponatraemia|Hypotension|Blood creatinine increased
+2,Парацетамол Форте 250мг/5мл,paracetamol,96.0,18.9,1,290.0,15.34,PREMEDICATION,0,048,290.0 MG,Middle ear effusion|Pyrexia
+2,Парацетамол Форте 250мг/5мл,paracetamol,204.0,64.0,2,650.0,10.16,PREMEDICATION,0,048,650.0 MG,Hypotension|Malaise|Injection site pain|Off label use|Mental disorder
+2,Парацетамол Форте 250мг/5мл,paracetamol,192.0,76.8,1,650.0,8.46,PREMEDICATION,0,,650.0 MG,Glomerulonephritis membranoproliferative
+2,Парацетамол Форте 250мг/5мл,paracetamol,216.0,39.8,2,850.0,21.34,PRODUCT USED FOR UNKNOWN INDICATION,0,065,850.0 MG,Myalgia|Off label use|Type 2 diabetes mellitus|Depression|Abnormal dreams
+2,Парацетамол Форте 250мг/5мл,paracetamol,0.0,3.6,-1,1.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,064,"1 UNK, UNK",Ventricular septal defect|Ventricular hypertrophy|Mitral valve incompetence|Tricuspid valve incompetence|Atrial septal defect
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,73.0,2,600.0,8.22,,0,,600.0 MG,Cerebral venous thrombosis|Jugular vein thrombosis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,49.0,2,600.0,12.24,BACK PAIN,0,048,600.0 MG,Dizziness|Back pain
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,24.0,11.8,1,5.0,0.42,TEETHING,0,048,"5 ML, EVERY 8 HOURS",Drug ineffective|Liquid product physical issue
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,136.2,1,200.0,1.47,PRODUCT USED FOR UNKNOWN INDICATION,0,048,200.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,136.2,1,200.0,1.47,,0,048,"200 MG, UNK, 50 TABLETS",Overdose|Intentional self-injury|Abdominal pain|Vomiting
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,192.0,50.6,2,400.0,7.91,PREMEDICATION,0,048,400.0 MG,Musculoskeletal chest pain|Pain in extremity|Muscle spasms|Myalgia|Paraesthesia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,192.0,51.3,2,400.0,7.8,PREMEDICATION,0,048,400.0 MG,Pain|Muscular weakness|Muscle spasms|Gait disturbance|Myositis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,55.5,2,400.0,7.21,PREMEDICATION,0,048,400.0 MG,Pain|Hand deformity|Headache
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,36.0,15.9,1,100.0,6.3,COUGH,0,048,100.0 MG,Drug administered to patient of inappropriate age|Urticaria
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,83.5,1,600.0,7.19,,0,,600.0 MG,Extra dose administered|Dizziness
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,168.0,52.0,1,200.0,3.85,,0,048,200.0 MG,Toxic epidermal necrolysis|Stevens-Johnson syndrome|Skin exfoliation|Skin lesion
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,60.5,1,400.0,6.61,,0,048,400.0 MG,Hepatic enzyme increased|Eye contusion|Eye swelling|Brain abscess|Subdural empyema
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,51.0,2,400.0,7.84,,0,,400.0 MG,Deep vein thrombosis|Pain|Cerebrovascular accident|Injury|Pulmonary embolism
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,144.0,32.9,2,100.0,3.04,PREMEDICATION,0,048,100.0 MG,Device malfunction
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,144.0,32.9,2,200.0,6.08,,0,048,200.0 MG,Device malfunction
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,36.0,1,1.0,0.03,,0,048,"1 DF, Q6H, AS NEEDED",Bacteraemia|White blood cell count increased|Pyrexia|Malaise|Device related infection
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,192.0,27.0,2,105.0,3.89,,0,,100 MG/ 5 ML,Death
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,23.0,10.0,1,2.75,0.28,PYREXIA,1,048,LAST DOSE WAS 2.75ML AT 3AM.,Wrong technique in product usage process|Loss of consciousness|Seizure|Drug ineffective|Product use issue
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,73.5,2,600.0,8.16,BACK PAIN,0,048,600.0 MG,Constipation
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,144.0,44.0,2,600.0,13.64,MIGRAINE,0,048,600.0 MG,Cataract
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,23.0,10.0,1,8.0,0.8,PYREXIA,1,048,EVERY 8 HOURS ALTERNATELY,Loss of consciousness|Convulsion|Wrong technique in drug usage process|Off label use|Drug ineffective
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,24.0,10.0,2,100.0,10.0,PRODUCT USED FOR UNKNOWN INDICATION,0,048,100.0 MG,Respiratory disorder|Increased upper airway secretion|Rhinovirus infection|Enterovirus infection|Convulsion
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,60.0,22.4,1,220.0,9.8,PYREXIA,1,048,220.0 MG,Pyrexia|Viral infection
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,20.9,2,200.0,9.57,PRODUCT USED FOR UNKNOWN INDICATION,0,,200.0 MG,Atlantoaxial instability
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,48.0,17.3,1,180.0,10.4,ANTIPYRESIS,0,048,180.0 MG,Ear infection
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,39.0,1,300.0,7.69,,0,048,300.0 MG,Delayed puberty|Growth retardation|Treatment noncompliance|Seizure|Abnormal weight gain
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,42.7,1,400.0,9.37,,0,048,400.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,DISCOMFORT,0,048,50-100MG,Necrotising fasciitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG,Necrotising fasciitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,12.0,10.5,1,4.0,0.38,PYREXIA,1,048,"4 ML, QID",Nausea|Vomiting|Diarrhoea
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG 3 TIMES DAILY,Necrotising fasciitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,60.0,18.4,2,150.0,8.15,TONSILLITIS,0,048,150.0 MG,Toxic epidermal necrolysis|Blister
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,48.0,20.0,2,3.0,0.15,EAR INFECTION,0,048,"3 DF, DAILY",Haematemesis|Abdominal pain|Gastrointestinal haemorrhage
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,60.0,22.4,1,220.0,9.8,PYREXIA,1,048,220.0 MG,Viral infection
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG THREE TIMES DAILY.,Necrotising fasciitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,56.7,1,50.0,0.88,,0,,"50 DF, ONCE (TOTAL DOSE 10,000 MG)",Hypovolaemic shock|Adrenal insufficiency|Metabolic acidosis|Intentional overdose|Suicidal behaviour
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,48.0,67.2,1,105.0,1.56,,0,048,100 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,168.0,97.5,1,600.0,6.15,,0,,600.0 MG,Blood corticotrophin decreased|Epistaxis|Metamorphopsia|Headache|Eye pain
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,50.0,2,600.0,12.0,HEADACHE,0,048,600.0 MG,Stomatitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,68.0,1,400.0,5.88,,0,,400.0 MG,Dry skin|Rash pruritic
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,1.0,4.3,2,20.0,4.65,PRODUCT USED FOR UNKNOWN INDICATION,0,048,20.0 MG,Off label use|Extravasation|Tachycardia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,120.0,38.0,1,1.0,0.03,PHARYNGITIS,0,048,"1 DF, AS NEEDED",Renal failure acute|Loss of consciousness|Encephalitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,29.0,20.4,1,5.0,0.24,PYREXIA,1,048,"5 ML, TWICE A DAY",Somnolence|Crying|Aggression|Irritability|Product quality issue
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,168.0,52.1,1,2.0,0.04,PYREXIA,1,048,"2 TABLETS, ONLY ONCE",Throat irritation|Oropharyngeal pain|Oral discomfort
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,144.0,46.6,1,400.0,8.58,PAIN,0,048,400.0 MG,Bradycardia|Hypoxia|Blood pressure decreased|Rash
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,29.7,1,200.0,6.73,PREMEDICATION,0,048,200.0 MG,Tremor|Infusion related reaction|Chills|Pyrexia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,0.0,2.6,1,200.0,75.76,RHEUMATOID ARTHRITIS,0,064,200.0 MG,Foetal exposure during pregnancy|Premature baby
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,84.0,16.5,2,100.0,6.06,PREMEDICATION,0,048,100.0 MG,Malaise|Nausea|Abdominal pain|Pyrexia|Medication error
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,24.0,12.4,2,100.0,8.06,PREMEDICATION,0,048,100.0 MG,Tachycardia|Respiratory tract congestion|Irritability|Oxygen saturation decreased
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,0.0,2.8,2,1.0,0.35,HEADACHE,0,,"1 DF, UNKNOWN",Hydrocephalus|Convulsion neonatal|Foetal exposure during pregnancy|Premature baby|Congenital hearing disorder
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,0.0,2.8,2,1.0,0.35,HEADACHE,0,,"1 DF, UNKNOWN",Hydrocephalus|Convulsion neonatal|Foetal exposure during pregnancy|Premature baby|Congenital hearing disorder
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,60.0,2,800.0,13.33,PRODUCT USED FOR UNKNOWN INDICATION,0,048,800.0 MG,Suicide attempt|Sopor|Intentional overdose
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,44.0,2,1200.0,27.27,,0,048,1200.0 MG,Bronchial secretion retention|Oxygen saturation decreased|Dyspnoea|Lung infiltration|Chest discomfort
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,20.0,11.0,1,5.0,0.45,PYREXIA,1,048,"5 ML, 1X/DAY",Atrioventricular block|Arrhythmia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,59.0,2,3.0,0.05,TOOTHACHE,0,,"3 CAPSULES, SINGLE",Intentional product misuse|Expired product administered|Abdominal pain upper|Overdose
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,132.0,48.0,1,1.0,0.02,HAEMARTHROSIS,0,048,"1 DF, SINGLE",Haematuria
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,45.0,1,200.0,4.44,HEADACHE,0,,200.0 MG,Accidental exposure to product|Eye pain|Eye irritation|Eye swelling|Eye colour change
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,168.0,50.5,1,200.0,3.96,,0,048,200.0 MG,Delayed puberty|Clavicle fracture|Growth retardation
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Sepsis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,192.0,47.0,2,800.0,17.02,,0,,800.0 MG,Colitis ischaemic|Injury|Depression|Large intestinal haemorrhage|Pain
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Intentional overdose|Sepsis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Sepsis|Intentional overdose
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,36.0,13.0,1,1.0,0.08,PYREXIA,1,048,"1 DF, SINGLE",Speech disorder|Face oedema|Localised oedema|Eye oedema
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,12.0,11.0,1,4.0,0.36,PYREXIA,1,,"4 ML, QD",Swelling face|Erythema multiforme
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,59.9,2,600.0,10.02,PAIN,0,048,600.0 MG,Abdominal pain|Constipation
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,34.1,2,15.0,0.44,PYREXIA,1,048,"7.5 ML, UNK (7.5ML BY MOUTH EVERY 6 HOURS)",Confusional state|Urinary incontinence|Muscle twitching|Nervousness|Emotional distress
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,72.0,25.0,2,65.0,2.6,PYREXIA,1,048,65 MG,Leukopenia|Vomiting
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,55.0,2,400.0,7.27,PREMEDICATION,0,048,400.0 MG,Pain|Feeling jittery|Wisdom teeth removal|Pain|Muscle spasms
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,42.5,2,400.0,9.41,,0,,400.0 MG,Pain|Rash pruritic|Mobility decreased|Paraesthesia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,84.0,24.6,2,1.0,0.04,,0,048,"1 DOSE-WEIGHT, 3X/DAY",Acute kidney injury
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,BODY TEMPERATURE INCREASED,1,065,120.0 MG,Rash papular|Lip swelling|Peripheral swelling|Dysphonia|Anaphylactoid reaction
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,,120.0 MG,Angioedema|Urticaria|Dysphonia|Anaphylactoid reaction|Peripheral swelling
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,065,120.0 MG,Rash papular|Lip swelling|Anaphylactoid reaction|Peripheral swelling|Dysphonia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,21.0,9.8,1,90.0,9.18,PYREXIA,1,,90.0 MG,Transaminases increased
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,065,120.0 MG,Dysphonia|Lip swelling|Rash papular|Angioedema|Peripheral swelling
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,76.8,2,400.0,5.21,HANGOVER,0,048,400.0 MG,Abdominal distension|Hangover|Substance use|Vomiting|Exposure during pregnancy
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,24.0,13.0,1,200.0,15.38,,0,048,"ONE CAPSULE OF 200MG, SINGLE",Accidental exposure to product by child|Ocular hyperaemia|Retching
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,72.0,23.0,2,10.0,0.43,PYREXIA,1,048,10 ML Q 6HRS PRN,Product quality issue|Product taste abnormal|Vomiting|Drug ineffective|Lip swelling
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,15.0,11.0,1,5.0,0.45,COUGH,0,048,"5 ML (OR 1 TEASPOON), EVERY 8 HOURS",Drug administered to patient of inappropriate age|Drug ineffective for unapproved indication|Epistaxis|Sneezing
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,104.3,2,800.0,7.67,MUSCULOSKELETAL DISCOMFORT,0,,200 - 800 MG,Vena cava thrombosis|Deep vein thrombosis|Pulmonary embolism|Thrombophlebitis superficial|Jugular vein thrombosis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,18.4,2,600.0,32.61,PRODUCT USED FOR UNKNOWN INDICATION,0,048,600.0 MG,Dyspnoea
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,156.0,49.0,2,600.0,12.24,BACK PAIN,0,048,600.0 MG,Back pain|Dizziness
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,60.8,2,200.0,3.29,PYREXIA,1,048,200.0 MG,Product substitution issue|Urticaria
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,18.0,2,600.0,33.33,,0,,600.0 MG,Dyspnoea
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,67.3,1,200.0,2.97,HYPERSENSITIVITY,0,048,200.0 MG,Throat tightness|Pruritus|Feeling cold|Lip swelling|Generalised erythema
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,84.0,24.0,2,200.0,8.33,,0,048,200.0 MG,Vomiting|Bronchospasm|Hypersensitivity|Abdominal pain|Pyrexia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,108.0,34.0,2,200.0,5.88,NASOPHARYNGITIS,0,048,200.0 MG,Blister|Pharyngeal oedema|Urticaria|Erythema|Rash
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,53.0,1,400.0,7.55,VIRAL INFECTION,0,048,400.0 MG,Intentional product misuse|Lip swelling
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,132.0,37.0,2,300.0,8.11,PAIN,0,,300.0 MG,Glossodynia|Product coating issue|Throat irritation
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PAIN,0,,200.0 MG,Deafness bilateral|Precocious puberty|Nuclear magnetic resonance imaging brain abnormal|Tracheobronchitis|Pneumonia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PYREXIA,1,,200.0 MG,Deafness bilateral|Precocious puberty|Nuclear magnetic resonance imaging brain abnormal|Tracheobronchitis|Pneumonia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PAIN,0,,200.0 MG,Pneumonia|Left ventricular hypertrophy|Nuclear magnetic resonance imaging brain abnormal|Tracheostomy|Tracheobronchitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PYREXIA,1,,200.0 MG,Pneumonia|Left ventricular hypertrophy|Nuclear magnetic resonance imaging brain abnormal|Tracheostomy|Tracheobronchitis
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,84.0,40.8,1,3.0,0.07,PYREXIA,1,,"3 CHEWABLE TABLETS, UNK",Glossodynia
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,48.0,2,200.0,4.17,HEADACHE,0,,200.0 MG,Throat irritation
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,46.3,2,400.0,8.64,OROPHARYNGEAL PAIN,0,048,400.0 MG,Contusion|Medication error
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,64.0,1,400.0,6.25,PAIN,0,048,400.0 MG,Seizure
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,24.0,10.5,2,100.0,9.52,PYREXIA,1,048,100.0 MG,Hypernatraemia|Blood chloride increased
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,180.0,52.0,2,600.0,11.54,PRODUCT USED FOR UNKNOWN INDICATION,0,,600.0 MG,Faecal calprotectin increased|Abdominal pain
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,65.8,2,800.0,12.17,,0,,800.0 MG,Muscle twitching|Weight increased|Menstruation irregular
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,216.0,78.5,1,600.0,7.64,PAIN,0,065,600.0 MG,Priapism|Vascular occlusion|Pain
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,204.0,57.0,2,60.0,1.05,PAIN IN EXTREMITY,0,048,60.0 MG,Ectopic pregnancy|Abortion spontaneous|Menorrhagia|Menorrhagia|Dizziness
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,48.0,24.0,1,10.0,0.42,PYREXIA,1,048,10 ML TWICE A DAY,Vomiting
+3,Ибупрофен суспензия 100мг/5мл,ibuprofen,48.0,24.0,1,10.0,0.42,,0,048,10.0 MG,Vomiting
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,73.0,2,600.0,8.22,,0,,600.0 MG,Cerebral venous thrombosis|Jugular vein thrombosis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,49.0,2,600.0,12.24,BACK PAIN,0,048,600.0 MG,Dizziness|Back pain
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,24.0,11.8,1,5.0,0.42,TEETHING,0,048,"5 ML, EVERY 8 HOURS",Drug ineffective|Liquid product physical issue
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,136.2,1,200.0,1.47,PRODUCT USED FOR UNKNOWN INDICATION,0,048,200.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,136.2,1,200.0,1.47,,0,048,"200 MG, UNK, 50 TABLETS",Overdose|Intentional self-injury|Abdominal pain|Vomiting
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,192.0,50.6,2,400.0,7.91,PREMEDICATION,0,048,400.0 MG,Musculoskeletal chest pain|Pain in extremity|Muscle spasms|Myalgia|Paraesthesia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,192.0,51.3,2,400.0,7.8,PREMEDICATION,0,048,400.0 MG,Pain|Muscular weakness|Muscle spasms|Gait disturbance|Myositis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,55.5,2,400.0,7.21,PREMEDICATION,0,048,400.0 MG,Pain|Hand deformity|Headache
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,36.0,15.9,1,100.0,6.3,COUGH,0,048,100.0 MG,Drug administered to patient of inappropriate age|Urticaria
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,83.5,1,600.0,7.19,,0,,600.0 MG,Extra dose administered|Dizziness
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,168.0,52.0,1,200.0,3.85,,0,048,200.0 MG,Toxic epidermal necrolysis|Stevens-Johnson syndrome|Skin exfoliation|Skin lesion
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,60.5,1,400.0,6.61,,0,048,400.0 MG,Hepatic enzyme increased|Eye contusion|Eye swelling|Brain abscess|Subdural empyema
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,51.0,2,400.0,7.84,,0,,400.0 MG,Deep vein thrombosis|Pain|Cerebrovascular accident|Injury|Pulmonary embolism
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,144.0,32.9,2,100.0,3.04,PREMEDICATION,0,048,100.0 MG,Device malfunction
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,144.0,32.9,2,200.0,6.08,,0,048,200.0 MG,Device malfunction
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,36.0,1,1.0,0.03,,0,048,"1 DF, Q6H, AS NEEDED",Bacteraemia|White blood cell count increased|Pyrexia|Malaise|Device related infection
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,192.0,27.0,2,105.0,3.89,,0,,100 MG/ 5 ML,Death
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,23.0,10.0,1,2.75,0.28,PYREXIA,1,048,LAST DOSE WAS 2.75ML AT 3AM.,Wrong technique in product usage process|Loss of consciousness|Seizure|Drug ineffective|Product use issue
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,73.5,2,600.0,8.16,BACK PAIN,0,048,600.0 MG,Constipation
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,144.0,44.0,2,600.0,13.64,MIGRAINE,0,048,600.0 MG,Cataract
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,23.0,10.0,1,8.0,0.8,PYREXIA,1,048,EVERY 8 HOURS ALTERNATELY,Loss of consciousness|Convulsion|Wrong technique in drug usage process|Off label use|Drug ineffective
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,24.0,10.0,2,100.0,10.0,PRODUCT USED FOR UNKNOWN INDICATION,0,048,100.0 MG,Respiratory disorder|Increased upper airway secretion|Rhinovirus infection|Enterovirus infection|Convulsion
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,60.0,22.4,1,220.0,9.8,PYREXIA,1,048,220.0 MG,Pyrexia|Viral infection
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,20.9,2,200.0,9.57,PRODUCT USED FOR UNKNOWN INDICATION,0,,200.0 MG,Atlantoaxial instability
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,48.0,17.3,1,180.0,10.4,ANTIPYRESIS,0,048,180.0 MG,Ear infection
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,39.0,1,300.0,7.69,,0,048,300.0 MG,Delayed puberty|Growth retardation|Treatment noncompliance|Seizure|Abnormal weight gain
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,42.7,1,400.0,9.37,,0,048,400.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,DISCOMFORT,0,048,50-100MG,Necrotising fasciitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG,Necrotising fasciitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,12.0,10.5,1,4.0,0.38,PYREXIA,1,048,"4 ML, QID",Nausea|Vomiting|Diarrhoea
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG 3 TIMES DAILY,Necrotising fasciitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,60.0,18.4,2,150.0,8.15,TONSILLITIS,0,048,150.0 MG,Toxic epidermal necrolysis|Blister
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,48.0,20.0,2,3.0,0.15,EAR INFECTION,0,048,"3 DF, DAILY",Haematemesis|Abdominal pain|Gastrointestinal haemorrhage
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,60.0,22.4,1,220.0,9.8,PYREXIA,1,048,220.0 MG,Viral infection
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG THREE TIMES DAILY.,Necrotising fasciitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,56.7,1,50.0,0.88,,0,,"50 DF, ONCE (TOTAL DOSE 10,000 MG)",Hypovolaemic shock|Adrenal insufficiency|Metabolic acidosis|Intentional overdose|Suicidal behaviour
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,48.0,67.2,1,105.0,1.56,,0,048,100 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,168.0,97.5,1,600.0,6.15,,0,,600.0 MG,Blood corticotrophin decreased|Epistaxis|Metamorphopsia|Headache|Eye pain
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,50.0,2,600.0,12.0,HEADACHE,0,048,600.0 MG,Stomatitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,68.0,1,400.0,5.88,,0,,400.0 MG,Dry skin|Rash pruritic
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,1.0,4.3,2,20.0,4.65,PRODUCT USED FOR UNKNOWN INDICATION,0,048,20.0 MG,Off label use|Extravasation|Tachycardia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,120.0,38.0,1,1.0,0.03,PHARYNGITIS,0,048,"1 DF, AS NEEDED",Renal failure acute|Loss of consciousness|Encephalitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,29.0,20.4,1,5.0,0.24,PYREXIA,1,048,"5 ML, TWICE A DAY",Somnolence|Crying|Aggression|Irritability|Product quality issue
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,168.0,52.1,1,2.0,0.04,PYREXIA,1,048,"2 TABLETS, ONLY ONCE",Throat irritation|Oropharyngeal pain|Oral discomfort
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,144.0,46.6,1,400.0,8.58,PAIN,0,048,400.0 MG,Bradycardia|Hypoxia|Blood pressure decreased|Rash
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,29.7,1,200.0,6.73,PREMEDICATION,0,048,200.0 MG,Tremor|Infusion related reaction|Chills|Pyrexia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,0.0,2.6,1,200.0,75.76,RHEUMATOID ARTHRITIS,0,064,200.0 MG,Foetal exposure during pregnancy|Premature baby
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,84.0,16.5,2,100.0,6.06,PREMEDICATION,0,048,100.0 MG,Malaise|Nausea|Abdominal pain|Pyrexia|Medication error
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,24.0,12.4,2,100.0,8.06,PREMEDICATION,0,048,100.0 MG,Tachycardia|Respiratory tract congestion|Irritability|Oxygen saturation decreased
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,0.0,2.8,2,1.0,0.35,HEADACHE,0,,"1 DF, UNKNOWN",Hydrocephalus|Convulsion neonatal|Foetal exposure during pregnancy|Premature baby|Congenital hearing disorder
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,0.0,2.8,2,1.0,0.35,HEADACHE,0,,"1 DF, UNKNOWN",Hydrocephalus|Convulsion neonatal|Foetal exposure during pregnancy|Premature baby|Congenital hearing disorder
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,60.0,2,800.0,13.33,PRODUCT USED FOR UNKNOWN INDICATION,0,048,800.0 MG,Suicide attempt|Sopor|Intentional overdose
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,44.0,2,1200.0,27.27,,0,048,1200.0 MG,Bronchial secretion retention|Oxygen saturation decreased|Dyspnoea|Lung infiltration|Chest discomfort
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,20.0,11.0,1,5.0,0.45,PYREXIA,1,048,"5 ML, 1X/DAY",Atrioventricular block|Arrhythmia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,59.0,2,3.0,0.05,TOOTHACHE,0,,"3 CAPSULES, SINGLE",Intentional product misuse|Expired product administered|Abdominal pain upper|Overdose
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,132.0,48.0,1,1.0,0.02,HAEMARTHROSIS,0,048,"1 DF, SINGLE",Haematuria
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,45.0,1,200.0,4.44,HEADACHE,0,,200.0 MG,Accidental exposure to product|Eye pain|Eye irritation|Eye swelling|Eye colour change
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,168.0,50.5,1,200.0,3.96,,0,048,200.0 MG,Delayed puberty|Clavicle fracture|Growth retardation
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Sepsis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,192.0,47.0,2,800.0,17.02,,0,,800.0 MG,Colitis ischaemic|Injury|Depression|Large intestinal haemorrhage|Pain
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Intentional overdose|Sepsis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Sepsis|Intentional overdose
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,36.0,13.0,1,1.0,0.08,PYREXIA,1,048,"1 DF, SINGLE",Speech disorder|Face oedema|Localised oedema|Eye oedema
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,12.0,11.0,1,4.0,0.36,PYREXIA,1,,"4 ML, QD",Swelling face|Erythema multiforme
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,59.9,2,600.0,10.02,PAIN,0,048,600.0 MG,Abdominal pain|Constipation
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,34.1,2,15.0,0.44,PYREXIA,1,048,"7.5 ML, UNK (7.5ML BY MOUTH EVERY 6 HOURS)",Confusional state|Urinary incontinence|Muscle twitching|Nervousness|Emotional distress
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,72.0,25.0,2,65.0,2.6,PYREXIA,1,048,65 MG,Leukopenia|Vomiting
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,55.0,2,400.0,7.27,PREMEDICATION,0,048,400.0 MG,Pain|Feeling jittery|Wisdom teeth removal|Pain|Muscle spasms
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,42.5,2,400.0,9.41,,0,,400.0 MG,Pain|Rash pruritic|Mobility decreased|Paraesthesia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,84.0,24.6,2,1.0,0.04,,0,048,"1 DOSE-WEIGHT, 3X/DAY",Acute kidney injury
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,BODY TEMPERATURE INCREASED,1,065,120.0 MG,Rash papular|Lip swelling|Peripheral swelling|Dysphonia|Anaphylactoid reaction
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,,120.0 MG,Angioedema|Urticaria|Dysphonia|Anaphylactoid reaction|Peripheral swelling
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,065,120.0 MG,Rash papular|Lip swelling|Anaphylactoid reaction|Peripheral swelling|Dysphonia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,21.0,9.8,1,90.0,9.18,PYREXIA,1,,90.0 MG,Transaminases increased
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,065,120.0 MG,Dysphonia|Lip swelling|Rash papular|Angioedema|Peripheral swelling
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,76.8,2,400.0,5.21,HANGOVER,0,048,400.0 MG,Abdominal distension|Hangover|Substance use|Vomiting|Exposure during pregnancy
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,24.0,13.0,1,200.0,15.38,,0,048,"ONE CAPSULE OF 200MG, SINGLE",Accidental exposure to product by child|Ocular hyperaemia|Retching
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,72.0,23.0,2,10.0,0.43,PYREXIA,1,048,10 ML Q 6HRS PRN,Product quality issue|Product taste abnormal|Vomiting|Drug ineffective|Lip swelling
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,15.0,11.0,1,5.0,0.45,COUGH,0,048,"5 ML (OR 1 TEASPOON), EVERY 8 HOURS",Drug administered to patient of inappropriate age|Drug ineffective for unapproved indication|Epistaxis|Sneezing
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,104.3,2,800.0,7.67,MUSCULOSKELETAL DISCOMFORT,0,,200 - 800 MG,Vena cava thrombosis|Deep vein thrombosis|Pulmonary embolism|Thrombophlebitis superficial|Jugular vein thrombosis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,18.4,2,600.0,32.61,PRODUCT USED FOR UNKNOWN INDICATION,0,048,600.0 MG,Dyspnoea
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,156.0,49.0,2,600.0,12.24,BACK PAIN,0,048,600.0 MG,Back pain|Dizziness
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,60.8,2,200.0,3.29,PYREXIA,1,048,200.0 MG,Product substitution issue|Urticaria
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,18.0,2,600.0,33.33,,0,,600.0 MG,Dyspnoea
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,67.3,1,200.0,2.97,HYPERSENSITIVITY,0,048,200.0 MG,Throat tightness|Pruritus|Feeling cold|Lip swelling|Generalised erythema
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,84.0,24.0,2,200.0,8.33,,0,048,200.0 MG,Vomiting|Bronchospasm|Hypersensitivity|Abdominal pain|Pyrexia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,108.0,34.0,2,200.0,5.88,NASOPHARYNGITIS,0,048,200.0 MG,Blister|Pharyngeal oedema|Urticaria|Erythema|Rash
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,53.0,1,400.0,7.55,VIRAL INFECTION,0,048,400.0 MG,Intentional product misuse|Lip swelling
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,132.0,37.0,2,300.0,8.11,PAIN,0,,300.0 MG,Glossodynia|Product coating issue|Throat irritation
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PAIN,0,,200.0 MG,Deafness bilateral|Precocious puberty|Nuclear magnetic resonance imaging brain abnormal|Tracheobronchitis|Pneumonia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PYREXIA,1,,200.0 MG,Deafness bilateral|Precocious puberty|Nuclear magnetic resonance imaging brain abnormal|Tracheobronchitis|Pneumonia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PAIN,0,,200.0 MG,Pneumonia|Left ventricular hypertrophy|Nuclear magnetic resonance imaging brain abnormal|Tracheostomy|Tracheobronchitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,96.0,23.9,1,200.0,8.37,PYREXIA,1,,200.0 MG,Pneumonia|Left ventricular hypertrophy|Nuclear magnetic resonance imaging brain abnormal|Tracheostomy|Tracheobronchitis
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,84.0,40.8,1,3.0,0.07,PYREXIA,1,,"3 CHEWABLE TABLETS, UNK",Glossodynia
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,48.0,2,200.0,4.17,HEADACHE,0,,200.0 MG,Throat irritation
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,46.3,2,400.0,8.64,OROPHARYNGEAL PAIN,0,048,400.0 MG,Contusion|Medication error
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,64.0,1,400.0,6.25,PAIN,0,048,400.0 MG,Seizure
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,24.0,10.5,2,100.0,9.52,PYREXIA,1,048,100.0 MG,Hypernatraemia|Blood chloride increased
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,180.0,52.0,2,600.0,11.54,PRODUCT USED FOR UNKNOWN INDICATION,0,,600.0 MG,Faecal calprotectin increased|Abdominal pain
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,65.8,2,800.0,12.17,,0,,800.0 MG,Muscle twitching|Weight increased|Menstruation irregular
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,216.0,78.5,1,600.0,7.64,PAIN,0,065,600.0 MG,Priapism|Vascular occlusion|Pain
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,204.0,57.0,2,60.0,1.05,PAIN IN EXTREMITY,0,048,60.0 MG,Ectopic pregnancy|Abortion spontaneous|Menorrhagia|Menorrhagia|Dizziness
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,48.0,24.0,1,10.0,0.42,PYREXIA,1,048,10 ML TWICE A DAY,Vomiting
+4,Ибупрофен Форте 200мг/5мл,ibuprofen,48.0,24.0,1,10.0,0.42,,0,048,10.0 MG,Vomiting
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,204.0,48.5,1,325.0,6.7,PREMEDICATION,0,048,325.0 MG,Chest discomfort|Face oedema|Dyspnoea|Infusion related reaction|Hyperhidrosis
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,216.0,136.2,1,500.0,3.67,PRODUCT USED FOR UNKNOWN INDICATION,0,048,500.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,52.0,2,325.0,6.25,,0,048,325 MG CAPLET,Viral infection|Device related infection|Headache|Nausea|Cold sweat
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,43.0,2,500.0,11.63,PREMEDICATION,0,048,500.0 MG,Anaphylactic reaction|Cough|Abscess|Infusion related reaction|Flushing
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,168.0,50.8,1,500.0,9.84,PREMEDICATION,0,048,500.0 MG,Nausea|Flushing|Infusion related reaction|Pyrexia|Crohn^s disease
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,180.0,50.0,2,500.0,10.0,SUICIDE ATTEMPT,0,048,500.0 MG,Convulsion|Electrocardiogram QRS complex prolonged|Electrocardiogram QT prolonged|Sinus tachycardia|Toxicity to various agents
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,180.0,59.6,2,650.0,10.91,PREMEDICATION,0,048,650.0 MG,Anaphylactic reaction|Infusion related reaction
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,26.3,1,500.0,19.01,PRODUCT USED FOR UNKNOWN INDICATION,0,065,500.0 MG,Viral infection|Body temperature increased
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,180.0,70.5,2,650.0,9.22,,0,048,650.0 MG,Cholelithiasis|Cholecystitis acute
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,96.0,20.9,2,250.0,11.96,PREMEDICATION,0,048,250.0 MG,Atlantoaxial instability
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,43.0,2,650.0,15.12,PREMEDICATION,0,048,650.0 MG,Crohn^s disease
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,180.0,42.7,1,500.0,11.71,DISCOMFORT,0,048,500.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,48.0,67.2,1,165.0,2.46,,0,048,160 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,204.0,54.7,1,650.0,11.88,PREMEDICATION,0,048,650.0 MG,Back pain
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,120.0,38.6,2,650.0,16.84,PREMEDICATION,0,048,650.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,144.0,35.0,2,15.0,0.43,,0,050,"15MG/KG/DOSE*35, EVERY 6 HOURS PRN",Intestinal obstruction|Vomiting|Wrong technique in drug usage process|Gastrointestinal obstruction|Bezoar
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,63.5,1,500.0,7.87,SPORTS INJURY,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,63.5,1,500.0,7.87,HEADACHE,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,168.0,85.6,1,650.0,7.59,PAIN,0,048,650.0 MG,Burning sensation|Chills|Pruritus|Flushing|Pain
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,144.0,65.1,1,1000.0,15.36,PREMEDICATION,0,048,1000.0 MG,Dyspnoea|Presyncope|Erythema
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,216.0,51.0,2,17.0,0.33,PHARYNGEAL ULCERATION,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,216.0,51.0,2,17.0,0.33,ANALGESIC THERAPY,0,048,APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,216.0,51.0,2,17.0,0.33,PAIN,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,36.0,12.2,2,160.0,13.11,PREMEDICATION,0,,160.0 MG,Extravasation
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,48.0,14.2,2,160.0,11.28,Pain,0,048,160.0 MG,Blood lactate dehydrogenase increased|Lipase increased|Lipase increased|Abdominal pain|Abdominal pain
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,0.0,3.7,1,52.0,14.09,,0,048,52.0 MG,Hydrocele|Ear infection|Large for dates baby|Respiratory syncytial virus infection|Croup infectious
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,168.0,55.8,2,10.0,0.18,HEADACHE,0,048,"TWICE BETWEEN 7PM AND 11PM, TOOK 10 TABLETS OF PARACETAMOL",Accidental overdose|Hepatic enzyme increased|Fatigue|Acute hepatic failure|Dyspnoea
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,57.5,1,325.0,5.65,PRODUCT USED FOR UNKNOWN INDICATION,0,065,325.0 MG,Seizure|Inflammation
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,60.0,16.3,2,650.0,39.83,,0,,650.0 MG,Coeliac disease|Joint swelling
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,132.0,28.0,1,160.0,5.71,PAIN,0,,"160 MG, Q4H PRN",Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,204.0,47.6,2,325.0,6.82,PAIN,0,048,325.0 MG,Metabolic acidosis|Respiratory failure|Ventricular arrhythmia|Acute hepatic failure|Leukocytosis
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,120.0,29.0,2,25.0,0.86,,0,048,25.0 MG,No therapeutic response|Crohn^s disease
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,132.0,63.0,2,500.0,7.94,ABDOMINAL PAIN,0,048,500.0 MG,Feeling abnormal|Haemorrhage|Adenotonsillectomy
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,12.0,9.2,1,125.0,13.59,UPPER RESPIRATORY TRACT INFECTION,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,12.0,9.2,1,250.0,27.17,UPPER RESPIRATORY TRACT INFECTION,0,055,250 MG X 3 PRN RECTAL,Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,12.0,9.2,1,125.0,13.59,DIARRHOEA,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,180.0,54.4,2,10.0,0.18,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10 CAPLETS TAKEN ONCE,Intentional overdose|Headache
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,144.0,53.0,1,500.0,9.43,,0,,500.0 MG,Ear infection|Activities of daily living impaired|Bronchospasm|Adverse event|Cough
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,0.0,3.2,1,25.0,7.86,,0,064,25.0 MG,Congenital skin dimples
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,72.6,2,5000.0,68.89,PAIN,0,048,5000.0 MG,Acute hepatic failure|Anxiety|Abdominal pain|Pallor|Pain
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,108.0,29.0,1,80.0,2.76,OROPHARYNGEAL PAIN,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,108.0,29.0,1,80.0,2.76,DYSPHAGIA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,108.0,29.0,1,80.0,2.76,RHINORRHOEA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,36.0,15.0,1,1.5,0.1,PREMEDICATION,0,048,1.5 TABLE SPOON,Fall|Lip infection|Lip injury
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,156.0,35.1,1,500.0,14.25,PREMEDICATION,0,065,500.0 MG,Feeling abnormal|Nausea|Dyspnoea|Erythema|Vomiting
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,216.0,62.0,2,1000.0,16.13,PREMEDICATION,0,048,1000.0 MG,Tremor|Chest discomfort|Infusion related reaction|Heart rate increased
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,168.0,79.0,1,650.0,8.23,,0,065,650.0 MG,Dehydration|Acute kidney injury|Hyponatraemia|Hypotension|Blood creatinine increased
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,96.0,18.9,1,290.0,15.34,PREMEDICATION,0,048,290.0 MG,Middle ear effusion|Pyrexia
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,204.0,64.0,2,650.0,10.16,PREMEDICATION,0,048,650.0 MG,Hypotension|Malaise|Injection site pain|Off label use|Mental disorder
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,192.0,76.8,1,650.0,8.46,PREMEDICATION,0,,650.0 MG,Glomerulonephritis membranoproliferative
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,216.0,39.8,2,850.0,21.34,PRODUCT USED FOR UNKNOWN INDICATION,0,065,850.0 MG,Myalgia|Off label use|Type 2 diabetes mellitus|Depression|Abnormal dreams
+5,Цефекон Д (парацетамол) суппозитории 50 мг,paracetamol,0.0,3.6,-1,1.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,064,"1 UNK, UNK",Ventricular septal defect|Ventricular hypertrophy|Mitral valve incompetence|Tricuspid valve incompetence|Atrial septal defect
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,204.0,48.5,1,325.0,6.7,PREMEDICATION,0,048,325.0 MG,Chest discomfort|Face oedema|Dyspnoea|Infusion related reaction|Hyperhidrosis
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,216.0,136.2,1,500.0,3.67,PRODUCT USED FOR UNKNOWN INDICATION,0,048,500.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,52.0,2,325.0,6.25,,0,048,325 MG CAPLET,Viral infection|Device related infection|Headache|Nausea|Cold sweat
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,43.0,2,500.0,11.63,PREMEDICATION,0,048,500.0 MG,Anaphylactic reaction|Cough|Abscess|Infusion related reaction|Flushing
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,168.0,50.8,1,500.0,9.84,PREMEDICATION,0,048,500.0 MG,Nausea|Flushing|Infusion related reaction|Pyrexia|Crohn^s disease
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,180.0,50.0,2,500.0,10.0,SUICIDE ATTEMPT,0,048,500.0 MG,Convulsion|Electrocardiogram QRS complex prolonged|Electrocardiogram QT prolonged|Sinus tachycardia|Toxicity to various agents
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,180.0,59.6,2,650.0,10.91,PREMEDICATION,0,048,650.0 MG,Anaphylactic reaction|Infusion related reaction
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,26.3,1,500.0,19.01,PRODUCT USED FOR UNKNOWN INDICATION,0,065,500.0 MG,Viral infection|Body temperature increased
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,180.0,70.5,2,650.0,9.22,,0,048,650.0 MG,Cholelithiasis|Cholecystitis acute
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,96.0,20.9,2,250.0,11.96,PREMEDICATION,0,048,250.0 MG,Atlantoaxial instability
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,43.0,2,650.0,15.12,PREMEDICATION,0,048,650.0 MG,Crohn^s disease
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,180.0,42.7,1,500.0,11.71,DISCOMFORT,0,048,500.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,48.0,67.2,1,165.0,2.46,,0,048,160 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,204.0,54.7,1,650.0,11.88,PREMEDICATION,0,048,650.0 MG,Back pain
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,120.0,38.6,2,650.0,16.84,PREMEDICATION,0,048,650.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,144.0,35.0,2,15.0,0.43,,0,050,"15MG/KG/DOSE*35, EVERY 6 HOURS PRN",Intestinal obstruction|Vomiting|Wrong technique in drug usage process|Gastrointestinal obstruction|Bezoar
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,63.5,1,500.0,7.87,SPORTS INJURY,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,63.5,1,500.0,7.87,HEADACHE,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,168.0,85.6,1,650.0,7.59,PAIN,0,048,650.0 MG,Burning sensation|Chills|Pruritus|Flushing|Pain
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,144.0,65.1,1,1000.0,15.36,PREMEDICATION,0,048,1000.0 MG,Dyspnoea|Presyncope|Erythema
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,216.0,51.0,2,17.0,0.33,PHARYNGEAL ULCERATION,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,216.0,51.0,2,17.0,0.33,ANALGESIC THERAPY,0,048,APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,216.0,51.0,2,17.0,0.33,PAIN,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,36.0,12.2,2,160.0,13.11,PREMEDICATION,0,,160.0 MG,Extravasation
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,48.0,14.2,2,160.0,11.28,Pain,0,048,160.0 MG,Blood lactate dehydrogenase increased|Lipase increased|Lipase increased|Abdominal pain|Abdominal pain
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,0.0,3.7,1,52.0,14.09,,0,048,52.0 MG,Hydrocele|Ear infection|Large for dates baby|Respiratory syncytial virus infection|Croup infectious
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,168.0,55.8,2,10.0,0.18,HEADACHE,0,048,"TWICE BETWEEN 7PM AND 11PM, TOOK 10 TABLETS OF PARACETAMOL",Accidental overdose|Hepatic enzyme increased|Fatigue|Acute hepatic failure|Dyspnoea
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,57.5,1,325.0,5.65,PRODUCT USED FOR UNKNOWN INDICATION,0,065,325.0 MG,Seizure|Inflammation
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,60.0,16.3,2,650.0,39.83,,0,,650.0 MG,Coeliac disease|Joint swelling
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,132.0,28.0,1,160.0,5.71,PAIN,0,,"160 MG, Q4H PRN",Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,204.0,47.6,2,325.0,6.82,PAIN,0,048,325.0 MG,Metabolic acidosis|Respiratory failure|Ventricular arrhythmia|Acute hepatic failure|Leukocytosis
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,120.0,29.0,2,25.0,0.86,,0,048,25.0 MG,No therapeutic response|Crohn^s disease
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,132.0,63.0,2,500.0,7.94,ABDOMINAL PAIN,0,048,500.0 MG,Feeling abnormal|Haemorrhage|Adenotonsillectomy
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,12.0,9.2,1,125.0,13.59,UPPER RESPIRATORY TRACT INFECTION,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,12.0,9.2,1,250.0,27.17,UPPER RESPIRATORY TRACT INFECTION,0,055,250 MG X 3 PRN RECTAL,Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,12.0,9.2,1,125.0,13.59,DIARRHOEA,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,180.0,54.4,2,10.0,0.18,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10 CAPLETS TAKEN ONCE,Intentional overdose|Headache
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,144.0,53.0,1,500.0,9.43,,0,,500.0 MG,Ear infection|Activities of daily living impaired|Bronchospasm|Adverse event|Cough
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,0.0,3.2,1,25.0,7.86,,0,064,25.0 MG,Congenital skin dimples
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,72.6,2,5000.0,68.89,PAIN,0,048,5000.0 MG,Acute hepatic failure|Anxiety|Abdominal pain|Pallor|Pain
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,108.0,29.0,1,80.0,2.76,OROPHARYNGEAL PAIN,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,108.0,29.0,1,80.0,2.76,DYSPHAGIA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,108.0,29.0,1,80.0,2.76,RHINORRHOEA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,36.0,15.0,1,1.5,0.1,PREMEDICATION,0,048,1.5 TABLE SPOON,Fall|Lip infection|Lip injury
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,156.0,35.1,1,500.0,14.25,PREMEDICATION,0,065,500.0 MG,Feeling abnormal|Nausea|Dyspnoea|Erythema|Vomiting
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,216.0,62.0,2,1000.0,16.13,PREMEDICATION,0,048,1000.0 MG,Tremor|Chest discomfort|Infusion related reaction|Heart rate increased
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,168.0,79.0,1,650.0,8.23,,0,065,650.0 MG,Dehydration|Acute kidney injury|Hyponatraemia|Hypotension|Blood creatinine increased
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,96.0,18.9,1,290.0,15.34,PREMEDICATION,0,048,290.0 MG,Middle ear effusion|Pyrexia
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,204.0,64.0,2,650.0,10.16,PREMEDICATION,0,048,650.0 MG,Hypotension|Malaise|Injection site pain|Off label use|Mental disorder
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,192.0,76.8,1,650.0,8.46,PREMEDICATION,0,,650.0 MG,Glomerulonephritis membranoproliferative
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,216.0,39.8,2,850.0,21.34,PRODUCT USED FOR UNKNOWN INDICATION,0,065,850.0 MG,Myalgia|Off label use|Type 2 diabetes mellitus|Depression|Abnormal dreams
+6,Цефекон Д (парацетамол) суппозитории 100 мг,paracetamol,0.0,3.6,-1,1.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,064,"1 UNK, UNK",Ventricular septal defect|Ventricular hypertrophy|Mitral valve incompetence|Tricuspid valve incompetence|Atrial septal defect
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,204.0,48.5,1,325.0,6.7,PREMEDICATION,0,048,325.0 MG,Chest discomfort|Face oedema|Dyspnoea|Infusion related reaction|Hyperhidrosis
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,216.0,136.2,1,500.0,3.67,PRODUCT USED FOR UNKNOWN INDICATION,0,048,500.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,52.0,2,325.0,6.25,,0,048,325 MG CAPLET,Viral infection|Device related infection|Headache|Nausea|Cold sweat
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,43.0,2,500.0,11.63,PREMEDICATION,0,048,500.0 MG,Anaphylactic reaction|Cough|Abscess|Infusion related reaction|Flushing
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,168.0,50.8,1,500.0,9.84,PREMEDICATION,0,048,500.0 MG,Nausea|Flushing|Infusion related reaction|Pyrexia|Crohn^s disease
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,180.0,50.0,2,500.0,10.0,SUICIDE ATTEMPT,0,048,500.0 MG,Convulsion|Electrocardiogram QRS complex prolonged|Electrocardiogram QT prolonged|Sinus tachycardia|Toxicity to various agents
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,180.0,59.6,2,650.0,10.91,PREMEDICATION,0,048,650.0 MG,Anaphylactic reaction|Infusion related reaction
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,26.3,1,500.0,19.01,PRODUCT USED FOR UNKNOWN INDICATION,0,065,500.0 MG,Viral infection|Body temperature increased
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,180.0,70.5,2,650.0,9.22,,0,048,650.0 MG,Cholelithiasis|Cholecystitis acute
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,96.0,20.9,2,250.0,11.96,PREMEDICATION,0,048,250.0 MG,Atlantoaxial instability
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,43.0,2,650.0,15.12,PREMEDICATION,0,048,650.0 MG,Crohn^s disease
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,180.0,42.7,1,500.0,11.71,DISCOMFORT,0,048,500.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,48.0,67.2,1,165.0,2.46,,0,048,160 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,204.0,54.7,1,650.0,11.88,PREMEDICATION,0,048,650.0 MG,Back pain
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,120.0,38.6,2,650.0,16.84,PREMEDICATION,0,048,650.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,120.0,38.6,2,325.0,8.42,PREMEDICATION,0,048,325.0 MG,Weight increased|Anaphylactic reaction|Infusion related reaction
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,144.0,35.0,2,15.0,0.43,,0,050,"15MG/KG/DOSE*35, EVERY 6 HOURS PRN",Intestinal obstruction|Vomiting|Wrong technique in drug usage process|Gastrointestinal obstruction|Bezoar
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,63.5,1,500.0,7.87,SPORTS INJURY,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,63.5,1,500.0,7.87,HEADACHE,0,065,500.0 MG,Intentional overdose|Acute hepatic failure
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,168.0,85.6,1,650.0,7.59,PAIN,0,048,650.0 MG,Burning sensation|Chills|Pruritus|Flushing|Pain
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,144.0,65.1,1,1000.0,15.36,PREMEDICATION,0,048,1000.0 MG,Dyspnoea|Presyncope|Erythema
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,216.0,51.0,2,17.0,0.33,PHARYNGEAL ULCERATION,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,216.0,51.0,2,17.0,0.33,ANALGESIC THERAPY,0,048,APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,216.0,51.0,2,17.0,0.33,PAIN,0,048,THE PATIENT TOOK APPROXIMATELY 17 TABLETS,Toxicity to various agents|Accidental overdose|Acute hepatic failure|Renal disorder
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,36.0,12.2,2,160.0,13.11,PREMEDICATION,0,,160.0 MG,Extravasation
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,48.0,14.2,2,160.0,11.28,Pain,0,048,160.0 MG,Blood lactate dehydrogenase increased|Lipase increased|Lipase increased|Abdominal pain|Abdominal pain
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,0.0,3.7,1,52.0,14.09,,0,048,52.0 MG,Hydrocele|Ear infection|Large for dates baby|Respiratory syncytial virus infection|Croup infectious
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,168.0,55.8,2,10.0,0.18,HEADACHE,0,048,"TWICE BETWEEN 7PM AND 11PM, TOOK 10 TABLETS OF PARACETAMOL",Accidental overdose|Hepatic enzyme increased|Fatigue|Acute hepatic failure|Dyspnoea
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,57.5,1,325.0,5.65,PRODUCT USED FOR UNKNOWN INDICATION,0,065,325.0 MG,Seizure|Inflammation
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,60.0,16.3,2,650.0,39.83,,0,,650.0 MG,Coeliac disease|Joint swelling
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,132.0,28.0,1,160.0,5.71,PAIN,0,,"160 MG, Q4H PRN",Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,204.0,47.6,2,325.0,6.82,PAIN,0,048,325.0 MG,Metabolic acidosis|Respiratory failure|Ventricular arrhythmia|Acute hepatic failure|Leukocytosis
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,120.0,29.0,2,25.0,0.86,,0,048,25.0 MG,No therapeutic response|Crohn^s disease
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,132.0,63.0,2,500.0,7.94,ABDOMINAL PAIN,0,048,500.0 MG,Feeling abnormal|Haemorrhage|Adenotonsillectomy
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,12.0,9.2,1,125.0,13.59,UPPER RESPIRATORY TRACT INFECTION,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,12.0,9.2,1,250.0,27.17,UPPER RESPIRATORY TRACT INFECTION,0,055,250 MG X 3 PRN RECTAL,Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,12.0,9.2,1,125.0,13.59,DIARRHOEA,0,048,"120-125 MG/DOSE PO, 3 DAYS",Gastroenteritis|Sepsis|Urinary tract infection|Overdose|Lethargy
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,180.0,54.4,2,10.0,0.18,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10 CAPLETS TAKEN ONCE,Intentional overdose|Headache
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,144.0,53.0,1,500.0,9.43,,0,,500.0 MG,Ear infection|Activities of daily living impaired|Bronchospasm|Adverse event|Cough
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,0.0,3.2,1,25.0,7.86,,0,064,25.0 MG,Congenital skin dimples
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,72.6,2,5000.0,68.89,PAIN,0,048,5000.0 MG,Acute hepatic failure|Anxiety|Abdominal pain|Pallor|Pain
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,108.0,29.0,1,80.0,2.76,OROPHARYNGEAL PAIN,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,108.0,29.0,1,80.0,2.76,DYSPHAGIA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,108.0,29.0,1,80.0,2.76,RHINORRHOEA,0,048,80.0 MG,Blood pressure decreased|Product use issue|Drug ineffective|Oropharyngeal pain|Seizure
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,36.0,15.0,1,1.5,0.1,PREMEDICATION,0,048,1.5 TABLE SPOON,Fall|Lip infection|Lip injury
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,156.0,35.1,1,500.0,14.25,PREMEDICATION,0,065,500.0 MG,Feeling abnormal|Nausea|Dyspnoea|Erythema|Vomiting
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,216.0,62.0,2,1000.0,16.13,PREMEDICATION,0,048,1000.0 MG,Tremor|Chest discomfort|Infusion related reaction|Heart rate increased
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,168.0,79.0,1,650.0,8.23,,0,065,650.0 MG,Dehydration|Acute kidney injury|Hyponatraemia|Hypotension|Blood creatinine increased
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,96.0,18.9,1,290.0,15.34,PREMEDICATION,0,048,290.0 MG,Middle ear effusion|Pyrexia
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,204.0,64.0,2,650.0,10.16,PREMEDICATION,0,048,650.0 MG,Hypotension|Malaise|Injection site pain|Off label use|Mental disorder
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,192.0,76.8,1,650.0,8.46,PREMEDICATION,0,,650.0 MG,Glomerulonephritis membranoproliferative
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,216.0,39.8,2,850.0,21.34,PRODUCT USED FOR UNKNOWN INDICATION,0,065,850.0 MG,Myalgia|Off label use|Type 2 diabetes mellitus|Depression|Abnormal dreams
+7,Цефекон Д (парацетамол) суппозитории 250 мг,paracetamol,0.0,3.6,-1,1.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,064,"1 UNK, UNK",Ventricular septal defect|Ventricular hypertrophy|Mitral valve incompetence|Tricuspid valve incompetence|Atrial septal defect
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,73.0,2,600.0,8.22,,0,,600.0 MG,Cerebral venous thrombosis|Jugular vein thrombosis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,49.0,2,600.0,12.24,BACK PAIN,0,048,600.0 MG,Dizziness|Back pain
+8,Ибупрофен суппозитории 60 мг,ibuprofen,24.0,11.8,1,5.0,0.42,TEETHING,0,048,"5 ML, EVERY 8 HOURS",Drug ineffective|Liquid product physical issue
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,136.2,1,200.0,1.47,PRODUCT USED FOR UNKNOWN INDICATION,0,048,200.0 MG,Intentional self-injury|Overdose|Abdominal pain|Vomiting
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,136.2,1,200.0,1.47,,0,048,"200 MG, UNK, 50 TABLETS",Overdose|Intentional self-injury|Abdominal pain|Vomiting
+8,Ибупрофен суппозитории 60 мг,ibuprofen,192.0,50.6,2,400.0,7.91,PREMEDICATION,0,048,400.0 MG,Musculoskeletal chest pain|Pain in extremity|Muscle spasms|Myalgia|Paraesthesia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,192.0,51.3,2,400.0,7.8,PREMEDICATION,0,048,400.0 MG,Pain|Muscular weakness|Muscle spasms|Gait disturbance|Myositis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,55.5,2,400.0,7.21,PREMEDICATION,0,048,400.0 MG,Pain|Hand deformity|Headache
+8,Ибупрофен суппозитории 60 мг,ibuprofen,36.0,15.9,1,100.0,6.3,COUGH,0,048,100.0 MG,Drug administered to patient of inappropriate age|Urticaria
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,83.5,1,600.0,7.19,,0,,600.0 MG,Extra dose administered|Dizziness
+8,Ибупрофен суппозитории 60 мг,ibuprofen,168.0,52.0,1,200.0,3.85,,0,048,200.0 MG,Toxic epidermal necrolysis|Stevens-Johnson syndrome|Skin exfoliation|Skin lesion
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,60.5,1,400.0,6.61,,0,048,400.0 MG,Hepatic enzyme increased|Eye contusion|Eye swelling|Brain abscess|Subdural empyema
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,51.0,2,400.0,7.84,,0,,400.0 MG,Deep vein thrombosis|Pain|Cerebrovascular accident|Injury|Pulmonary embolism
+8,Ибупрофен суппозитории 60 мг,ibuprofen,144.0,32.9,2,100.0,3.04,PREMEDICATION,0,048,100.0 MG,Device malfunction
+8,Ибупрофен суппозитории 60 мг,ibuprofen,144.0,32.9,2,200.0,6.08,,0,048,200.0 MG,Device malfunction
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,36.0,1,1.0,0.03,,0,048,"1 DF, Q6H, AS NEEDED",Bacteraemia|White blood cell count increased|Pyrexia|Malaise|Device related infection
+8,Ибупрофен суппозитории 60 мг,ibuprofen,192.0,27.0,2,105.0,3.89,,0,,100 MG/ 5 ML,Death
+8,Ибупрофен суппозитории 60 мг,ibuprofen,23.0,10.0,1,2.75,0.28,PYREXIA,1,048,LAST DOSE WAS 2.75ML AT 3AM.,Wrong technique in product usage process|Loss of consciousness|Seizure|Drug ineffective|Product use issue
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,73.5,2,600.0,8.16,BACK PAIN,0,048,600.0 MG,Constipation
+8,Ибупрофен суппозитории 60 мг,ibuprofen,144.0,44.0,2,600.0,13.64,MIGRAINE,0,048,600.0 MG,Cataract
+8,Ибупрофен суппозитории 60 мг,ibuprofen,23.0,10.0,1,8.0,0.8,PYREXIA,1,048,EVERY 8 HOURS ALTERNATELY,Loss of consciousness|Convulsion|Wrong technique in drug usage process|Off label use|Drug ineffective
+8,Ибупрофен суппозитории 60 мг,ibuprofen,24.0,10.0,2,100.0,10.0,PRODUCT USED FOR UNKNOWN INDICATION,0,048,100.0 MG,Respiratory disorder|Increased upper airway secretion|Rhinovirus infection|Enterovirus infection|Convulsion
+8,Ибупрофен суппозитории 60 мг,ibuprofen,60.0,22.4,1,220.0,9.8,PYREXIA,1,048,220.0 MG,Pyrexia|Viral infection
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,20.9,2,200.0,9.57,PRODUCT USED FOR UNKNOWN INDICATION,0,,200.0 MG,Atlantoaxial instability
+8,Ибупрофен суппозитории 60 мг,ibuprofen,48.0,17.3,1,180.0,10.4,ANTIPYRESIS,0,048,180.0 MG,Ear infection
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,39.0,1,300.0,7.69,,0,048,300.0 MG,Delayed puberty|Growth retardation|Treatment noncompliance|Seizure|Abnormal weight gain
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,42.7,1,400.0,9.37,,0,048,400.0 MG,Arthralgia|Arthralgia|Vomiting|Gastritis|Hyperphosphataemia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,21.0,11.0,2,100.0,9.09,DISCOMFORT,0,048,50-100MG,Necrotising fasciitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG,Necrotising fasciitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,12.0,10.5,1,4.0,0.38,PYREXIA,1,048,"4 ML, QID",Nausea|Vomiting|Diarrhoea
+8,Ибупрофен суппозитории 60 мг,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG 3 TIMES DAILY,Necrotising fasciitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,60.0,18.4,2,150.0,8.15,TONSILLITIS,0,048,150.0 MG,Toxic epidermal necrolysis|Blister
+8,Ибупрофен суппозитории 60 мг,ibuprofen,48.0,20.0,2,3.0,0.15,EAR INFECTION,0,048,"3 DF, DAILY",Haematemesis|Abdominal pain|Gastrointestinal haemorrhage
+8,Ибупрофен суппозитории 60 мг,ibuprofen,60.0,22.4,1,220.0,9.8,PYREXIA,1,048,220.0 MG,Viral infection
+8,Ибупрофен суппозитории 60 мг,ibuprofen,21.0,11.0,2,100.0,9.09,PYREXIA,1,048,50-100MG THREE TIMES DAILY.,Necrotising fasciitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,56.7,1,50.0,0.88,,0,,"50 DF, ONCE (TOTAL DOSE 10,000 MG)",Hypovolaemic shock|Adrenal insufficiency|Metabolic acidosis|Intentional overdose|Suicidal behaviour
+8,Ибупрофен суппозитории 60 мг,ibuprofen,48.0,67.2,1,105.0,1.56,,0,048,100 MG/5ML ORAL SUSPENSION AS NEEDED,Abnormal weight gain|Insulin-like growth factor increased|Insulin-like growth factor increased|Tonsillectomy|Adenoidectomy
+8,Ибупрофен суппозитории 60 мг,ibuprofen,168.0,97.5,1,600.0,6.15,,0,,600.0 MG,Blood corticotrophin decreased|Epistaxis|Metamorphopsia|Headache|Eye pain
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,50.0,2,600.0,12.0,HEADACHE,0,048,600.0 MG,Stomatitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,68.0,1,400.0,5.88,,0,,400.0 MG,Dry skin|Rash pruritic
+8,Ибупрофен суппозитории 60 мг,ibuprofen,1.0,4.3,2,20.0,4.65,PRODUCT USED FOR UNKNOWN INDICATION,0,048,20.0 MG,Off label use|Extravasation|Tachycardia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,120.0,38.0,1,1.0,0.03,PHARYNGITIS,0,048,"1 DF, AS NEEDED",Renal failure acute|Loss of consciousness|Encephalitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,29.0,20.4,1,5.0,0.24,PYREXIA,1,048,"5 ML, TWICE A DAY",Somnolence|Crying|Aggression|Irritability|Product quality issue
+8,Ибупрофен суппозитории 60 мг,ibuprofen,168.0,52.1,1,2.0,0.04,PYREXIA,1,048,"2 TABLETS, ONLY ONCE",Throat irritation|Oropharyngeal pain|Oral discomfort
+8,Ибупрофен суппозитории 60 мг,ibuprofen,144.0,46.6,1,400.0,8.58,PAIN,0,048,400.0 MG,Bradycardia|Hypoxia|Blood pressure decreased|Rash
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,29.7,1,200.0,6.73,PREMEDICATION,0,048,200.0 MG,Tremor|Infusion related reaction|Chills|Pyrexia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,0.0,2.6,1,200.0,75.76,RHEUMATOID ARTHRITIS,0,064,200.0 MG,Foetal exposure during pregnancy|Premature baby
+8,Ибупрофен суппозитории 60 мг,ibuprofen,84.0,16.5,2,100.0,6.06,PREMEDICATION,0,048,100.0 MG,Malaise|Nausea|Abdominal pain|Pyrexia|Medication error
+8,Ибупрофен суппозитории 60 мг,ibuprofen,24.0,12.4,2,100.0,8.06,PREMEDICATION,0,048,100.0 MG,Tachycardia|Respiratory tract congestion|Irritability|Oxygen saturation decreased
+8,Ибупрофен суппозитории 60 мг,ibuprofen,0.0,2.8,2,1.0,0.35,HEADACHE,0,,"1 DF, UNKNOWN",Hydrocephalus|Convulsion neonatal|Foetal exposure during pregnancy|Premature baby|Congenital hearing disorder
+8,Ибупрофен суппозитории 60 мг,ibuprofen,0.0,2.8,2,1.0,0.35,HEADACHE,0,,"1 DF, UNKNOWN",Hydrocephalus|Convulsion neonatal|Foetal exposure during pregnancy|Premature baby|Congenital hearing disorder
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,60.0,2,800.0,13.33,PRODUCT USED FOR UNKNOWN INDICATION,0,048,800.0 MG,Suicide attempt|Sopor|Intentional overdose
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,44.0,2,1200.0,27.27,,0,048,1200.0 MG,Bronchial secretion retention|Oxygen saturation decreased|Dyspnoea|Lung infiltration|Chest discomfort
+8,Ибупрофен суппозитории 60 мг,ibuprofen,20.0,11.0,1,5.0,0.45,PYREXIA,1,048,"5 ML, 1X/DAY",Atrioventricular block|Arrhythmia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,59.0,2,3.0,0.05,TOOTHACHE,0,,"3 CAPSULES, SINGLE",Intentional product misuse|Expired product administered|Abdominal pain upper|Overdose
+8,Ибупрофен суппозитории 60 мг,ibuprofen,132.0,48.0,1,1.0,0.02,HAEMARTHROSIS,0,048,"1 DF, SINGLE",Haematuria
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,45.0,1,200.0,4.44,HEADACHE,0,,200.0 MG,Accidental exposure to product|Eye pain|Eye irritation|Eye swelling|Eye colour change
+8,Ибупрофен суппозитории 60 мг,ibuprofen,168.0,50.5,1,200.0,3.96,,0,048,200.0 MG,Delayed puberty|Clavicle fracture|Growth retardation
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Sepsis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,192.0,47.0,2,800.0,17.02,,0,,800.0 MG,Colitis ischaemic|Injury|Depression|Large intestinal haemorrhage|Pain
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Intentional overdose|Sepsis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis|Sepsis|Intentional overdose
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,70.0,2,600.0,8.57,PAIN,0,048,600.0 MG,Agranulocytosis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,36.0,13.0,1,1.0,0.08,PYREXIA,1,048,"1 DF, SINGLE",Speech disorder|Face oedema|Localised oedema|Eye oedema
+8,Ибупрофен суппозитории 60 мг,ibuprofen,12.0,11.0,1,4.0,0.36,PYREXIA,1,,"4 ML, QD",Swelling face|Erythema multiforme
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,59.9,2,600.0,10.02,PAIN,0,048,600.0 MG,Abdominal pain|Constipation
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,34.1,2,15.0,0.44,PYREXIA,1,048,"7.5 ML, UNK (7.5ML BY MOUTH EVERY 6 HOURS)",Confusional state|Urinary incontinence|Muscle twitching|Nervousness|Emotional distress
+8,Ибупрофен суппозитории 60 мг,ibuprofen,72.0,25.0,2,65.0,2.6,PYREXIA,1,048,65 MG,Leukopenia|Vomiting
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,55.0,2,400.0,7.27,PREMEDICATION,0,048,400.0 MG,Pain|Feeling jittery|Wisdom teeth removal|Pain|Muscle spasms
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,42.5,2,400.0,9.41,,0,,400.0 MG,Pain|Rash pruritic|Mobility decreased|Paraesthesia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,84.0,24.6,2,1.0,0.04,,0,048,"1 DOSE-WEIGHT, 3X/DAY",Acute kidney injury
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,24.0,2,120.0,5.0,BODY TEMPERATURE INCREASED,1,065,120.0 MG,Rash papular|Lip swelling|Peripheral swelling|Dysphonia|Anaphylactoid reaction
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,,120.0 MG,Angioedema|Urticaria|Dysphonia|Anaphylactoid reaction|Peripheral swelling
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,065,120.0 MG,Rash papular|Lip swelling|Anaphylactoid reaction|Peripheral swelling|Dysphonia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,21.0,9.8,1,90.0,9.18,PYREXIA,1,,90.0 MG,Transaminases increased
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,24.0,2,120.0,5.0,PAIN,0,065,120.0 MG,Dysphonia|Lip swelling|Rash papular|Angioedema|Peripheral swelling
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,76.8,2,400.0,5.21,HANGOVER,0,048,400.0 MG,Abdominal distension|Hangover|Substance use|Vomiting|Exposure during pregnancy
+8,Ибупрофен суппозитории 60 мг,ibuprofen,24.0,13.0,1,200.0,15.38,,0,048,"ONE CAPSULE OF 200MG, SINGLE",Accidental exposure to product by child|Ocular hyperaemia|Retching
+8,Ибупрофен суппозитории 60 мг,ibuprofen,72.0,23.0,2,10.0,0.43,PYREXIA,1,048,10 ML Q 6HRS PRN,Product quality issue|Product taste abnormal|Vomiting|Drug ineffective|Lip swelling
+8,Ибупрофен суппозитории 60 мг,ibuprofen,15.0,11.0,1,5.0,0.45,COUGH,0,048,"5 ML (OR 1 TEASPOON), EVERY 8 HOURS",Drug administered to patient of inappropriate age|Drug ineffective for unapproved indication|Epistaxis|Sneezing
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,104.3,2,800.0,7.67,MUSCULOSKELETAL DISCOMFORT,0,,200 - 800 MG,Vena cava thrombosis|Deep vein thrombosis|Pulmonary embolism|Thrombophlebitis superficial|Jugular vein thrombosis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,18.4,2,600.0,32.61,PRODUCT USED FOR UNKNOWN INDICATION,0,048,600.0 MG,Dyspnoea
+8,Ибупрофен суппозитории 60 мг,ibuprofen,156.0,49.0,2,600.0,12.24,BACK PAIN,0,048,600.0 MG,Back pain|Dizziness
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,60.8,2,200.0,3.29,PYREXIA,1,048,200.0 MG,Product substitution issue|Urticaria
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,18.0,2,600.0,33.33,,0,,600.0 MG,Dyspnoea
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,67.3,1,200.0,2.97,HYPERSENSITIVITY,0,048,200.0 MG,Throat tightness|Pruritus|Feeling cold|Lip swelling|Generalised erythema
+8,Ибупрофен суппозитории 60 мг,ibuprofen,84.0,24.0,2,200.0,8.33,,0,048,200.0 MG,Vomiting|Bronchospasm|Hypersensitivity|Abdominal pain|Pyrexia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,108.0,34.0,2,200.0,5.88,NASOPHARYNGITIS,0,048,200.0 MG,Blister|Pharyngeal oedema|Urticaria|Erythema|Rash
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,53.0,1,400.0,7.55,VIRAL INFECTION,0,048,400.0 MG,Intentional product misuse|Lip swelling
+8,Ибупрофен суппозитории 60 мг,ibuprofen,132.0,37.0,2,300.0,8.11,PAIN,0,,300.0 MG,Glossodynia|Product coating issue|Throat irritation
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,23.9,1,200.0,8.37,PAIN,0,,200.0 MG,Deafness bilateral|Precocious puberty|Nuclear magnetic resonance imaging brain abnormal|Tracheobronchitis|Pneumonia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,23.9,1,200.0,8.37,PYREXIA,1,,200.0 MG,Deafness bilateral|Precocious puberty|Nuclear magnetic resonance imaging brain abnormal|Tracheobronchitis|Pneumonia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,23.9,1,200.0,8.37,PAIN,0,,200.0 MG,Pneumonia|Left ventricular hypertrophy|Nuclear magnetic resonance imaging brain abnormal|Tracheostomy|Tracheobronchitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,96.0,23.9,1,200.0,8.37,PYREXIA,1,,200.0 MG,Pneumonia|Left ventricular hypertrophy|Nuclear magnetic resonance imaging brain abnormal|Tracheostomy|Tracheobronchitis
+8,Ибупрофен суппозитории 60 мг,ibuprofen,84.0,40.8,1,3.0,0.07,PYREXIA,1,,"3 CHEWABLE TABLETS, UNK",Glossodynia
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,48.0,2,200.0,4.17,HEADACHE,0,,200.0 MG,Throat irritation
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,46.3,2,400.0,8.64,OROPHARYNGEAL PAIN,0,048,400.0 MG,Contusion|Medication error
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,64.0,1,400.0,6.25,PAIN,0,048,400.0 MG,Seizure
+8,Ибупрофен суппозитории 60 мг,ibuprofen,24.0,10.5,2,100.0,9.52,PYREXIA,1,048,100.0 MG,Hypernatraemia|Blood chloride increased
+8,Ибупрофен суппозитории 60 мг,ibuprofen,180.0,52.0,2,600.0,11.54,PRODUCT USED FOR UNKNOWN INDICATION,0,,600.0 MG,Faecal calprotectin increased|Abdominal pain
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,65.8,2,800.0,12.17,,0,,800.0 MG,Muscle twitching|Weight increased|Menstruation irregular
+8,Ибупрофен суппозитории 60 мг,ibuprofen,216.0,78.5,1,600.0,7.64,PAIN,0,065,600.0 MG,Priapism|Vascular occlusion|Pain
+8,Ибупрофен суппозитории 60 мг,ibuprofen,204.0,57.0,2,60.0,1.05,PAIN IN EXTREMITY,0,048,60.0 MG,Ectopic pregnancy|Abortion spontaneous|Menorrhagia|Menorrhagia|Dizziness
+8,Ибупрофен суппозитории 60 мг,ibuprofen,48.0,24.0,1,10.0,0.42,PYREXIA,1,048,10 ML TWICE A DAY,Vomiting
+8,Ибупрофен суппозитории 60 мг,ibuprofen,48.0,24.0,1,10.0,0.42,,0,048,10.0 MG,Vomiting
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,17.8,1,540.0,30.34,,0,048,540.0 MG,Pulmonary thrombosis
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,84.0,29.0,2,10.0,0.34,PHARYNGITIS,0,048,"10 ML, TID",Pain in extremity|Loss of control of legs|Product contamination|Product odour abnormal
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,96.0,32.0,1,3.0,0.09,,0,048,"3 DF, UNK",Cellulitis
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,216.0,52.1,2,875.0,16.78,SINUSITIS,0,,875.0 MG,Transient ischaemic attack|Embolism arterial
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,60.0,16.0,2,1.0,0.06,SCARLET FEVER,1,,"1 DF, BID",Movement disorder|Nightmare|Enuresis
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,24.0,22.5,2,125.0,5.56,PRODUCT USED FOR UNKNOWN INDICATION,0,,125.0 MG,Cardiac arrest|Hypertension|Off label use
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,15.0,2,5.0,0.33,INFECTION,0,048,"5 ML, TID",Malaise
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,15.0,2,15.0,1.0,INFECTION,0,048,15 ML DAILY;,Malaise
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,17.0,2,18.0,1.06,TONSILLITIS,0,048,"18 ML, DAILY",Erythema marginatum
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,27.0,2,100.0,3.7,,0,,100 MG/KG PER DAY,Bone marrow failure|Haemoglobin decreased|Reticulocyte count decreased|White blood cell count decreased|Platelet count decreased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,132.0,54.8,1,500.0,9.12,APPENDICECTOMY,0,042,500.0 MG,Pallor|Infusion site vesicles|Catheter site swelling|Catheter site related reaction
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,132.0,54.8,1,500.0,9.12,APPENDICECTOMY,0,042,500.0 MG,Pallor|Catheter site related reaction|Infusion site vesicles|Catheter site swelling
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,1.0,4.3,2,215.0,50.0,,0,041,215MG EVERY FOUR HOURS,Off label use|Extravasation|Tachycardia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,1.0,4.3,2,215.0,50.0,SEPSIS,0,041,215MG EVERY FOUR HOURS,Off label use|Extravasation|Tachycardia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,0.23,3.6,1,180.0,50.56,AMNIOTIC CAVITY INFECTION,0,040,180.0 MG,Catheter site extravasation
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,0.23,3.7,2,374.0,100.0,SEPSIS,0,041,374.0 MG,Off label use|Injection site reaction
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,0.03,3.0,1,150.0,50.34,AMNIOTIC CAVITY INFECTION,0,040,150.0 MG,Extravasation|Off label use
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,17.0,1,125.0,7.35,OTITIS MEDIA,0,048,125.0 MG,Urticaria
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,38.6,2,500.0,12.96,TONSILLITIS,0,048,500.0 MG,Fatigue|Arthralgia|Pruritus|Musculoskeletal pain|Tendon disorder
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,132.0,34.8,1,500.0,14.37,,0,048,500.0 MG,Blood thyroid stimulating hormone increased|Vomiting|Scleroderma|Diarrhoea|Blood luteinising hormone decreased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,132.0,28.0,1,250.0,8.93,ANTIBIOTIC THERAPY,0,,250.0 MG,Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,72.0,25.0,2,125.0,5.0,UPPER RESPIRATORY TRACT INFECTION,0,048,125.0 MG,Leukopenia|Vomiting
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,72.0,20.0,1,125.0,6.25,UPPER RESPIRATORY TRACT INFECTION,0,048,125.0 MG,Product quality issue|Myalgia|Fatigue|Leukopenia|Myocardial necrosis marker increased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,216.0,61.2,2,1.0,0.02,INFECTION PROPHYLAXIS,0,048,1 CAPSULE,Menorrhagia|Anaemia|Restlessness|Abdominal pain|Crying
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,72.0,21.8,2,1.0,0.05,SINUSITIS,0,048,"1 DF, 1X/DAY:QD",Abdominal pain upper|Drug titration error|Drug effect decreased|Product quality issue
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,25.9,1,405.0,15.65,,0,048,400MG/5ML,Vasodilatation|Pulmonary hypertension|Hypoglycaemia|Aortic dilatation|Lung disorder
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,216.0,52.1,1,250.0,4.79,ASPLENIA,0,048,250.0 MG,Vascular bypass dysfunction|Gastrointestinal haemorrhage|Delayed recovery from anaesthesia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,24.0,16.3,2,680.0,41.62,EAR INFECTION,0,048,680.0 MG,Loss of consciousness|Seizure|Gait disturbance|Hypotonia|Asthenia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,14.1,1,400.0,28.45,,0,048,400.0 MG,Body temperature decreased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,84.0,22.7,2,1.0,0.04,LYMPH GLAND INFECTION,0,048,1 TSP TWICE DAILY TAKEN BY MOUTH,Joint swelling|Pruritus|Arthralgia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,132.0,33.6,2,250.0,7.44,PROPHYLAXIS,0,,250.0 MG,Hypersomnia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,84.0,24.1,2,405.0,16.83,PHARYNGITIS STREPTOCOCCAL,0,048,"400 MG/5 ML, 2.5 TSP",Adverse reaction|Tearfulness|Mood altered|Abnormal behaviour
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,33.0,11.7,1,805.0,68.8,PNEUMONIA,0,065,"400 MG/5 ML, BID DOSE:400 MILLIGRAM(S)/MILLILITRE",Pyrexia|Chills|Rhonchi
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,33.0,11.7,1,200.0,17.09,PNEUMONIA,0,065,200.0 MG,Pyrexia|Chills|Rhonchi
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,24.0,13.0,1,1.5,0.12,PRODUCT USED FOR UNKNOWN INDICATION,0,048,"1.5 DF, TOTAL",Urticaria|Medication error
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,96.0,17.0,1,10.0,0.59,,0,048,10ML ORAL THREE TIMES A DAY FOR 7 DAYS,Asthma
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,96.0,17.0,1,10.0,0.59,PRODUCT USED FOR UNKNOWN INDICATION,0,048,"10ML, TID.  FOR 7 DAYS",Asthma
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,49.9,2,500.0,10.02,PHARYNGITIS,0,048,500.0 MG,Pneumonia|Seizure|Renal failure
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,0.07,2.8,1,140.0,49.47,SEPSIS NEONATAL,0,040,140.0 MG,Off label use|Extravasation
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,96.0,44.0,1,15.0,0.34,,0,,15 ML DAILY;,Wheezing
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,96.0,44.0,1,5.0,0.11,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Wheezing
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,7.0,4.9,2,50.0,10.16,,0,065,50.0 MG,Urinary tract infection
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,7.0,4.9,2,75.0,15.24,PROPHYLAXIS,0,048,75.0 MG,Urinary tract infection
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,96.0,44.0,1,5.0,0.11,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Wheezing
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,168.0,84.5,2,875.0,10.36,SINUSITIS,0,048,875.0 MG,Rash
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,39.6,1,875.0,22.1,PHARYNGITIS,0,048,875.0 MG,Haematochezia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,216.0,104.0,1,1000.0,9.62,PHARYNGITIS,0,048,1G; 2X1,Nausea|Local swelling|Dizziness|Swelling face|Diarrhoea
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,12.0,10.0,2,100.0,10.0,SCARLET FEVER,1,048,100 MG/KG DAILY,Rash erythematous|Rash macular
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,3.8,1,250.0,65.45,BRONCHITIS,0,064,250.0 MG,Large for dates baby|Premature baby|Anxiety|Maternal exposure before pregnancy|Exposure via breast milk
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,3.8,1,250.0,65.45,,0,064,250.0 MG,Large for dates baby|Premature baby|Anxiety|Maternal exposure before pregnancy|Exposure via breast milk
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,12.0,10.6,1,4.0,0.38,Product used for unknown indication,0,065,"4 MILLILITER, 3 TIMES PER DAY",Gastroenteritis rotavirus|Dental caries
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,180.0,43.0,2,250.0,5.81,ALLERGY TEST,0,048,250.0 MG,Throat tightness|Rash
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,72.0,26.0,2,425.0,16.35,PHARYNGITIS STREPTOCOCCAL,0,048,425.0 MG,Urticaria|Serum ferritin increased|Arthralgia|Red blood cell sedimentation rate increased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,15.0,1,3.5,0.23,ANTIBIOTIC THERAPY,0,065,"3.5 CM3, QD",Cough|Sickle cell anaemia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,144.0,48.9,2,2000.0,40.9,PROPHYLAXIS,0,048,2000.0 MG,Wound secretion
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,6.0,11.0,2,65.0,5.91,BRONCHIOLITIS,0,048,65.0 MG,Respiratory rate increased|Heart rate increased|Granulocytopenia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,12.0,1.0,1,3.0,3.0,PNEUMONIA,0,048,3 DF DAILY,Rash maculo-papular|Condition aggravated
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,12.0,10.0,1,5.0,0.5,EAR INFECTION,0,048,"5ML, TWICE DAILY, TAKEN BY MOUTH",Urticaria
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,204.0,76.0,1,500.0,6.58,,0,048,500.0 MG,Alanine aminotransferase increased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,10.0,6.0,1,5.0,0.83,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Rash
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,16.0,2,15.0,0.94,,0,,15 ML DAILY;,Rash macular|Dyspnoea|Swelling face
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,16.0,2,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Dyspnoea|Swelling face|Rash macular
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,16.0,2,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Swelling face|Rash macular|Dyspnoea
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,120.0,34.0,1,2.0,0.06,PHARYNGITIS STREPTOCOCCAL,0,065,2 DAYS,Blood glucose increased
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,8.05,9.5,2,400.0,42.11,OTITIS MEDIA,0,048,400.0 MG,Product quality issue|Lung infection pseudomonal|Intentional product misuse|Cardio-respiratory arrest|Drug administered to patient of inappropriate age
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,48.0,16.0,2,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, 3 TIMES A DAY",Swelling face|Dyspnoea|Rash macular
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,14.0,2,5.0,0.36,URINARY TRACT INFECTION,0,048,"5 ML, TID",Productive cough|Abnormal behaviour|Aggression|Choking
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,0.0,9.5,2,1.0,0.11,PRODUCT USED FOR UNKNOWN INDICATION,0,,"1 DF, ONCE",Drug administered to patient of inappropriate age|Pseudomonas test positive|Respiratory failure|Cardio-respiratory arrest
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,156.0,63.0,2,2000.0,31.75,HELICOBACTER INFECTION,0,048,"2 G, QD",Dizziness|Syncope|Vision blurred|Presyncope
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,156.0,45.0,2,12.0,0.27,ACUTE SINUSITIS,0,048,"1 DF, EVERY 12 HOURS",Diarrhoea|Vomiting|Off label use|Nausea|Dyspnoea
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,156.0,63.0,2,2000.0,31.75,HELICOBACTER INFECTION,0,048,2 G DAILY,Syncope|Dizziness|Vision blurred|Presyncope
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,16.0,1,15.0,0.94,,0,,15 ML DAILY;,Psychomotor hyperactivity
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,16.0,1,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, 3 TIMES A DAY",Psychomotor hyperactivity
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,168.0,49.0,1,7.6,0.16,,0,,"7.6 ML, UNK",Hydrocephalus|Sepsis|Encephalitis|Brain oedema
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,3.0,6.0,2,7.5,1.25,COUGH,0,048,"7.5 ML, QD",Bronchiolitis|Drug ineffective
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,3.0,6.0,2,7.5,1.25,COUGH,0,048,"7.5 ML, DAILY",Drug ineffective|Bronchiolitis
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,14.0,1,30.0,2.14,,0,,"30 MG/KG, UNK",Decreased appetite|Tonsillitis|Angina pectoris|Weight decreased|Condition aggravated
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,60.0,16.8,1,400.0,23.81,PRODUCT USED FOR UNKNOWN INDICATION,0,048,400.0 MG,Hypersensitivity|Anaphylactic reaction|Cough|Urticaria
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,60.0,16.8,1,160.0,9.52,,0,048,160.0 MG,Hypersensitivity|Anaphylactic reaction|Cough|Urticaria
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,60.0,29.5,2,250.0,8.47,EAR INFECTION,0,,250ML/MG,Incorrect dose administered
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,12.0,10.9,1,400.0,36.7,SINUSITIS,0,048,400.0 MG,Crying|Flatulence|Erythema|Restlessness
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,192.0,57.7,1,2000.0,34.66,DENTAL CARE,0,048,2000.0 MG,Type 1 diabetes mellitus
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,0.56,4.0,2,2.0,0.49,URINARY TRACT INFECTION,0,048,"2 ML, BID",Vomiting|Product preparation error
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,36.0,15.4,1,7.5,0.49,OTITIS MEDIA,0,048,"7.5 ML, BID",Dyspnoea|Hypersensitivity|Eye swelling|Pyrexia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,24.0,12.0,1,5.0,0.42,EAR INFECTION,0,048,"5 ML, TID",Psychomotor hyperactivity|Insomnia
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,6.0,7.0,2,500.0,71.43,Sepsis,0,048,500.0 MG,Dermatitis allergic
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,72.0,18.0,1,5.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, 3 TIMES A DAY",Rash pruritic
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,168.0,63.5,1,500.0,7.87,LOWER RESPIRATORY TRACT INFECTION,0,048,500.0 MG,Epistaxis|Coagulation time prolonged
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,108.0,27.4,2,8.0,0.29,SICKLE CELL ANAEMIA,0,065,"ONE EVERY 8 HOURS ON MONDAYS, WEDNESDAYS AND FRIDAY.",Cholelithiasis|Bone pain|Infection|Sickle cell anaemia with crisis|Pain in extremity
+9,Амоксиклав суспензия 250мг+62.5мг/5мл,amoxicillin,12.0,11.3,1,405.0,35.68,PHARYNGITIS STREPTOCOCCAL,0,048,400 MG/5ML,Urticaria|Eye swelling|Swelling
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,17.8,1,540.0,30.34,,0,048,540.0 MG,Pulmonary thrombosis
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,84.0,29.0,2,10.0,0.34,PHARYNGITIS,0,048,"10 ML, TID",Pain in extremity|Loss of control of legs|Product contamination|Product odour abnormal
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,96.0,32.0,1,3.0,0.09,,0,048,"3 DF, UNK",Cellulitis
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,216.0,52.1,2,875.0,16.78,SINUSITIS,0,,875.0 MG,Transient ischaemic attack|Embolism arterial
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,60.0,16.0,2,1.0,0.06,SCARLET FEVER,1,,"1 DF, BID",Movement disorder|Nightmare|Enuresis
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,24.0,22.5,2,125.0,5.56,PRODUCT USED FOR UNKNOWN INDICATION,0,,125.0 MG,Cardiac arrest|Hypertension|Off label use
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,15.0,2,5.0,0.33,INFECTION,0,048,"5 ML, TID",Malaise
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,15.0,2,15.0,1.0,INFECTION,0,048,15 ML DAILY;,Malaise
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,17.0,2,18.0,1.06,TONSILLITIS,0,048,"18 ML, DAILY",Erythema marginatum
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,27.0,2,100.0,3.7,,0,,100 MG/KG PER DAY,Bone marrow failure|Haemoglobin decreased|Reticulocyte count decreased|White blood cell count decreased|Platelet count decreased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,132.0,54.8,1,500.0,9.12,APPENDICECTOMY,0,042,500.0 MG,Pallor|Infusion site vesicles|Catheter site swelling|Catheter site related reaction
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,132.0,54.8,1,500.0,9.12,APPENDICECTOMY,0,042,500.0 MG,Pallor|Catheter site related reaction|Infusion site vesicles|Catheter site swelling
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,1.0,4.3,2,215.0,50.0,,0,041,215MG EVERY FOUR HOURS,Off label use|Extravasation|Tachycardia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,1.0,4.3,2,215.0,50.0,SEPSIS,0,041,215MG EVERY FOUR HOURS,Off label use|Extravasation|Tachycardia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,0.23,3.6,1,180.0,50.56,AMNIOTIC CAVITY INFECTION,0,040,180.0 MG,Catheter site extravasation
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,0.23,3.7,2,374.0,100.0,SEPSIS,0,041,374.0 MG,Off label use|Injection site reaction
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,0.03,3.0,1,150.0,50.34,AMNIOTIC CAVITY INFECTION,0,040,150.0 MG,Extravasation|Off label use
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,17.0,1,125.0,7.35,OTITIS MEDIA,0,048,125.0 MG,Urticaria
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,38.6,2,500.0,12.96,TONSILLITIS,0,048,500.0 MG,Fatigue|Arthralgia|Pruritus|Musculoskeletal pain|Tendon disorder
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,132.0,34.8,1,500.0,14.37,,0,048,500.0 MG,Blood thyroid stimulating hormone increased|Vomiting|Scleroderma|Diarrhoea|Blood luteinising hormone decreased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,132.0,28.0,1,250.0,8.93,ANTIBIOTIC THERAPY,0,,250.0 MG,Hypocalcaemia|Off label use|Headache|Thrombotic thrombocytopenic purpura|Malignant hypertension
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,72.0,25.0,2,125.0,5.0,UPPER RESPIRATORY TRACT INFECTION,0,048,125.0 MG,Leukopenia|Vomiting
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,72.0,20.0,1,125.0,6.25,UPPER RESPIRATORY TRACT INFECTION,0,048,125.0 MG,Product quality issue|Myalgia|Fatigue|Leukopenia|Myocardial necrosis marker increased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,216.0,61.2,2,1.0,0.02,INFECTION PROPHYLAXIS,0,048,1 CAPSULE,Menorrhagia|Anaemia|Restlessness|Abdominal pain|Crying
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,72.0,21.8,2,1.0,0.05,SINUSITIS,0,048,"1 DF, 1X/DAY:QD",Abdominal pain upper|Drug titration error|Drug effect decreased|Product quality issue
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,25.9,1,405.0,15.65,,0,048,400MG/5ML,Vasodilatation|Pulmonary hypertension|Hypoglycaemia|Aortic dilatation|Lung disorder
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,216.0,52.1,1,250.0,4.79,ASPLENIA,0,048,250.0 MG,Vascular bypass dysfunction|Gastrointestinal haemorrhage|Delayed recovery from anaesthesia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,24.0,16.3,2,680.0,41.62,EAR INFECTION,0,048,680.0 MG,Loss of consciousness|Seizure|Gait disturbance|Hypotonia|Asthenia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,14.1,1,400.0,28.45,,0,048,400.0 MG,Body temperature decreased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,84.0,22.7,2,1.0,0.04,LYMPH GLAND INFECTION,0,048,1 TSP TWICE DAILY TAKEN BY MOUTH,Joint swelling|Pruritus|Arthralgia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,132.0,33.6,2,250.0,7.44,PROPHYLAXIS,0,,250.0 MG,Hypersomnia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,84.0,24.1,2,405.0,16.83,PHARYNGITIS STREPTOCOCCAL,0,048,"400 MG/5 ML, 2.5 TSP",Adverse reaction|Tearfulness|Mood altered|Abnormal behaviour
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,33.0,11.7,1,805.0,68.8,PNEUMONIA,0,065,"400 MG/5 ML, BID DOSE:400 MILLIGRAM(S)/MILLILITRE",Pyrexia|Chills|Rhonchi
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,33.0,11.7,1,200.0,17.09,PNEUMONIA,0,065,200.0 MG,Pyrexia|Chills|Rhonchi
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,24.0,13.0,1,1.5,0.12,PRODUCT USED FOR UNKNOWN INDICATION,0,048,"1.5 DF, TOTAL",Urticaria|Medication error
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,96.0,17.0,1,10.0,0.59,,0,048,10ML ORAL THREE TIMES A DAY FOR 7 DAYS,Asthma
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,96.0,17.0,1,10.0,0.59,PRODUCT USED FOR UNKNOWN INDICATION,0,048,"10ML, TID.  FOR 7 DAYS",Asthma
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,49.9,2,500.0,10.02,PHARYNGITIS,0,048,500.0 MG,Pneumonia|Seizure|Renal failure
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,0.07,2.8,1,140.0,49.47,SEPSIS NEONATAL,0,040,140.0 MG,Off label use|Extravasation
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,96.0,44.0,1,15.0,0.34,,0,,15 ML DAILY;,Wheezing
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,96.0,44.0,1,5.0,0.11,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Wheezing
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,7.0,4.9,2,50.0,10.16,,0,065,50.0 MG,Urinary tract infection
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,7.0,4.9,2,75.0,15.24,PROPHYLAXIS,0,048,75.0 MG,Urinary tract infection
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,96.0,44.0,1,5.0,0.11,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Wheezing
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,168.0,84.5,2,875.0,10.36,SINUSITIS,0,048,875.0 MG,Rash
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,39.6,1,875.0,22.1,PHARYNGITIS,0,048,875.0 MG,Haematochezia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,216.0,104.0,1,1000.0,9.62,PHARYNGITIS,0,048,1G; 2X1,Nausea|Local swelling|Dizziness|Swelling face|Diarrhoea
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,12.0,10.0,2,100.0,10.0,SCARLET FEVER,1,048,100 MG/KG DAILY,Rash erythematous|Rash macular
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,3.8,1,250.0,65.45,BRONCHITIS,0,064,250.0 MG,Large for dates baby|Premature baby|Anxiety|Maternal exposure before pregnancy|Exposure via breast milk
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,3.8,1,250.0,65.45,,0,064,250.0 MG,Large for dates baby|Premature baby|Anxiety|Maternal exposure before pregnancy|Exposure via breast milk
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,12.0,10.6,1,4.0,0.38,Product used for unknown indication,0,065,"4 MILLILITER, 3 TIMES PER DAY",Gastroenteritis rotavirus|Dental caries
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,180.0,43.0,2,250.0,5.81,ALLERGY TEST,0,048,250.0 MG,Throat tightness|Rash
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,72.0,26.0,2,425.0,16.35,PHARYNGITIS STREPTOCOCCAL,0,048,425.0 MG,Urticaria|Serum ferritin increased|Arthralgia|Red blood cell sedimentation rate increased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,15.0,1,3.5,0.23,ANTIBIOTIC THERAPY,0,065,"3.5 CM3, QD",Cough|Sickle cell anaemia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,144.0,48.9,2,2000.0,40.9,PROPHYLAXIS,0,048,2000.0 MG,Wound secretion
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,6.0,11.0,2,65.0,5.91,BRONCHIOLITIS,0,048,65.0 MG,Respiratory rate increased|Heart rate increased|Granulocytopenia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,12.0,1.0,1,3.0,3.0,PNEUMONIA,0,048,3 DF DAILY,Rash maculo-papular|Condition aggravated
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,12.0,10.0,1,5.0,0.5,EAR INFECTION,0,048,"5ML, TWICE DAILY, TAKEN BY MOUTH",Urticaria
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,204.0,76.0,1,500.0,6.58,,0,048,500.0 MG,Alanine aminotransferase increased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,10.0,6.0,1,5.0,0.83,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Rash
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,16.0,2,15.0,0.94,,0,,15 ML DAILY;,Rash macular|Dyspnoea|Swelling face
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,16.0,2,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Dyspnoea|Swelling face|Rash macular
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,16.0,2,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, TID",Swelling face|Rash macular|Dyspnoea
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,120.0,34.0,1,2.0,0.06,PHARYNGITIS STREPTOCOCCAL,0,065,2 DAYS,Blood glucose increased
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,8.05,9.5,2,400.0,42.11,OTITIS MEDIA,0,048,400.0 MG,Product quality issue|Lung infection pseudomonal|Intentional product misuse|Cardio-respiratory arrest|Drug administered to patient of inappropriate age
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,48.0,16.0,2,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, 3 TIMES A DAY",Swelling face|Dyspnoea|Rash macular
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,14.0,2,5.0,0.36,URINARY TRACT INFECTION,0,048,"5 ML, TID",Productive cough|Abnormal behaviour|Aggression|Choking
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,0.0,9.5,2,1.0,0.11,PRODUCT USED FOR UNKNOWN INDICATION,0,,"1 DF, ONCE",Drug administered to patient of inappropriate age|Pseudomonas test positive|Respiratory failure|Cardio-respiratory arrest
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,156.0,63.0,2,2000.0,31.75,HELICOBACTER INFECTION,0,048,"2 G, QD",Dizziness|Syncope|Vision blurred|Presyncope
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,156.0,45.0,2,12.0,0.27,ACUTE SINUSITIS,0,048,"1 DF, EVERY 12 HOURS",Diarrhoea|Vomiting|Off label use|Nausea|Dyspnoea
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,156.0,63.0,2,2000.0,31.75,HELICOBACTER INFECTION,0,048,2 G DAILY,Syncope|Dizziness|Vision blurred|Presyncope
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,16.0,1,15.0,0.94,,0,,15 ML DAILY;,Psychomotor hyperactivity
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,16.0,1,5.0,0.31,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, 3 TIMES A DAY",Psychomotor hyperactivity
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,168.0,49.0,1,7.6,0.16,,0,,"7.6 ML, UNK",Hydrocephalus|Sepsis|Encephalitis|Brain oedema
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,3.0,6.0,2,7.5,1.25,COUGH,0,048,"7.5 ML, QD",Bronchiolitis|Drug ineffective
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,3.0,6.0,2,7.5,1.25,COUGH,0,048,"7.5 ML, DAILY",Drug ineffective|Bronchiolitis
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,14.0,1,30.0,2.14,,0,,"30 MG/KG, UNK",Decreased appetite|Tonsillitis|Angina pectoris|Weight decreased|Condition aggravated
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,60.0,16.8,1,400.0,23.81,PRODUCT USED FOR UNKNOWN INDICATION,0,048,400.0 MG,Hypersensitivity|Anaphylactic reaction|Cough|Urticaria
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,60.0,16.8,1,160.0,9.52,,0,048,160.0 MG,Hypersensitivity|Anaphylactic reaction|Cough|Urticaria
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,60.0,29.5,2,250.0,8.47,EAR INFECTION,0,,250ML/MG,Incorrect dose administered
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,12.0,10.9,1,400.0,36.7,SINUSITIS,0,048,400.0 MG,Crying|Flatulence|Erythema|Restlessness
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,192.0,57.7,1,2000.0,34.66,DENTAL CARE,0,048,2000.0 MG,Type 1 diabetes mellitus
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,0.56,4.0,2,2.0,0.49,URINARY TRACT INFECTION,0,048,"2 ML, BID",Vomiting|Product preparation error
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,36.0,15.4,1,7.5,0.49,OTITIS MEDIA,0,048,"7.5 ML, BID",Dyspnoea|Hypersensitivity|Eye swelling|Pyrexia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,24.0,12.0,1,5.0,0.42,EAR INFECTION,0,048,"5 ML, TID",Psychomotor hyperactivity|Insomnia
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,6.0,7.0,2,500.0,71.43,Sepsis,0,048,500.0 MG,Dermatitis allergic
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,72.0,18.0,1,5.0,0.28,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"5 ML, 3 TIMES A DAY",Rash pruritic
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,168.0,63.5,1,500.0,7.87,LOWER RESPIRATORY TRACT INFECTION,0,048,500.0 MG,Epistaxis|Coagulation time prolonged
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,108.0,27.4,2,8.0,0.29,SICKLE CELL ANAEMIA,0,065,"ONE EVERY 8 HOURS ON MONDAYS, WEDNESDAYS AND FRIDAY.",Cholelithiasis|Bone pain|Infection|Sickle cell anaemia with crisis|Pain in extremity
+10,Амоксиклав суспензия 125мг+31.25мг/5мл,amoxicillin,12.0,11.3,1,405.0,35.68,PHARYNGITIS STREPTOCOCCAL,0,048,400 MG/5ML,Urticaria|Eye swelling|Swelling
+12,Зиртек капли 10мг/1мл,cetirizine,180.0,59.1,2,10.0,0.17,SEASONAL ALLERGY,0,048,10.0 MG,Pruritus|Drug withdrawal syndrome
+12,Зиртек капли 10мг/1мл,cetirizine,108.0,27.2,2,2.0,0.07,MULTIPLE ALLERGIES,0,048,2 TPS DAILY,Gastrooesophageal reflux disease|Dizziness|Headache|Malaise|Vomiting
+12,Зиртек капли 10мг/1мл,cetirizine,132.0,34.5,1,1.0,0.03,MULTIPLE ALLERGIES,0,065,1 TSP,Hallucination
+12,Зиртек капли 10мг/1мл,cetirizine,192.0,156.0,2,10.0,0.06,,0,,10.0 MG,Vocal cord paralysis|Off label use
+12,Зиртек капли 10мг/1мл,cetirizine,144.0,58.0,2,10.0,0.17,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10.0 MG,Drug abuse|Suicide attempt|Abdominal pain|Loss of consciousness|Headache
+12,Зиртек капли 10мг/1мл,cetirizine,216.0,68.3,2,10.0,0.15,PRODUCT USED FOR UNKNOWN INDICATION,0,,10.0 MG,Headache|Nausea
+12,Зиртек капли 10мг/1мл,cetirizine,204.0,71.7,1,10.0,0.14,SEASONAL ALLERGY,0,048,10.0 MG,Feeling abnormal|Confusional state|Fall|Dizziness|Convulsion
+12,Зиртек капли 10мг/1мл,cetirizine,60.0,15.0,1,0.25,0.02,PREMEDICATION,0,,"0.25 MG/KG, UNK",Varicella
+12,Зиртек капли 10мг/1мл,cetirizine,36.0,18.0,1,2.5,0.14,PRODUCT USED FOR UNKNOWN INDICATION,0,048,2.5 MG,Respiratory failure|Respiratory arrest
+12,Зиртек капли 10мг/1мл,cetirizine,48.0,30.0,1,5.0,0.17,PRODUCT USED FOR UNKNOWN INDICATION,0,048,"5 ML, QD",Cough
+12,Зиртек капли 10мг/1мл,cetirizine,144.0,42.0,1,10.0,0.24,,0,,10.0 MG,Hypersensitivity|Throat tightness|Lip swelling
+12,Зиртек капли 10мг/1мл,cetirizine,72.0,34.9,2,5.0,0.14,SEASONAL ALLERGY,0,048,5.0 MG,Abnormal loss of weight|Emotional disorder|Decreased appetite
+12,Зиртек капли 10мг/1мл,cetirizine,156.0,54.1,1,10.0,0.18,SEASONAL ALLERGY,0,048,10.0 MG,"Generalised tonic-clonic seizure|Hallucination, auditory|Anxiety|Psychotic disorder|Sleep terror"
+12,Зиртек капли 10мг/1мл,cetirizine,156.0,68.3,1,10.0,0.15,SEASONAL ALLERGY,0,048,10.0 MG,"Constipation|Feeling abnormal|Hallucinations, mixed|Sleep terror|Visual impairment"
+12,Зиртек капли 10мг/1мл,cetirizine,132.0,33.0,1,10.0,0.3,HYPERSENSITIVITY,0,048,10.0 MG,Amnesia|Pain
+12,Зиртек капли 10мг/1мл,cetirizine,9.0,3.4,2,10.0,2.94,PRODUCT USED FOR UNKNOWN INDICATION,0,064,10.0 MG,Foetal exposure during pregnancy|Atrial septal defect|Pulmonary artery stenosis congenital
+12,Зиртек капли 10мг/1мл,cetirizine,9.0,3.4,2,10.0,2.94,FOETAL EXPOSURE DURING PREGNANCY,0,064,"MATERNAL DOSE: 10 MG, QD",Atrial septal defect|Pulmonary artery stenosis|Foetal exposure during pregnancy
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,43.0,1,10.0,0.23,SEASONAL ALLERGY,0,048,10.0 MG,Fall|Upper limb fracture
+12,Зиртек капли 10мг/1мл,cetirizine,9.0,3.4,2,10.0,2.94,HYPERSENSITIVITY,0,064,10.0 MG,Maternal exposure during pregnancy|Atrial septal defect|Pulmonary artery stenosis congenital
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,18.6,1,3.0,0.16,MULTIPLE ALLERGIES,0,065,HALF TEASPOON SINCE 3 YEARS,Somnolence|Hallucination|Gait disturbance|Accidental exposure to product by child|Product packaging issue
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,52.6,1,5.0,0.1,,0,048,5.0 MG,Drooling|Musculoskeletal stiffness|Eye movement disorder|Muscle twitching|Excessive eye blinking
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,52.6,1,5.0,0.1,SEASONAL ALLERGY,0,048,5.0 MG,Drooling|Musculoskeletal stiffness|Eye movement disorder|Muscle twitching|Excessive eye blinking
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,52.6,1,5.0,0.1,NASAL CONGESTION,0,048,5.0 MG,Drooling|Musculoskeletal stiffness|Eye movement disorder|Muscle twitching|Excessive eye blinking
+12,Зиртек капли 10мг/1мл,cetirizine,192.0,65.4,1,10.0,0.15,CYSTIC FIBROSIS,0,048,10.0 MG,Oral candidiasis
+12,Зиртек капли 10мг/1мл,cetirizine,36.0,15.9,1,5.0,0.32,NASAL CONGESTION,0,048,".5 TSP, 1X/DAY",Post streptococcal glomerulonephritis|Infectious mononucleosis
+12,Зиртек капли 10мг/1мл,cetirizine,26.0,13.7,2,2.5,0.18,PREMEDICATION,0,,2.5 MG,Hypersensitivity
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,22.4,1,2.5,0.11,HYPERSENSITIVITY,0,048,2.5 MG,Red blood cell count decreased|White blood cell count decreased|Full blood count abnormal|Blood iron decreased|Serum ferritin decreased
+12,Зиртек капли 10мг/1мл,cetirizine,36.0,15.0,1,2.5,0.17,,0,048,"2.5 ML, ONCE",Sedation
+12,Зиртек капли 10мг/1мл,cetirizine,168.0,40.8,2,10.0,0.25,,0,048,10.0 MG,Coeliac disease
+12,Зиртек капли 10мг/1мл,cetirizine,60.0,23.3,2,2.5,0.11,RHINITIS ALLERGIC,0,,2.5 MG,Enterovirus infection|Pyrexia
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,26.3,2,10.0,0.38,URTICARIA,0,048,10 MLS ONCE DAILY AT BEDTIME  ONCE DAILY TAKEN BY MOUTH,Abnormal behaviour|Feeling abnormal|Fear of death|Dyspnoea|Suicidal ideation
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,26.3,2,10.0,0.38,SWOLLEN TONGUE,0,048,10 MLS ONCE DAILY AT BEDTIME  ONCE DAILY TAKEN BY MOUTH,Abnormal behaviour|Feeling abnormal|Fear of death|Dyspnoea|Suicidal ideation
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,26.3,2,10.0,0.38,HOUSE DUST ALLERGY,0,048,10 MLS ONCE DAILY AT BEDTIME  ONCE DAILY TAKEN BY MOUTH,Abnormal behaviour|Feeling abnormal|Fear of death|Dyspnoea|Suicidal ideation
+12,Зиртек капли 10мг/1мл,cetirizine,84.0,21.8,1,5.0,0.23,SEASONAL ALLERGY,0,048,"5 ML, AS REQ^D",Inappropriate schedule of drug administration|Aggression|Emotional disorder|Suicidal ideation
+12,Зиртек капли 10мг/1мл,cetirizine,36.0,16.3,1,5.0,0.31,SEASONAL ALLERGY,0,048,5.0 MG,Off label use|Aphasia
+12,Зиртек капли 10мг/1мл,cetirizine,180.0,46.3,2,10.0,0.22,SEASONAL ALLERGY,0,048,10.0 MG,Contusion|Medication error
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,44.0,1,10.0,0.23,HYPERSENSITIVITY,0,,"10 ML, QHS, ROUTE: GASTRIC TUBE",Incorrect product storage|Intestinal obstruction
+12,Зиртек капли 10мг/1мл,cetirizine,168.0,50.0,2,10.0,0.2,ECZEMA,0,048,10.0 MG,Cold urticaria|Joint effusion|Arthralgia|Injection site reaction
+12,Зиртек капли 10мг/1мл,cetirizine,216.0,55.0,2,1.0,0.02,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"1 DF, DAILY",Rash erythematous
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,7.0,2,1.5,0.21,,0,,"1.5 ML, BID",Contusion|Skin exfoliation|Platelet count increased|Petechiae|White blood cell count increased
+12,Зиртек капли 10мг/1мл,cetirizine,96.0,27.2,1,1.0,0.04,FOOD ALLERGY,0,,1 DOSES,Anaphylactic shock
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,7.0,2,3.0,0.43,,0,,3 ML DAILY;,Contusion|Skin exfoliation|White blood cell count increased|Platelet count increased|Petechiae
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,7.0,2,1.5,0.21,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"1.5 ML, TWO TIMES A DAY",Skin exfoliation|Contusion|Platelet count increased|Petechiae|Product use issue
+12,Зиртек капли 10мг/1мл,cetirizine,120.0,43.1,2,10.0,0.23,HYPERSENSITIVITY,0,048,10.0 MG,Multiple allergies|Nasopharyngitis|Off label use|Intentional product misuse|Wheezing
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,7.0,2,1.5,0.21,PRODUCT USED FOR UNKNOWN INDICATION,0,065,"1.5 ML, BID",Platelet count increased|Skin exfoliation|Petechiae|White blood cell count increased|Contusion
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,7.0,2,1.5,0.21,PRODUCT USED FOR UNKNOWN INDICATION,0,,"1.5 ML, BID",Platelet count increased|Petechiae|Contusion|White blood cell count increased|Skin exfoliation
+12,Зиртек капли 10мг/1мл,cetirizine,0.0,2.4,2,10.0,4.2,SEASONAL ALLERGY,0,064,10 MG AS REQUIRED,Oxygen saturation decreased|Foetal growth restriction|Sepsis neonatal|Jaundice neonatal|Neonatal respiratory distress syndrome
+12,Зиртек капли 10мг/1мл,cetirizine,72.0,26.3,2,1.0,0.04,PRODUCT USED FOR UNKNOWN INDICATION,0,048,1 TSP,Wrong technique in drug usage process|No adverse event|Product quality issue
+12,Зиртек капли 10мг/1мл,cetirizine,192.0,71.6,1,10.0,0.14,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10.0 MG,Pyrexia|Syncope|Dizziness
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,15.4,1,3.75,0.24,,0,,3.75 MG,Somnolence|Accidental overdose
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,12.2,1,2.5,0.2,,0,048,2.5 MG,Drug ineffective|Abnormal sleep-related event|Hypophagia|Abnormal behaviour|Crying
+12,Зиртек капли 10мг/1мл,cetirizine,12.0,12.2,1,2.5,0.2,,0,048,2.5 MG,Drug ineffective|Abnormal sleep-related event|Hypophagia|Abnormal behaviour|Crying
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,13.6,1,5.0,0.37,SEASONAL ALLERGY,0,048,"5 ML, AS NEEDED",Rash papular
+12,Зиртек капли 10мг/1мл,cetirizine,0.0,3.2,2,10.0,3.12,FOETAL EXPOSURE DURING PREGNANCY,0,048,10.0 MG,Exomphalos|Limb malformation|Foetal exposure during pregnancy|Congenital diaphragmatic hernia
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,11.3,2,2.5,0.22,NASOPHARYNGITIS,0,,"2.5 ML, TWICE",Rash|Off label use
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,14.5,1,10.0,0.69,,0,048,10.0 MG,Abnormal behaviour|Accidental overdose
+12,Зиртек капли 10мг/1мл,cetirizine,36.0,25.9,2,5.0,0.19,HYPERSENSITIVITY,0,048,5.0 MG,Accidental overdose|Somnolence
+12,Зиртек капли 10мг/1мл,cetirizine,36.0,25.9,2,10.0,0.39,SEASONAL ALLERGY,0,048,"10 ML, UNK",Accidental overdose|Somnolence
+12,Зиртек капли 10мг/1мл,cetirizine,60.0,22.2,2,5.0,0.23,HYPERSENSITIVITY,0,048,"5 ML, AS NEEDED",Accidental overdose|Somnolence
+12,Зиртек капли 10мг/1мл,cetirizine,60.0,22.2,2,10.0,0.45,SEASONAL ALLERGY,0,048,10.0 MG,Accidental overdose|Somnolence
+12,Зиртек капли 10мг/1мл,cetirizine,8.0,7.3,2,1.0,0.14,,0,,"1 TBSP, ONCE",Accidental overdose|Somnolence
+12,Зиртек капли 10мг/1мл,cetirizine,8.0,7.3,2,0.25,0.03,,0,,"0.25 TSP, AS NEEDED",Accidental overdose|Somnolence
+12,Зиртек капли 10мг/1мл,cetirizine,108.0,31.8,1,1.0,0.03,,0,048,"1 TSP, 1X/DAY",Psychomotor hyperactivity
+12,Зиртек капли 10мг/1мл,cetirizine,108.0,31.8,1,1.0,0.03,NASAL CONGESTION,0,048,"1 TSP, 1X/DAY",Psychomotor hyperactivity
+12,Зиртек капли 10мг/1мл,cetirizine,60.0,19.5,1,0.5,0.03,BRONCHIAL DISORDER,0,048,"0.5 TSP, UNK",Somnolence|Feeling abnormal|Accidental overdose|Epistaxis
+12,Зиртек капли 10мг/1мл,cetirizine,60.0,19.5,1,0.5,0.03,HYPERSENSITIVITY,0,048,"0.5 TSP, ONCE",Somnolence|Feeling abnormal|Accidental overdose|Epistaxis
+12,Зиртек капли 10мг/1мл,cetirizine,42.0,15.4,2,5.0,0.32,HYPERSENSITIVITY,0,048,"5 ML, 1X/DAY",Ear discomfort
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,13.6,2,2.5,0.18,SEASONAL ALLERGY,0,048,2.5 MG,Erythema|Rash papular|Rash macular|Flushing
+12,Зиртек капли 10мг/1мл,cetirizine,24.0,12.7,1,1.0,0.08,NASAL CONGESTION,0,048,1.0 MG,Pollakiuria
+12,Зиртек капли 10мг/1мл,cetirizine,216.0,95.8,1,10.0,0.1,PRODUCT USED FOR UNKNOWN INDICATION,0,048,10.0 MG,Drug dose omission|Pain|Haemorrhage
+14,АЦЦ 100мг порошок,acetylcysteine,24.0,11.6,2,400.0,34.57,PRODUCT USED FOR UNKNOWN INDICATION,0,065,400.0 MG,Respiratory syncytial virus bronchiolitis
+14,АЦЦ 100мг порошок,acetylcysteine,6.14,6.0,1,80.0,13.33,PNEUMONIA,0,048,80.0 MG,Gastrointestinal disorder|Pruritus|Restlessness|Papule
+14,АЦЦ 100мг порошок,acetylcysteine,12.0,8.0,2,2.0,0.25,Product used for unknown indication,0,055,2 ML/DAY,Respiratory failure|Asphyxia|Pneumonia|Upper respiratory tract inflammation|Asthma
+14,АЦЦ 100мг порошок,acetylcysteine,24.0,10.0,2,300.0,30.0,,0,042,300.0 MG,Cerebral haemorrhage|Pneumonia cytomegaloviral|Off label use
+14,АЦЦ 100мг порошок,acetylcysteine,180.0,70.0,1,600.0,8.57,PRODUCT USED FOR UNKNOWN INDICATION,0,048,600.0 MG,Tinnitus|Deafness
+14,АЦЦ 100мг порошок,acetylcysteine,180.0,55.0,2,2.5,0.05,HEPATOTOXICITY,0,065,2.5 HOURS POST PARACETAMOL INGESTION AT STANDARD DOSE,Drug ineffective|Overdose|Toxicity to various agents|Hepatotoxicity
+14,АЦЦ 100мг порошок,acetylcysteine,216.0,21.9,2,50.0,2.28,PRODUCT USED FOR UNKNOWN INDICATION,0,,50.0 MG,Myelopathy|Excessive granulation tissue|Tracheal stenosis|Tracheostomy|Cervical cord compression
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,61.0,2,6.25,0.1,TOXICITY TO VARIOUS AGENTS,0,042,6.25 MG/KG/H.,Anaphylactoid reaction
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,61.0,2,12.5,0.2,,0,042,12.5 MG/KG/H,Anaphylactoid reaction
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,61.0,2,6.25,0.1,ANALGESIC DRUG LEVEL INCREASED,0,042,6.25 MG/KG/H,Anaphylactoid reaction
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,48.3,2,150.0,3.11,VOMITING,0,042,150 MG/KG,Brain oedema|Therapeutic product effect incomplete|Brain death|Accidental overdose|Product use in unapproved indication
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,48.3,2,2484.4,51.44,,0,042,"1242.2 MG/KG, TOTAL OF 1242.2 MG/KG (60,000 MG) NAC",Brain oedema|Therapeutic product effect incomplete|Brain death|Accidental overdose|Product use in unapproved indication
+14,АЦЦ 100мг порошок,acetylcysteine,144.0,48.0,1,100.0,2.08,RESPIRATORY TRACT INFECTION,0,048,100.0 MG,Crohn^s disease
+14,АЦЦ 100мг порошок,acetylcysteine,18.0,10.0,1,150.0,15.0,TOXICITY TO VARIOUS AGENTS,0,,"150 MILLIGRAM/KILOGRAM, OVER ONE HOUR",Acute hepatic failure|Encephalopathy|Intracranial pressure increased|Metabolic acidosis|Product administration error
+14,АЦЦ 100мг порошок,acetylcysteine,18.0,10.0,1,50.0,5.0,,0,,"50 MILLIGRAM/KILOGRAM, OVER FOUR HOURS",Acute hepatic failure|Encephalopathy|Intracranial pressure increased|Metabolic acidosis|Product administration error
+14,АЦЦ 100мг порошок,acetylcysteine,18.0,10.0,1,100.0,10.0,,0,,"100 MILLIGRAM/KILOGRAM, OVER 16 HOURS",Acute hepatic failure|Encephalopathy|Intracranial pressure increased|Metabolic acidosis|Product administration error
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,48.0,2,1242.2,25.88,Vomiting,0,042,1242.2 MILLIGRAM/KILOGRAM,Accidental overdose|Brain death|Brain oedema|Product use in unapproved indication|Agitation
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,48.0,2,150.0,3.12,,0,042,150 MILLIGRAM/KILOGRAM,Accidental overdose|Brain death|Brain oedema|Product use in unapproved indication|Agitation
+14,АЦЦ 100мг порошок,acetylcysteine,20.0,10.8,2,150.0,13.89,Product used for unknown indication,0,065,150 MILLIGRAM/KILOGRAM (LOADING DOSE),Liver injury|Hepatic function abnormal|Toxicity to various agents|Hepatotoxicity
+14,АЦЦ 100мг порошок,acetylcysteine,20.0,10.8,2,50.0,4.63,,0,065,50 MILLIGRAM/KILOGRAM (OVER 4 HOURS),Liver injury|Hepatic function abnormal|Toxicity to various agents|Hepatotoxicity
+14,АЦЦ 100мг порошок,acetylcysteine,20.0,10.8,2,100.0,9.26,,0,065,100 MILLIGRAM/KILOGRAM (OVER 16 HOURS),Liver injury|Hepatic function abnormal|Toxicity to various agents|Hepatotoxicity
+14,АЦЦ 100мг порошок,acetylcysteine,180.0,74.7,2,600.0,8.04,Product used for unknown indication,0,048,600.0 MG,Rhabdomyolysis
+14,АЦЦ 100мг порошок,acetylcysteine,120.0,29.0,2,200.0,6.9,Sputum retention,0,048,200.0 MG,Abdominal distension|Steatorrhoea|Abdominal pain|Diarrhoea
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,51.0,2,3.0,0.06,Cystic fibrosis,0,048,USED IN THE PAST 3 MONTHS,Body temperature increased|Exercise tolerance decreased|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,96.0,31.0,2,10.0,0.32,,0,,10 % SOLUTION,Myalgia|Muscle spasms|Anxiety|Arthralgia|Precocious puberty
+14,АЦЦ 100мг порошок,acetylcysteine,180.0,35.0,2,200.0,5.71,Cystic fibrosis,0,048,200.0 MG,Body temperature increased|Vomiting|Oxygen saturation decreased|Respiration abnormal|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,96.0,28.0,1,600.0,21.43,,0,,600.0 MG,Alanine aminotransferase increased|Aspartate aminotransferase increased|Gamma-glutamyltransferase increased
+14,АЦЦ 100мг порошок,acetylcysteine,144.0,36.0,2,600.0,16.67,,0,,600.0 MG,Defiant behaviour|Intentional self-injury|Limb injury|Road traffic accident|Soft tissue injury
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,203.0,15.62,Product used for unknown indication,0,,"3 ML, BID (200 MG/ML (20 )",Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,300.0,23.08,,0,065,300.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,300.0,23.08,,0,065,300.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,300.0,23.08,,0,065,300.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,3.0,0.23,Product used for unknown indication,0,065,"3 ML, BID",Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,3.0,0.23,,0,065,"3 ML, BID",Respiratory failure|Pneumonia viral|Respiratory failure|Respiratory distress|Hypoxia
+14,АЦЦ 100мг порошок,acetylcysteine,72.0,19.1,1,200.0,10.47,Product used for unknown indication,0,050,10% 0.2 GM; PRN,Bacteraemia|Respiratory disorder|Off label use
+14,АЦЦ 100мг порошок,acetylcysteine,144.0,25.9,2,20.0,0.77,Product used for unknown indication,0,055,"20 %, 1X/DAY",Hospitalisation|COVID-19|Pneumonia bacterial|Wrong technique in product usage process|Off label use
+14,АЦЦ 100мг порошок,acetylcysteine,180.0,48.6,2,1000.0,20.58,Supplementation therapy,0,048,1000.0 MG,Tachycardia
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,203.0,15.62,Product used for unknown indication,0,,"3 ML, BID (200 MG/ML (20 )",Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,600.0,46.15,,0,065,600.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,300.0,23.08,,0,065,300.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,300.0,23.08,,0,065,300.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,300.0,23.08,,0,065,300.0 MG,Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,3.0,0.23,Product used for unknown indication,0,065,"3 ML, BID",Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,19.0,13.0,1,3.0,0.23,,0,065,"3 ML, BID",Respiratory failure|Pneumonia viral|Respiratory failure|Influenza|Respiratory syncytial virus infection
+14,АЦЦ 100мг порошок,acetylcysteine,12.0,12.0,1,100.0,8.33,Cough,0,048,100.0 MG,Pharyngeal haemorrhage|Pyrexia|Bronchitis|Ear infection|Conjunctivitis
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,67.0,2,150.0,2.24,Prophylaxis,0,,150.0 MG,Suicide attempt
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,67.0,2,50.0,0.75,,0,,50.0 MG,Suicide attempt
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,53.8,1,450.0,8.36,,0,042,450.0 MG,Cytokine release syndrome|Seizure|Febrile neutropenia|Tumour lysis syndrome|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,53.8,1,450.0,8.36,,0,042,450.0 MG,Cytokine release syndrome|Seizure|Febrile neutropenia|Tumour lysis syndrome|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,53.8,1,600.0,11.15,,0,042,600.0 MG,Cytokine release syndrome|Seizure|Febrile neutropenia|Tumour lysis syndrome|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,53.8,1,600.0,11.15,,0,042,600.0 MG,Cytokine release syndrome|Seizure|Febrile neutropenia|Tumour lysis syndrome|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,53.8,1,600.0,11.15,,0,042,600.0 MG,Cytokine release syndrome|Seizure|Febrile neutropenia|Tumour lysis syndrome|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,53.8,1,600.0,11.15,,0,042,600.0 MG,Cytokine release syndrome|Seizure|Febrile neutropenia|Tumour lysis syndrome|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,24.0,3.1,2,10.0,3.17,Product used for unknown indication,0,065,"10 MG/KG, QD",Atypical haemolytic uraemic syndrome|Renal failure|Pulmonary oedema|Thrombosis|Blood pressure increased
+14,АЦЦ 100мг порошок,acetylcysteine,84.0,15.0,1,200.0,13.33,,0,,200.0 MG,Hypertensive encephalopathy|Hypertensive crisis|Hypokalaemia|Metabolic acidosis
+14,АЦЦ 100мг порошок,acetylcysteine,144.0,39.0,1,600.0,15.38,Cystic fibrosis,0,048,600.0 MG,Hepatic failure|Portal hypertension|Drug ineffective
+14,АЦЦ 100мг порошок,acetylcysteine,60.0,18.0,2,180.0,10.0,Asthmatic crisis,0,048,180.0 MG,Supraventricular tachycardia
+14,АЦЦ 100мг порошок,acetylcysteine,60.0,18.0,2,180.0,10.0,Asthmatic crisis,0,042,180.0 MG,Supraventricular tachycardia
+14,АЦЦ 100мг порошок,acetylcysteine,12.0,11.0,1,0.5,0.05,Pneumonia,0,048,"0.5 BAGS, 2X/DAY",Rash vesicular|Skin lesion|Crying
+14,АЦЦ 100мг порошок,acetylcysteine,96.0,19.0,1,200.0,10.53,Cystic fibrosis,0,048,200.0 MG,Cough|Dyspnoea|Abdominal pain|Headache|Pyrexia
+14,АЦЦ 100мг порошок,acetylcysteine,168.0,120.0,2,1.0,0.01,Product used for unknown indication,0,042,"1 DOSAGE FORM, TOTAL",Face oedema|Rash
+14,АЦЦ 100мг порошок,acetylcysteine,24.0,3.1,2,10.0,3.17,Product used for unknown indication,0,065,"10 MG/KG, QD",Atypical haemolytic uraemic syndrome|Renal failure|Pulmonary oedema|Thrombosis|Blood pressure increased
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,71.0,2,300.0,4.23,,0,042,300.0 MG,Cytokine release syndrome
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,71.0,2,300.0,4.23,,0,042,300.0 MG,Cytokine release syndrome
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,71.0,2,300.0,4.23,,0,042,300.0 MG,Cytokine release syndrome
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,71.0,2,300.0,4.23,,0,042,300.0 MG,Cytokine release syndrome
+14,АЦЦ 100мг порошок,acetylcysteine,36.0,39.0,2,200.0,5.13,,0,,200.0 MG,Off label use|Bacterial disease carrier|Respiratory disorder|Pseudomonas infection|Staphylococcal infection
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,54.0,2,600.0,11.11,Product used for unknown indication,0,048,600.0 MG,Suicide attempt|Intentional overdose|Abdominal pain
+14,АЦЦ 100мг порошок,acetylcysteine,156.0,46.8,2,570.0,12.18,Product used for unknown indication,0,048,570.0 MG,Vomiting|Poisoning deliberate
+14,АЦЦ 100мг порошок,acetylcysteine,156.0,46.8,2,570.0,12.18,Product used for unknown indication,0,,570.0 MG,Poisoning deliberate|Vomiting
+14,АЦЦ 100мг порошок,acetylcysteine,156.0,46.8,2,570.0,12.18,Product used for unknown indication,0,048,570.0 MG,Poisoning deliberate|Vomiting
+14,АЦЦ 100мг порошок,acetylcysteine,156.0,46.8,2,570.0,12.18,Product used for unknown indication,0,048,570.0 MG,Vomiting|Poisoning deliberate
+14,АЦЦ 100мг порошок,acetylcysteine,0.0,58.0,2,1800.0,31.03,Productive cough,0,,1800.0 MG,Pneumonia|Atypical haemolytic uraemic syndrome|Pneumothorax|Septic shock|Neutropenia
+14,АЦЦ 100мг порошок,acetylcysteine,156.0,46.8,2,570.0,12.18,Product used for unknown indication,0,048,570.0 MG,Vomiting|Poisoning deliberate
+14,АЦЦ 100мг порошок,acetylcysteine,8.08,6.2,-1,150.0,24.19,Product used for unknown indication,0,,150.0 MG,Nephropathy toxic|Off label use
+14,АЦЦ 100мг порошок,acetylcysteine,144.0,46.3,2,200.0,4.32,,0,,200.0 MG,Urticaria|Dehydration|Haematocrit increased|Red blood cell count increased|White blood cell count decreased
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,65.3,1,1800.0,27.56,Duchenne muscular dystrophy,0,065,1800.0 MG,Sinusitis
+14,АЦЦ 100мг порошок,acetylcysteine,96.0,23.0,1,3.0,0.13,Productive cough,0,,3 MILLILITER,Chest discomfort|Dyspnoea
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,86.0,2,8600.0,100.0,OVERDOSE,0,042,8.6 G IV ONE TIME,DYSPNOEA|NAUSEA|PRURITUS GENERALISED|SWELLING FACE
+14,АЦЦ 100мг порошок,acetylcysteine,204.0,70.0,1,4000.0,57.14,OVERDOSE,0,042,3500 MG/ 500 ML ONCE OVER 4 HOURS IV,HEART RATE INCREASED|INFUSION RELATED REACTION|SINOATRIAL BLOCK
+14,АЦЦ 100мг порошок,acetylcysteine,168.0,60.0,2,15.0,0.25,OVERDOSE,0,042,"9,000 MG OVER 15 MINUTES IV",ANGIOEDEMA|INFUSION RELATED REACTION|RASH|WHEEZING
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,73.0,1,11.0,0.15,OVERDOSE,0,042,"11,000 MG IV",ANGIOEDEMA|INFUSION RELATED REACTION|RASH
+14,АЦЦ 100мг порошок,acetylcysteine,2.0,4.7,2,150.0,31.91,,0,042,"150 MG/KG, UNK",ACCIDENTAL OVERDOSE|DRUG TOXICITY|GRAND MAL CONVULSION|HYPONATRAEMIA
+14,АЦЦ 100мг порошок,acetylcysteine,2.0,4.7,2,50.0,10.64,,0,,"50 MG/KG, UNK",ACCIDENTAL OVERDOSE|DRUG TOXICITY|GRAND MAL CONVULSION|HYPONATRAEMIA
+14,АЦЦ 100мг порошок,acetylcysteine,2.0,4.7,2,100.0,21.28,,0,,"100 MG/KG, UNK",ACCIDENTAL OVERDOSE|DRUG TOXICITY|GRAND MAL CONVULSION|HYPONATRAEMIA
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,34.0,2,1.0,0.03,OVERDOSE,0,040,LOADING DOSE 1 IV BOLUS,ATRIAL FIBRILLATION|ATRIAL FLUTTER
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,34.0,2,6.25,0.18,,0,041,6.25 MG/KG/HR UNK IV DRIP,ATRIAL FIBRILLATION|ATRIAL FLUTTER
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,85.0,1,1300.0,15.29,OVERDOSE,0,040,1300 MG OVER 1 HOUR IV BOLUS,OXYGEN SATURATION DECREASED|TACHYCARDIA|DYSPNOEA|HYPOTENSION
+14,АЦЦ 100мг порошок,acetylcysteine,192.0,85.0,1,4250.0,50.0,,0,041,4250 MG OVER 4 HOURS IV DRIP,OXYGEN SATURATION DECREASED|TACHYCARDIA|DYSPNOEA|HYPOTENSION
+14,АЦЦ 100мг порошок,acetylcysteine,72.0,22.0,2,200.0,9.09,CARDIAC FAILURE,0,048,200.0 MG,Infective pulmonary exacerbation of cystic fibrosis|Bronchopneumonia
+14,АЦЦ 100мг порошок,acetylcysteine,216.0,86.0,2,150.0,1.74,OVERDOSE,0,040,150MG/KG ONE TIME IV BOLUS,PRURITUS|URTICARIA
+14,АЦЦ 100мг порошок,acetylcysteine,72.0,25.5,2,200.0,7.84,CYSTIC FIBROSIS,0,048,200.0 MG,Staphylococcal infection
+14,АЦЦ 100мг порошок,acetylcysteine,144.0,64.0,2,156.25,2.44,OVERDOSE,0,,150MG/KG 30M; 12.5FOR 4H 6.25 MG/KG QH FOR 40 H,TRANSAMINASES INCREASED|INTERNATIONAL NORMALISED RATIO INCREASED|ENCEPHALOPATHY
+14,АЦЦ 100мг порошок,acetylcysteine,132.0,43.6,2,600.0,13.76,PNEUMONIA,0,042,600.0 MG,Renal failure acute
+14,АЦЦ 100мг порошок,acetylcysteine,2.0,4.7,2,150.0,31.91,ANALGESIC DRUG LEVEL INCREASED,0,,150 mg/kg over 15 min,Hyponatraemia|Grand mal convulsion|Depressed level of consciousness|Hepatic encephalopathy|Accidental overdose
+14,АЦЦ 100мг порошок,acetylcysteine,2.0,4.7,2,50.0,10.64,,0,,50 mg/kg over 4 hours,Hyponatraemia|Grand mal convulsion|Depressed level of consciousness|Hepatic encephalopathy|Accidental overdose
+14,АЦЦ 100мг порошок,acetylcysteine,2.0,4.7,2,100.0,21.28,,0,,100 mg/kg over 16 hours,Hyponatraemia|Grand mal convulsion|Depressed level of consciousness|Hepatic encephalopathy|Accidental overdose
