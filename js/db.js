@@ -21,8 +21,7 @@ const DB = {
       await this.db.open();
       if (this.db.tables.length === 0) throw new Error('Tables not created');
     } catch (e) {
-      console.warn('DB init error, recreating:', e);
-      try { await this.db.delete(); } catch (_) {}
+      console.warn('DB init error, retrying without delete:', e);
       this.db = new Dexie('PediatricDoseDB_v2');
       this.db.version(1).stores({
         drugs: 'id, category_id, name',
