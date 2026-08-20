@@ -172,7 +172,8 @@
 
   function renderValidationLevels(drug, weight, result, ageMonths) {
     const container = $('validation-levels'), section = $('validation-section');
-    const l2 = Level2Rules.validate(drug, weight, result, ageMonths);
+    const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+    const l2 = Level2Rules.validate(drug, weight, result, ageMonths, patient?.allergies);
     let html = `<div class="validation-level"><span class="level-icon">${l2.status === 'pass' ? '✅' : '⚠️'}</span><div class="level-content"><div class="level-title">L2: Экспертная система (правила)</div>`;
     l2.checks.forEach(c => { const icon = c.status === 'pass' ? '✅' : c.status === 'error' ? '🚫' : 'ℹ️'; html += `<div class="level-desc">${icon} ${c.detail}</div>`; });
     html += `</div></div><div class="validation-level" id="l3-level"><span class="level-icon">⏳</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Загрузка данных...</div></div></div>

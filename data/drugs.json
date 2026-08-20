@@ -480,6 +480,7 @@
       "min_age_months": 3,
       "min_weight_kg": 4,
       "contraindications": "Аллергия на пенициллины.",
+      "allergens": ["пенициллин", "амоксициллин"],
       "instructions": "Внутрь. Детям до 2 лет: 20 мг/кг/сут в 3 приема. Детям 2-5 лет: по 125 мг 3 раза/сут. Детям 5-10 лет: по 250 мг 3 раза/сут. Детям старше 10 лет (масса тела более 40 кг): по 250-500 мг 3 раза/сут. Курс 5-12 дней.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=6b91ad37-320a-4348-a80a-0e881ccba8b0",
       "grls": {
@@ -528,6 +529,7 @@
       "min_age_months": 1,
       "min_weight_kg": 3,
       "contraindications": "Аллергия на пенициллины.",
+      "allergens": ["пенициллин", "амоксициллин"],
       "instructions": "Внутрь. Детям до 2 лет: 20 мг/кг/сут в 3 приема. Детям 2-5 лет: по 125 мг 3 раза/сут. Детям 5-10 лет: по 250 мг 3 раза/сут. Курс 5-12 дней.",
       "grls_link": "https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=6b91ad37-320a-4348-a80a-0e881ccba8b0",
       "grls": {

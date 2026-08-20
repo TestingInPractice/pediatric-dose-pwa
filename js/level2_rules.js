@@ -1,5 +1,5 @@
 const Level2Rules = {
-  validate(drug, weight, calculatedDose, patientAgeMonths) {
+  validate(drug, weight, calculatedDose, patientAgeMonths, patientAllergies) {
     const checks = [];
     let allPassed = true;
 
@@ -78,6 +78,36 @@ const Level2Rules = {
           title: 'Суточная доза',
           status: 'pass',
           detail: `В пределах нормы (макс: ${calculatedDose.max_dose_mg} мг/сут)`
+        });
+      }
+    }
+
+    if (Array.isArray(drug.allergens) && drug.allergens.length) {
+      if (patientAllergies && typeof patientAllergies === 'string' && patientAllergies.trim()) {
+        const text = patientAllergies.toLowerCase();
+        const matchedAllergen = drug.allergens.find(a => text.includes(a.toLowerCase()));
+        if (matchedAllergen) {
+          allPassed = false;
+          checks.push({
+            icon: '🚫',
+            title: 'Аллергия',
+            status: 'error',
+            detail: `У ребёнка указана аллергия: «${patientAllergies}». Препарат противопоказан (аллергия на ${matchedAllergen}).`
+          });
+        } else {
+          checks.push({
+            icon: '✅',
+            title: 'Аллергии',
+            status: 'pass',
+            detail: 'Аллергий, ограничивающих приём, не найдено'
+          });
+        }
+      } else {
+        checks.push({
+          icon: '✅',
+          title: 'Аллергии',
+          status: 'pass',
+          detail: 'Аллергий, ограничивающих приём, не найдено'
         });
       }
     }

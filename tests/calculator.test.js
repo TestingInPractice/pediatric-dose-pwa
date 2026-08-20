@@ -161,6 +161,61 @@ describe('Level2Rules — validation', () => {
     expect(v.status).toBe('warn');
     expect(v.checks.some(c => c.status === 'error' && c.title === 'Вес ниже минимального')).toBe(true);
   });
+
+  it('allergy: penicillin allergy → error for amoxiclav', () => {
+    const amoxiclav = { id: 9, name: 'Амоксиклав', contraindications: 'Аллергия на пенициллины.', allergens: ['пенициллин', 'амоксициллин'], mgs_var: 45, mgs_max: 90, mgs_range: '45 мг/кг/сут', min_age_months: 3, min_weight_kg: 4 };
+    const dose = Calculator.calculateDose(amoxiclav, 10);
+    const v = Level2Rules.validate(amoxiclav, 10, dose, 12, 'пенициллин');
+    expect(v.status).toBe('warn');
+    expect(v.checks.some(c => c.status === 'error' && c.title === 'Аллергия' && c.detail.includes('противопоказан'))).toBe(true);
+    expect(v.checks.some(c => c.status === 'pass' && c.title === 'Аллергии')).toBe(false);
+  });
+
+  it('allergy: plural «аллергия на пенициллины» still matches stem', () => {
+    const amoxiclav = { id: 9, name: 'Амоксиклав', contraindications: 'Аллергия на пенициллины.', allergens: ['пенициллин', 'амоксициллин'], mgs_var: 45, mgs_max: 90, mgs_range: '45 мг/кг/сут', min_age_months: 3, min_weight_kg: 4 };
+    const dose = Calculator.calculateDose(amoxiclav, 10);
+    const v = Level2Rules.validate(amoxiclav, 10, dose, 12, 'аллергия на пенициллины');
+    expect(v.status).toBe('warn');
+    expect(v.checks.some(c => c.status === 'error' && c.title === 'Аллергия')).toBe(true);
+  });
+
+  it('allergy: uppercase «ПЕНИЦИЛЛИН» matches (case-insensitive)', () => {
+    const amoxiclav = { id: 9, name: 'Амоксиклав', contraindications: 'Аллергия на пенициллины.', allergens: ['пенициллин', 'амоксициллин'], mgs_var: 45, mgs_max: 90, mgs_range: '45 мг/кг/сут', min_age_months: 3, min_weight_kg: 4 };
+    const dose = Calculator.calculateDose(amoxiclav, 10);
+    const v = Level2Rules.validate(amoxiclav, 10, dose, 12, 'ПЕНИЦИЛЛИН');
+    expect(v.status).toBe('warn');
+    expect(v.checks.some(c => c.status === 'error' && c.title === 'Аллергия')).toBe(true);
+  });
+
+  it('allergy: амоксициллин → error for amoxiclav', () => {
+    const amoxiclav = { id: 9, name: 'Амоксиклав', contraindications: 'Аллергия на пенициллины.', allergens: ['пенициллин', 'амоксициллин'], mgs_var: 45, mgs_max: 90, mgs_range: '45 мг/кг/сут', min_age_months: 3, min_weight_kg: 4 };
+    const dose = Calculator.calculateDose(amoxiclav, 10);
+    const v = Level2Rules.validate(amoxiclav, 10, dose, 12, 'амоксициллин');
+    expect(v.status).toBe('warn');
+    expect(v.checks.some(c => c.status === 'error' && c.title === 'Аллергия' && c.detail.includes('противопоказан'))).toBe(true);
+  });
+
+  it('allergy: empty string → no error, pass check for amoxiclav with allergens', () => {
+    const amoxiclav = { id: 9, name: 'Амоксиклав', contraindications: 'Аллергия на пенициллины.', allergens: ['пенициллин', 'амоксициллин'], mgs_var: 45, mgs_max: 90, mgs_range: '45 мг/кг/сут', min_age_months: 3, min_weight_kg: 4 };
+    const dose = Calculator.calculateDose(amoxiclav, 10);
+    const v = Level2Rules.validate(amoxiclav, 10, dose, 12, '');
+    expect(v.checks.some(c => c.status === 'error' && c.title === 'Аллергия')).toBe(false);
+    expect(v.checks.some(c => c.status === 'pass' && c.title === 'Аллергии' && c.detail.includes('Аллергий'))).toBe(true);
+  });
+
+  it('allergy: undefined patientAllergies → no error, pass check for amoxiclav with allergens', () => {
+    const amoxiclav = { id: 9, name: 'Амоксиклав', contraindications: 'Аллергия на пенициллины.', allergens: ['пенициллин', 'амоксициллин'], mgs_var: 45, mgs_max: 90, mgs_range: '45 мг/кг/сут', min_age_months: 3, min_weight_kg: 4 };
+    const dose = Calculator.calculateDose(amoxiclav, 10);
+    const v = Level2Rules.validate(amoxiclav, 10, dose, 12);
+    expect(v.checks.some(c => c.status === 'error' && c.title === 'Аллергия')).toBe(false);
+    expect(v.checks.some(c => c.status === 'pass' && c.title === 'Аллергии')).toBe(true);
+  });
+
+  it('regression: drug WITHOUT allergens + patientAllergies → no allergy check', () => {
+    const dose = Calculator.calculateDose(paracetamol120, 8);
+    const v = Level2Rules.validate(paracetamol120, 8, dose, 12, 'пенициллин');
+    expect(v.checks.some(c => c.title === 'Аллергия' || c.title === 'Аллергии')).toBe(false);
+  });
 });
 
 describe('Formula consistency across all drugs', () => {
