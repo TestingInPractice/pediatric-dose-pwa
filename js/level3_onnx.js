@@ -40,8 +40,8 @@
     return below / values.length;
   }
 
-  async function validate(drugId, ageMonths, weightKg, dosePerKg) {
-    const stats = await loadStats();
+  async function validate(drugId, ageMonths, weightKg, dosePerKg, drug) {
+    const stats = await L3.loadStats();
     if (!stats) {
       return { level: -1, message: 'L3: статистика не загружена', icon: '⏳' };
     }
@@ -52,6 +52,20 @@
 
     const genericName = ACTIVE_INGREDIENT[drugId];
     if (!genericName || !stats.by_generic[genericName]) {
+      if (drug && drug.mgs_range) {
+        const rangeMatch = drug.mgs_range.match(/([\d.]+)\s*-\s*([\d.]+)\s*мг\/кг/i);
+        if (rangeMatch) {
+          const minDose = parseFloat(rangeMatch[1]);
+          const maxDose = parseFloat(rangeMatch[2]);
+          if (dosePerKg < minDose) {
+            return { level: -1, message: `L3: доза ниже диапазона инструкции (${minDose}-${maxDose} мг/кг)`, icon: '⬇️', percentile: null };
+          } else if (dosePerKg > maxDose) {
+            return { level: 1, message: `L3: доза выше диапазона инструкции (${minDose}-${maxDose} мг/кг)`, icon: '⬆️', percentile: null };
+          } else {
+            return { level: 0, message: `L3: доза в пределах инструкции (${minDose}-${maxDose} мг/кг)`, icon: '✅', percentile: null };
+          }
+        }
+      }
       return { level: -1, message: 'L3: нет данных для этого препарата', icon: 'ℹ️' };
     }
 
@@ -109,4 +123,8 @@
   L3.getDrugIdForModel = getDrugIdForModel;
 
   window.L3 = L3;
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { L3 };
+  }
 })();

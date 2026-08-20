@@ -21,6 +21,8 @@ function loadModule(filePath) {
 
 const calcExports = loadModule(path.join(root, 'js', 'calculator.js'));
 const rulesExports = loadModule(path.join(root, 'js', 'level2_rules.js'));
+const l3Exports = loadModule(path.join(root, 'js', 'level3_onnx.js'));
 
 globalThis.Calculator = calcExports.Calculator;
 globalThis.Level2Rules = rulesExports.Level2Rules;
+globalThis.L3 = l3Exports.L3;

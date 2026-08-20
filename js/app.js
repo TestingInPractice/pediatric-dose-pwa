@@ -188,7 +188,7 @@
         if (dosePerKg > 0) {
           const drugId = L3.getDrugIdForModel(drug);
           if (drugId !== null) {
-            L3.validate(drugId, ageMonths, weight, dosePerKg).then(l3res => {
+            L3.validate(drugId, ageMonths, weight, dosePerKg, drug).then(l3res => {
               if (!l3res || l3res.level === -1) {
                 l3div.innerHTML = `<span class="level-icon">${l3res ? l3res.icon : '⏳'}</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">${l3res ? l3res.message : 'Статистика недоступна'}</div></div>`;
               } else {
@@ -302,7 +302,7 @@
         const dosePerKg = h.dose_mg / h.weight;
         if (dosePerKg > 0) {
           try {
-            const l3res = await L3.validate(drug.id, 0, h.weight, dosePerKg);
+            const l3res = await L3.validate(drug.id, 0, h.weight, dosePerKg, drug);
             if (l3res && l3res.level === 1) {
               l3Html = `<div class="tracker-alert danger">⬆️ L3: доза выше 95% реальных назначений (p${l3res.percentile}). Подтверждение заблокировано.</div>`;
               canConfirm = false;
