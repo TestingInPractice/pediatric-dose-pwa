@@ -21,7 +21,15 @@ const ibuprofen100 = {
 const cefekon50 = {
   id: 5, category_id: 3, name: 'Цефекон 50мг',
   dose_per_unit: 50, mgs_var: 12,
+  mgs_max: 60,
   high_range: true, high_modifier: 1.5
+};
+
+const ibuprofen60 = {
+  id: 8, category_id: 3, name: 'Ибупрофен 60мг',
+  dose_per_unit: 60, mgs_var: 5,
+  mgs_max: 30,
+  high_range: true, high_modifier: 2
 };
 
 describe('Calculator.calculateDose', () => {
@@ -118,6 +126,25 @@ describe('Calculator — Suppositories', () => {
   it('high dose: 0.7 × 1.5 = 1.05 → 1.1 шт', () => {
     const r = Calculator.calculateDose(cefekon50, 3);
     expect(r.suppositories_high).toBe(1.1);
+  });
+
+  it('Цефекон 50мг, 6 кг: max_dose_mg = 360, suppositories_max = 7.2', () => {
+    const r = Calculator.calculateDose(cefekon50, 6);
+    expect(r.max_dose_mg).toBe(360);
+    expect(r.suppositories_max).toBe(7.2);
+    expect(r.formula_parts.some(p => p.includes('360 мг = 7.2 шт'))).toBe(true);
+  });
+
+  it('Цефекон 50мг, 3 кг: max_dose_mg = 180, suppositories_max = 3.6', () => {
+    const r = Calculator.calculateDose(cefekon50, 3);
+    expect(r.max_dose_mg).toBe(180);
+    expect(r.suppositories_max).toBe(3.6);
+  });
+
+  it('Ибупрофен 60мг, 10 кг: suppositories_max = 5.0, max_dose_mg = 300', () => {
+    const r = Calculator.calculateDose(ibuprofen60, 10);
+    expect(r.max_dose_mg).toBe(300);
+    expect(r.suppositories_max).toBe(5);
   });
 });
 

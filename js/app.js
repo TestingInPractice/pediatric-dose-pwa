@@ -161,6 +161,7 @@
       html += UI.doseItem('Обычная доза (свечи)', result.suppositories_min + ' шт');
       html += UI.doseItem('Повышенная доза (свечи)', result.suppositories_high + ' шт');
     }
+    if (result.suppositories_max != null) html += UI.doseItem('Макс. в сутки (свечи)', result.suppositories_max + ' шт', true);
     if (result.max_dose_ml != null) html += UI.doseItem('Макс. в сутки (мл)', result.max_dose_ml + ' мл', true);
     if (result.formula_parts && result.formula_parts.length) html += `<div class="formula-box">${result.formula_parts.join('\n')}</div>`;
     if (drug.number_of_times_a_day) html += UI.doseItem('Кратность приёма', drug.number_of_times_a_day);
@@ -276,6 +277,26 @@
         intervalHtml = `<div class="tracker-alert info">ℹ️ Первый приём для этого ребёнка.</div>`;
       }
 
+      // Daily-max accumulation check
+      let dailyMaxHtml = '';
+      if (drug && drug.mgs_max != null && h.weight > 0 && patient) {
+        const maxMg = h.weight * drug.mgs_max;
+        const dailyConfirmed = await DB.getRecentConfirmed(patient.id, 24);
+        let confirmedMg = 0;
+        dailyConfirmed.forEach(r => {
+          if (r.drug_id === drug.id) {
+            if (r.dose_mg != null) confirmedMg += r.dose_mg;
+            else if (r.dose_qty != null) confirmedMg += r.dose_qty * drug.dose_per_unit;
+          }
+        });
+        const pendingMg = h.dose_mg != null ? h.dose_mg : (h.dose_qty != null ? h.dose_qty * drug.dose_per_unit : 0);
+        const totalMg = confirmedMg + pendingMg;
+        if (totalMg > maxMg) {
+          dailyMaxHtml = `<div class="tracker-alert danger">⬆️ Превышение суточной дозы: уже ${confirmedMg.toFixed(1)} мг, доза добавит ${pendingMg.toFixed(1)} мг, макс. ${maxMg.toFixed(1)} мг/сут</div>`;
+          canConfirm = false;
+        }
+      }
+
       // L3 check
       if (drug && h.dose_mg != null && h.weight > 0 && typeof L3 !== 'undefined' && L3.validate) {
         const dosePerKg = h.dose_mg / h.weight;
@@ -295,7 +316,7 @@
       }
 
       const confirmDisabled = !canConfirm;
-      return `<div class="pending-item card" data-id="${h.id}"><div class="card-body">${intervalHtml}${l3Html}
+      return `<div class="pending-item card" data-id="${h.id}"><div class="card-body">${intervalHtml}${dailyMaxHtml}${l3Html}
         <div class="confirm-detail-row"><span class="confirm-detail-label">Ребёнок</span><span class="confirm-detail-value">${patient ? patient.name : '—'}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Препарат</span><span class="confirm-detail-value">${h.drug_name || 'Препарат #' + h.drug_id}</span></div>
         <div class="confirm-detail-row"><span class="confirm-detail-label">Доза</span><span class="confirm-detail-value">${UI.formatDose(h)}</span></div>

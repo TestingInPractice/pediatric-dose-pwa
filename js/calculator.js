@@ -13,6 +13,7 @@ const Calculator = {
       max_dose_mg: null,
       suppositories_min: null,
       suppositories_high: null,
+      suppositories_max: null,
       formula_parts: []
     };
 
@@ -55,6 +56,14 @@ const Calculator = {
         `${weight} кг × ${drug.mgs_var} мг/кг = ${mg_dose_min} мг`,
         `${mg_dose_min} мг / ${drug.dose_per_unit} мг/свеча = ${result.suppositories_min} шт`
       );
+      if (drug.mgs_max != null) {
+        const max_dose_mg = +(weight * drug.mgs_max).toFixed(1);
+        result.max_dose_mg = max_dose_mg;
+        result.suppositories_max = +(max_dose_mg / drug.dose_per_unit).toFixed(1);
+        result.formula_parts.push(
+          `Макс. в сутки: ${weight} × ${drug.mgs_max} мг/кг = ${max_dose_mg} мг = ${result.suppositories_max} шт (${drug.dose_per_unit} мг/свеча)`
+        );
+      }
       return result;
     }
 
