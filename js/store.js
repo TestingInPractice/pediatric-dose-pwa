@@ -62,10 +62,19 @@
       });
     },
 
-    updateVersion() {
+    async updateVersion() {
       const badge = $('version-badge'), ver = $('data-version');
-      if (ver) ver.textContent = '1.0.0';
-      if (badge) badge.style.display = 'inline';
+      let v = localStorage.getItem('dose_pwa_data_version');
+      try {
+        const resp = await fetch('data/manifest.json?_=' + Date.now());
+        const manifest = await resp.json();
+        if (manifest.version) {
+          v = manifest.version;
+          localStorage.setItem('dose_pwa_data_version', v);
+        }
+      } catch (_) {}
+      if (v && ver) ver.textContent = v;
+      if (badge) badge.style.display = v ? 'inline' : 'none';
     },
 
     async loadPatients() {
