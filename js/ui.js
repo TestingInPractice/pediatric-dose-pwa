@@ -81,11 +81,12 @@
 
     formatDose(h) {
       if (!h) return '—';
+      const doseUnits = h.dose_units || 'мг';
       if (h.dose_form === 'суппозитории' && h.dose_qty != null) {
-        return `${h.dose_qty} шт (${h.dose_mg || '?'} мг)`;
+        return `${h.dose_qty} шт (${h.dose_mg || '?'} ${doseUnits})`;
       }
       const ml = h.dose_ml != null ? h.dose_ml + ' мл' : null;
-      const mg = h.dose_mg != null ? h.dose_mg + ' мг' : null;
+      const mg = h.dose_mg != null ? h.dose_mg + ' ' + doseUnits : null;
       if (ml && mg) return `${ml} · ${mg}`;
       return ml || mg || '—';
     }

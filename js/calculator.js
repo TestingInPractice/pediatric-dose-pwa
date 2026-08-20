@@ -18,6 +18,27 @@ const Calculator = {
 
     const isSuppository = drug.category_id === 3;
     const isFixed = drug.fixed_dose != null;
+    const isDoseFromTable = drug.dose_from_table && drug.dose_table && drug.dose_table.length > 0;
+    const units = drug.units || 'мг';
+
+    if (isDoseFromTable) {
+      const row = drug.dose_table.find(r => weight >= r.weight_min && weight < r.weight_max)
+        || drug.dose_table[drug.dose_table.length - 1];
+      result.standard_dose_ml = row.dose_ml;
+      result.standard_dose_mg = row.dose_mg;
+      result.units = units;
+      if (drug.mgs_max != null) {
+        result.max_dose_mg = drug.mgs_max;
+        if (drug.range2_dose) {
+          result.max_dose_ml = +(drug.mgs_max / drug.range2_dose).toFixed(2);
+        }
+      }
+      result.formula_parts.push(
+        `${row.weight_min}–${row.weight_max} кг: ${row.dose_mg} ${units}`,
+        `${row.dose_ml} мл (${drug.range2_dose} ${units}/мл)`
+      );
+      return result;
+    }
 
     if (isFixed) {
       result.standard_dose_ml = drug.fixed_dose;

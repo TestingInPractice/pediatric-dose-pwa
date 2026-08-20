@@ -145,3 +145,70 @@ describe('Formula consistency across all drugs', () => {
     });
   });
 });
+
+const aquadetrim = {
+  id: 15, category_id: 8, name: 'Аквадетрим капли 15000МЕ/мл',
+  form: 'капли',
+  dose_from_table: true, units: 'МЕ',
+  mls_var: 0.033, mgs_var: 500,
+  mgs_max: 1500, range2_dose: 15000,
+  high_range: true, high_modifier: 3,
+  mgs_range: '500-1000 МЕ/сут',
+  min_age_months: 0, min_weight_kg: 2,
+  dose_table: [
+    { weight_min: 2, weight_max: 5, dose_ml: 0.033, dose_mg: 500 },
+    { weight_min: 5, weight_max: 10, dose_ml: 0.033, dose_mg: 500 },
+    { weight_min: 10, weight_max: 15, dose_ml: 0.067, dose_mg: 1000 },
+    { weight_min: 15, weight_max: 25, dose_ml: 0.067, dose_mg: 1000 },
+    { weight_min: 25, weight_max: 40, dose_ml: 0.1, dose_mg: 1500 }
+  ]
+};
+
+describe('Calculator — Аквадетрим (dose_from_table)', () => {
+  it('weight 4 kg → 0.033 мл / 500 МЕ', () => {
+    const r = Calculator.calculateDose(aquadetrim, 4);
+    expect(r.standard_dose_ml).toBe(0.033);
+    expect(r.standard_dose_mg).toBe(500);
+    expect(r.units).toBe('МЕ');
+  });
+
+  it('weight 10 kg → 0.067 мл / 1000 МЕ', () => {
+    const r = Calculator.calculateDose(aquadetrim, 10);
+    expect(r.standard_dose_ml).toBe(0.067);
+    expect(r.standard_dose_mg).toBe(1000);
+    expect(r.units).toBe('МЕ');
+  });
+
+  it('weight 30 kg → 0.1 мл / 1500 МЕ', () => {
+    const r = Calculator.calculateDose(aquadetrim, 30);
+    expect(r.standard_dose_ml).toBe(0.1);
+    expect(r.standard_dose_mg).toBe(1500);
+    expect(r.units).toBe('МЕ');
+  });
+
+  it('max_dose_mg is absolute 1500 МЕ, max_dose_ml = 0.1', () => {
+    const r = Calculator.calculateDose(aquadetrim, 10);
+    expect(r.max_dose_mg).toBe(1500);
+    expect(r.max_dose_ml).toBe(0.1);
+  });
+
+  it('formula_parts contain "МЕ"', () => {
+    const r = Calculator.calculateDose(aquadetrim, 10);
+    expect(r.formula_parts.some(p => p.includes('МЕ'))).toBe(true);
+  });
+
+  it('does NOT use weight-proportional calculation', () => {
+    const r10 = Calculator.calculateDose(aquadetrim, 10);
+    expect(r10.standard_dose_mg).toBe(1000);
+    expect(r10.standard_dose_mg).not.toBe(5000);
+  });
+});
+
+describe('Regression — Paracetamol unchanged (no dose_from_table)', () => {
+  it('8 kg → 5.0 мл / 120 мг (not affected by dose_from_table changes)', () => {
+    const r = Calculator.calculateDose(paracetamol120, 8);
+    expect(r.standard_dose_ml).toBe(5.0);
+    expect(r.standard_dose_mg).toBe(120);
+    expect(r.units).toBeUndefined();
+  });
+});

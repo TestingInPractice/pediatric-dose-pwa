@@ -140,6 +140,7 @@
           patient_id: Store.currentPatientId, drug_id: drug.id, drug_name: drug.name,
           weight, dose_ml: result.standard_dose_ml, dose_mg: result.standard_dose_mg,
           dose_form: drug.form || null, dose_qty: result.suppositories_min || null,
+          dose_units: drug.units || 'мг',
           episode_id: episodeId
         });
         Store.currentResult.dbId = id;
@@ -152,8 +153,9 @@
     const patient = Store.patients.find(p => p.id === Store.currentPatientId);
     $('result-weight').textContent = patient ? `${patient.name}, ${weight} кг` : `Вес: ${weight} кг`;
     let html = '';
+    const doseUnits = drug.units || 'мг';
     if (result.standard_dose_ml != null) html += UI.doseItem('Стандартная доза (мл)', result.standard_dose_ml + ' мл');
-    if (result.standard_dose_mg != null) html += UI.doseItem('Стандартная доза (мг)', result.standard_dose_mg + ' мг');
+    if (result.standard_dose_mg != null) html += UI.doseItem(`Стандартная доза (${doseUnits})`, result.standard_dose_mg + ' ' + doseUnits);
     if (result.high_dose_ml != null) html += UI.doseItem('Повышенная доза (мл)', result.high_dose_ml + ' мл');
     if (result.suppositories_min != null) {
       html += UI.doseItem('Обычная доза (свечи)', result.suppositories_min + ' шт');
@@ -180,7 +182,8 @@
     const l3div = document.getElementById('l3-level');
     if (l3div) {
       if (typeof L3 !== 'undefined' && L3.validate) {
-        const dosePerKg = result.standard_dose_mg != null && weight > 0 ? result.standard_dose_mg / weight : 0;
+        const isNonMgUnits = drug.units != null && drug.units !== 'мг';
+        const dosePerKg = (!isNonMgUnits && result.standard_dose_mg != null && weight > 0) ? result.standard_dose_mg / weight : 0;
         if (dosePerKg > 0) {
           const drugId = L3.getDrugIdForModel(drug);
           if (drugId !== null) {
@@ -196,6 +199,8 @@
           } else {
             l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет данных FAERS для этого препарата</div></div>`;
           }
+        } else if (isNonMgUnits) {
+          l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет данных FAERS</div></div>`;
         } else {
           l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет дозы для анализа</div></div>`;
         }
@@ -210,7 +215,8 @@
     let html = '';
     if (drug.instructions) html += `<p style="margin-bottom:12px">${drug.instructions}</p>`;
     if (drug.dose_table && drug.dose_table.length) {
-      html += `<table class="instruction-table"><thead><tr><th>Вес (кг)</th><th>Доза (мл)</th><th>Доза (мг)</th></tr></thead><tbody>`;
+      const tableUnits = drug.units || 'мг';
+      html += `<table class="instruction-table"><thead><tr><th>Вес (кг)</th><th>Доза (мл)</th><th>Доза (${tableUnits})</th></tr></thead><tbody>`;
       let foundMatch = false;
       drug.dose_table.forEach(row => {
         const highlight = weight >= row.weight_min && weight < row.weight_max;
@@ -218,7 +224,7 @@
         const cls = highlight ? ' class="highlight-row"' : '';
         let doseDisplay = row.dose_ml;
         if (drug.form === 'суппозитории') { doseDisplay = row.dose_ml + ' свеча'; if (row.dose_ml > 1) doseDisplay += '(-и)'; }
-        html += `<tr${cls}><td>${row.weight_min}-${row.weight_max}</td><td>${doseDisplay}</td><td>${row.dose_mg} мг</td></tr>`;
+        html += `<tr${cls}><td>${row.weight_min}-${row.weight_max}</td><td>${doseDisplay}</td><td>${row.dose_mg} ${tableUnits}</td></tr>`;
       });
       if (!foundMatch) html += `<tr class="highlight-row"><td colspan="3">Ваш вес (${weight} кг) — сверьтесь с таблицей</td></tr>`;
       html += `</tbody></table>`;

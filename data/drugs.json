@@ -793,6 +793,8 @@
       "category_id": 8,
       "name": "Аквадетрим капли 15000МЕ/мл",
       "form": "капли",
+      "dose_from_table": true,
+      "units": "МЕ",
       "mls_var": 0.033,
       "mgs_var": 500,
       "mgs_range": "500-1000 МЕ/сут",
