@@ -13,6 +13,7 @@
     historyFilterDays: null,
     historySearchQuery: null,
     historyDateFilter: null,
+    historyPatientFilter: null,
     diaryPatientId: null,
     diaryActiveEpisode: null,
 

@@ -505,16 +505,25 @@
       });
     });
 
+    $('history-patient-filters').addEventListener('click', e => {
+      const chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+      Store.historyPatientFilter = chip.dataset.patient === '' ? null : parseInt(chip.dataset.patient, 10);
+      renderHistory();
+    });
+
     $('hist-mode-drugs').addEventListener('click', () => {
       $('hist-mode-drugs').classList.add('active');
       $('hist-mode-episodes').classList.remove('active');
       $('history-filters').classList.remove('hidden');
+      $('history-export-btn').style.display = '';
       renderHistory();
     });
     $('hist-mode-episodes').addEventListener('click', () => {
       $('hist-mode-episodes').classList.add('active');
       $('hist-mode-drugs').classList.remove('active');
       $('history-filters').classList.add('hidden');
+      $('history-export-btn').style.display = 'none';
       renderEpisodesList();
     });
 
@@ -538,31 +547,138 @@
       Store.historyDateFilter = null;
       renderHistory();
     });
+
+    $('history-export-btn').addEventListener('click', async () => {
+      try {
+        const all = await DB.getHistory(200);
+        const filtered = applyHistoryFilters(all);
+        if (!filtered.length) { alert('Нет записей для экспорта'); return; }
+        printHtml(buildHistoryExportHtml(filtered));
+      } catch (e) {
+        console.warn('Export error:', e);
+        alert('Не удалось сформировать экспорт');
+      }
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function buildHistoryExportHtml(filtered) {
+    const patient = Store.historyPatientFilter != null
+      ? Store.patients.find(p => p.id === Store.historyPatientFilter)
+      : null;
+    const childSuffix = patient ? ` — ${patient.name}` : '';
+    const docTitle = `История приёмов${childSuffix}`;
+    const childrenLine = patient ? `Ребёнок: ${escapeHtml(patient.name)}` : 'Дети: Все дети';
+    const generatedAt = new Date().toLocaleString('ru-RU');
+
+    const grouped = {};
+    filtered.forEach(h => { const day = h.timestamp ? h.timestamp.slice(0, 10) : 'unknown'; if (!grouped[day]) grouped[day] = []; grouped[day].push(h); });
+    const days = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
+
+    const sections = days.map(day => {
+      const rows = grouped[day].map(h => {
+        const p = Store.patients.find(pt => pt.id === h.patient_id);
+        const childCell = patient ? '' : `<td>${p ? escapeHtml(p.name) : '—'}</td>`;
+        return `<tr>
+          <td class="t">${UI.formatTime(h.timestamp)}</td>
+          <td><strong>${escapeHtml(h.drug_name || 'Препарат')}</strong></td>
+          <td>${UI.formatDose(h)}</td>
+          ${childCell}
+          <td>✅ Принято</td>
+        </tr>`;
+      }).join('');
+      return `<h2>${UI.formatDayLabel(day)}</h2>
+        <table>
+          <thead><tr><th class="t">Время</th><th>Препарат</th><th>Доза</th>${patient ? '' : '<th>Ребёнок</th>'}<th>Статус</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }).join('');
+
+    return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>${escapeHtml(docTitle)}</title>
+<style>
+  @page { margin: 14mm; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color: #1a1a1a; margin: 0; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { font-size: 12px; color: #555; margin: 0 0 16px; line-height: 1.5; }
+  h2 { font-size: 14px; margin: 18px 0 6px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 8px; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+  th { font-weight: 600; font-size: 12px; color: #444; background: #f7f7f7; }
+  td.t, th.t { white-space: nowrap; width: 52px; }
+</style>
+</head>
+<body>
+  <h1>📜 История приёмов</h1>
+  <p class="subtitle">
+    ${childrenLine}<br>
+    Период: ${historyPeriodLabel()}<br>
+    Сформировано: ${generatedAt}
+  </p>
+  ${sections}
+</body>
+</html>`;
+  }
+
+  function applyHistoryFilters(all) {
+    let filtered = all;
+    if (Store.historyFilterDays) {
+      const cutoff = Date.now() - Store.historyFilterDays * 86400000;
+      filtered = filtered.filter(h => new Date(h.timestamp).getTime() >= cutoff);
+    }
+    if (Store.historyDateFilter) {
+      const d = Store.historyDateFilter;
+      filtered = filtered.filter(h => h.timestamp && h.timestamp.slice(0, 10) === d);
+    }
+    if (Store.historyPatientFilter != null) {
+      filtered = filtered.filter(h => h.patient_id === Store.historyPatientFilter);
+    }
+    if (Store.historySearchQuery) {
+      const q = Store.historySearchQuery;
+      filtered = filtered.filter(h => {
+        const drug = (h.drug_name || '').toLowerCase();
+        const patient = h.patient_id ? (Store.patients.find(p => p.id === h.patient_id)?.name || '').toLowerCase() : '';
+        return drug.includes(q) || patient.includes(q) || (h.dose_ml && h.dose_ml.toString().includes(q));
+      });
+    }
+    return filtered;
+  }
+
+  function historyPeriodLabel() {
+    if (Store.historyDateFilter) {
+      const parts = Store.historyDateFilter.split('-');
+      return `Дата: ${parts[2]}.${parts[1]}.${parts[0]}`;
+    }
+    if (Store.historyFilterDays === 1) return 'Сегодня';
+    if (Store.historyFilterDays === 7) return 'За 7 дней';
+    if (Store.historyFilterDays === 30) return 'За 30 дней';
+    return 'Всё время';
+  }
+
+  function renderHistoryPatientChips() {
+    const box = $('history-patient-filters');
+    if (!box) return;
+    let html = `<button class="filter-chip${Store.historyPatientFilter == null ? ' active' : ''}" data-patient="">👶 Все дети</button>`;
+    Store.patients.forEach(p => {
+      html += `<button class="filter-chip${Store.historyPatientFilter === p.id ? ' active' : ''}" data-patient="${p.id}">${escapeHtml(p.name)}</button>`;
+    });
+    box.innerHTML = html;
   }
 
   function renderHistory() {
+    renderHistoryPatientChips();
     if ($('hist-mode-episodes').classList.contains('active')) { renderEpisodesList(); return; }
 
     DB.getHistory(200).then(all => {
       const container = $('history-list');
       container.innerHTML = '';
-      let filtered = all;
-      if (Store.historyFilterDays) {
-        const cutoff = Date.now() - Store.historyFilterDays * 86400000;
-        filtered = all.filter(h => new Date(h.timestamp).getTime() >= cutoff);
-      }
-      if (Store.historyDateFilter) {
-        const d = Store.historyDateFilter;
-        filtered = filtered.filter(h => h.timestamp && h.timestamp.slice(0, 10) === d);
-      }
-      if (Store.historySearchQuery) {
-        const q = Store.historySearchQuery;
-        filtered = filtered.filter(h => {
-          const drug = (h.drug_name || '').toLowerCase();
-          const patient = h.patient_id ? (Store.patients.find(p => p.id === h.patient_id)?.name || '').toLowerCase() : '';
-          return drug.includes(q) || patient.includes(q) || (h.dose_ml && h.dose_ml.toString().includes(q));
-        });
-      }
+      const filtered = applyHistoryFilters(all);
       if (!filtered.length) { container.innerHTML = '<p class="text-muted">Нет записей за этот период</p>'; return; }
 
       const grouped = {};
@@ -593,6 +709,7 @@
   }
 
   async function renderEpisodesList() {
+    renderHistoryPatientChips();
     const container = $('history-list');
     container.innerHTML = '<div class="spinner" style="margin:20px auto"></div>';
 
@@ -602,6 +719,9 @@
       const eps = await DB.getEpisodes(p.id);
       eps.forEach(e => { e._patient = p; });
       allEpisodes = allEpisodes.concat(eps);
+    }
+    if (Store.historyPatientFilter != null) {
+      allEpisodes = allEpisodes.filter(ep => ep.patient_id === Store.historyPatientFilter);
     }
     allEpisodes.sort((a, b) => (a.startDate < b.startDate ? 1 : -1));
 

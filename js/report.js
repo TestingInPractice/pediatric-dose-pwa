@@ -262,4 +262,5 @@
   }
 
   window.generateReport = generateReport;
+  window.printHtml = printReport;
 })();

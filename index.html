@@ -101,6 +101,7 @@
               <button class="filter-chip active" id="hist-mode-drugs" data-mode="drugs">💊 Препараты</button>
               <button class="filter-chip" id="hist-mode-episodes" data-mode="episodes">📋 Эпизоды</button>
             </div>
+            <div class="history-filters" id="history-patient-filters" style="margin-bottom:10px"></div>
             <div class="history-filters" id="history-filters">
               <button class="filter-chip active" data-days="">Всё</button>
               <button class="filter-chip" data-days="1">Сегодня</button>
@@ -112,6 +113,7 @@
               <input type="date" id="history-date" class="form-input" style="flex:0 0 auto;width:140px;font-size:14px;padding:8px 10px">
               <button id="history-date-clear" class="btn btn-sm btn-secondary" style="padding:8px 10px">✕</button>
             </div>
+            <button id="history-export-btn" class="btn btn-secondary btn-block" style="margin-bottom:10px">⬇️ Экспорт в PDF</button>
             <div id="history-list"><p class="text-muted">История пуста</p></div>
           </div>
         </div>
