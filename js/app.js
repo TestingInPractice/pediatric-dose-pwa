@@ -38,6 +38,7 @@
         if (btn.dataset.screen === 'profiles') renderPatientsList();
         if (btn.dataset.screen === 'history') renderHistory();
         if (btn.dataset.screen === 'diary') DiaryScreen.render();
+        if (btn.dataset.screen === 'drugs') DrugsScreen.render();
         if (btn.dataset.screen === 'confirm') renderConfirmScreen();
         if (btn.dataset.screen === 'calculator') {
           Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
