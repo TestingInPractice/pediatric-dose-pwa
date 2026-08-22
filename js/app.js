@@ -754,6 +754,16 @@
     $('uninstall-modal').addEventListener('click', e => { if (e.target === $('uninstall-modal')) closeUninstallModal(); });
     $('import-btn').addEventListener('click', () => $('import-file').click());
     $('import-file').addEventListener('change', handleImportFile);
+    $('donate-btn').addEventListener('click', () => {
+      UI.openModal('💜 Поддержать проект', `
+        <p style="margin:0 0 12px;line-height:1.5">Приложение полностью бесплатное, без рекламы и сборов данных — всё считается на вашем устройстве.</p>
+        <p style="margin:0 0 16px;line-height:1.5">Если оно было полезным, вы можете поддержать разработку:</p>
+        <a href="https://pay.cloudtips.ru/p/866cf60d" target="_blank" rel="noopener" class="btn btn-primary btn-block" style="text-decoration:none">💜 Поддержать через CloudTips</a>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="donate-close">Закрыть</button>
+        </div>`);
+      $('donate-close').onclick = UI.closeModal;
+    });
     $('update-btn').addEventListener('click', async () => {
       $('update-btn').textContent = '⏳ Очистка кэша...'; $('update-btn').disabled = true;
       try {
