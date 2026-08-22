@@ -1,6 +1,62 @@
 (function () {
   'use strict';
 
+  const PERIODS = [
+    { days: 0, chip: 'Всё время', label: 'Всё время' },
+    { days: 3, chip: '3 дня', label: 'последние 3 дня' },
+    { days: 7, chip: '7 дней', label: 'последние 7 дней' },
+    { days: 30, chip: '30 дней', label: 'последние 30 дней' }
+  ];
+
+  // Данные загружаются один раз за generateReport(); чипы только перефильтровывают их.
+  let reportState = null;
+
+  function periodLabel(days) {
+    const p = PERIODS.find(x => x.days === days);
+    return p ? p.label : PERIODS[0].label;
+  }
+
+  // Чистый хелпер: возвращает отфильтрованные КОПИИ (сырые массивы не мутируются —
+  // билдеры сортируют массивы на месте).
+  function applyPeriod(history, symptoms, episodes, periodDays) {
+    if (!periodDays) {
+      return { history: [...history], symptoms: [...symptoms], episodes: [...episodes] };
+    }
+    const nowMs = Date.now();
+    const cutoff = nowMs - periodDays * 86400000;
+
+    // Неразбираемая/отсутствующая дата → сохраняем запись (не теряем данные молча).
+    const inWindow = (ts) => {
+      if (ts == null) return true;
+      const t = new Date(ts).getTime();
+      return isNaN(t) ? true : t >= cutoff;
+    };
+
+    // Эпизод пересекает окно [cutoff, now]: startDate <= now И (endDate == null ИЛИ endDate >= cutoff)
+    const intersects = (ep) => {
+      let start = ep.startDate == null ? NaN : new Date(ep.startDate).getTime();
+      if (isNaN(start)) start = -Infinity; // нет/битая дата начала → считаем пересекающимся
+      if (start > nowMs) return false;
+      if (ep.endDate == null) return true;
+      const end = new Date(ep.endDate).getTime();
+      return isNaN(end) ? true : end >= cutoff; // битая дата конца → считаем пересекающимся
+    };
+
+    const keptHistory = history.filter(h => inWindow(h.timestamp));
+    const keptSymptoms = symptoms.filter(s => inWindow(s.timestamp));
+
+    const keptEpisodes = [];
+    episodes.forEach(ep => {
+      if (!intersects(ep)) return;
+      const hasContent =
+        keptHistory.some(h => h.episode_id === ep.id) ||
+        keptSymptoms.some(s => s.episode_id === ep.id);
+      if (hasContent) keptEpisodes.push(ep);
+    });
+
+    return { history: keptHistory, symptoms: keptSymptoms, episodes: keptEpisodes };
+  }
+
   async function generateReport(patient) {
     if (!patient) return;
     const [history, episodes, symptoms] = await Promise.all([
@@ -9,11 +65,30 @@
       DB.getSymptoms(patient.id, null, 500)
     ]);
 
-    const age = UI.calcAge(patient.birthDate);
-    const text = buildTextReport(patient, age, episodes, history, symptoms);
-    const html = buildHtmlReport(patient, age, episodes, history, symptoms);
+    reportState = {
+      patient,
+      age: UI.calcAge(patient.birthDate),
+      rawHistory: history,
+      rawEpisodes: episodes,
+      rawSymptoms: symptoms,
+      periodDays: 0
+    };
+    renderReportModal();
+  }
 
-    UI.openModal('📋 Доктор-репорт', `<textarea class="form-input" style="min-height:200px;resize:vertical;font-size:13px;font-family:monospace" readonly>${text}</textarea>
+  function renderReportModal() {
+    const { patient, age, rawHistory, rawEpisodes, rawSymptoms, periodDays } = reportState;
+    const { history, symptoms, episodes } = applyPeriod(rawHistory, rawSymptoms, rawEpisodes, periodDays);
+
+    const text = buildTextReport(patient, age, episodes, history, symptoms, periodLabel(periodDays));
+    const html = buildHtmlReport(patient, age, episodes, history, symptoms, periodLabel(periodDays));
+
+    const chipsHtml = PERIODS.map(p =>
+      `<button class="filter-chip${p.days === periodDays ? ' active' : ''}" data-days="${p.days}">${p.chip}</button>`
+    ).join('');
+
+    UI.openModal('📋 Доктор-репорт', `<div class="history-filters" id="report-period-chips">${chipsHtml}</div>
+      <textarea class="form-input" style="min-height:200px;resize:vertical;font-size:13px;font-family:monospace" readonly>${text}</textarea>
       <div class="modal-actions">
         <button class="btn btn-secondary" id="report-close">Закрыть</button>
         <button class="btn btn-primary" id="report-copy">📋 Копировать</button>
@@ -21,6 +96,14 @@
       </div>`);
 
     $('report-close').onclick = UI.closeModal;
+
+    $('report-period-chips').addEventListener('click', (e) => {
+      const chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+      reportState.periodDays = Number(chip.dataset.days) || 0;
+      renderReportModal();
+    });
+
     $('report-copy').onclick = async () => {
       try {
         await navigator.clipboard.writeText(text);
@@ -33,7 +116,7 @@
     $('report-print').onclick = () => printReport(html);
   }
 
-  function buildTextReport(patient, age, episodes, history, symptoms) {
+  function buildTextReport(patient, age, episodes, history, symptoms, periodLabel) {
     let text = `=== ДОКТОР-РЕПОРТ ===\n`;
     text += `\n👶 ${patient.name}\n`;
     text += `📅 ${patient.birthDate || '—'} (${age})\n`;
@@ -41,9 +124,16 @@
     text += `📏 ${patient.height ? patient.height + ' см' : '—'}\n`;
     text += `⚠️ Аллергии: ${patient.allergies || 'нет'}\n`;
     text += `📄 Создан: ${new Date().toLocaleString('ru-RU')}\n`;
+    text += `Период: ${periodLabel}\n`;
     text += `\n${'='.repeat(40)}\n\n`;
 
-    if (episodes.length) {
+    const isEmpty = !episodes.length && !history.length && !symptoms.length;
+
+    if (isEmpty) {
+      text += `Нет записей за выбранный период\n\n`;
+    }
+
+    if (!isEmpty && episodes.length) {
       text += `📋 ЭПИЗОДЫ БОЛЕЗНИ\n\n`;
       episodes.forEach(ep => {
         const start = new Date(ep.startDate).toLocaleDateString('ru-RU');
@@ -78,7 +168,7 @@
       });
     }
 
-    if (!episodes.length) {
+    if (!isEmpty && !episodes.length) {
       text += `📋 ИСТОРИЯ ПРИЁМОВ\n\n`;
       if (history.length) {
         history.sort((a, b) => (a.timestamp < b.timestamp ? -1 : 1)).forEach(h => {
@@ -108,7 +198,7 @@
     return text;
   }
 
-  function buildHtmlReport(patient, age, episodes, history, symptoms) {
+  function buildHtmlReport(patient, age, episodes, history, symptoms, periodLabel) {
     const now = new Date().toLocaleString('ru-RU');
 
     function fmt(iso) {
@@ -160,12 +250,18 @@
 
     let sectionsHtml = '';
 
-    if (episodes.length) {
+    const isEmpty = !episodes.length && !history.length && !symptoms.length;
+
+    if (isEmpty) {
+      sectionsHtml += '<p class="text-muted">Нет записей за выбранный период</p>';
+    }
+
+    if (!isEmpty && episodes.length) {
       sectionsHtml += `<h3>📋 Эпизоды болезни</h3>`;
       sectionsHtml += episodes.map(episodeHtml).join('');
     }
 
-    if (!episodes.length) {
+    if (!isEmpty && !episodes.length) {
       sectionsHtml += `<h3>📋 История приёмов</h3>`;
       if (history.length) {
         sectionsHtml += '<ul>';
@@ -230,6 +326,7 @@
   <div class="report-header">
     <h1>📋 Доктор-репорт</h1>
     <div class="report-date">Сформирован: ${now}</div>
+    <div class="report-date">Период: ${periodLabel}</div>
   </div>
 
   <h2>👶 ${patient.name}</h2>
