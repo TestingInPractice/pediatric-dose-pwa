@@ -415,6 +415,12 @@ html, body {
   line-height: 1.6;
 }
 
+/* Backup / restore */
+.backup-hint { font-size: 13px; line-height: 1.6; margin-bottom: 12px; }
+.restore-hint { font-size: 13px; margin-top: 8px; }
+.uninstall-instructions-title { margin-top: 16px; }
+.uninstall-instructions { font-size: 13px; line-height: 1.8; }
+
 /* History */
 .history-item {
   padding: 10px 0;

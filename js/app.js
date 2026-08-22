@@ -2,6 +2,7 @@
   'use strict';
 
   async function init() {
+    if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(err => console.warn('storage.persist:', err));
     try { await DB.init(); } catch (e) { console.error('DB init failed:', e); }
     localStorage.removeItem('dose_pwa_drugs');
     bindNav();
@@ -374,7 +375,11 @@
 
   function renderPatientsList() {
     const container = $('patients-list');
-    if (!Store.patients.length) { container.innerHTML = '<p class="text-muted">Нет добавленных детей</p>'; return; }
+    if (!Store.patients.length) {
+      container.innerHTML = '<p class="text-muted">Нет добавленных детей</p>' +
+        '<p class="text-muted restore-hint">Раньше пользовались? Восстановите данные: Настройки → Резервная копия</p>';
+      return;
+    }
     container.innerHTML = Store.patients.map(p => {
       const age = UI.calcAge(p.birthDate);
       const sexIcon = p.sex === 'girl' ? '👧' : '👦';
@@ -622,14 +627,13 @@
 
   function bindSettings() {
     $('clear-btn').addEventListener('click', async () => { if (confirm('Очистить всю историю расчётов?')) { await DB.clearHistory(); renderHistory(); } });
-    $('export-btn').addEventListener('click', async () => {
-      const data = await DB.exportHistory();
-      const blob = new Blob([data], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `dose-history-${new Date().toISOString().slice(0, 10)}.json`; a.click();
-      URL.revokeObjectURL(url);
-    });
+    $('backup-btn').addEventListener('click', downloadBackup);
+    $('uninstall-backup-btn').addEventListener('click', downloadBackup);
+    $('uninstall-btn').addEventListener('click', () => $('uninstall-modal').classList.remove('hidden'));
+    $('uninstall-modal-close').addEventListener('click', closeUninstallModal);
+    $('uninstall-modal').addEventListener('click', e => { if (e.target === $('uninstall-modal')) closeUninstallModal(); });
+    $('import-btn').addEventListener('click', () => $('import-file').click());
+    $('import-file').addEventListener('change', handleImportFile);
     $('update-btn').addEventListener('click', async () => {
       $('update-btn').textContent = '⏳ Очистка кэша...'; $('update-btn').disabled = true;
       try {
@@ -655,6 +659,51 @@
         setTimeout(() => { $('update-btn').textContent = '🔄 Проверить обновления'; $('update-btn').disabled = false; }, 2000);
       }
     });
+  }
+
+  async function downloadBackup() {
+    try {
+      const text = await DB.exportFull();
+      const file = new File([text], DB.buildBackupFilename(new Date().toISOString()), { type: 'application/json' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: 'Резервная копия' });
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return;
+          console.warn('navigator.share failed, falling back to download:', err);
+        }
+      }
+      const url = URL.createObjectURL(file);
+      const a = document.createElement('a');
+      a.href = url; a.download = file.name; a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.warn('downloadBackup failed:', err);
+      alert('Не удалось создать резервную копию: ' + err.message);
+    }
+  }
+
+  async function handleImportFile(e) {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    let parsed;
+    try {
+      parsed = DB.parseBackup(await file.text());
+    } catch (err) {
+      alert(err.message);
+      return;
+    }
+    const exportedAt = parsed.exportedAt ? UI.formatDate(parsed.exportedAt) : 'неизвестной даты';
+    const preview = `Восстановлено из копии от ${exportedAt}:\n• Профилей: ${parsed.counts.patients}\n• Записей дневника: ${parsed.counts.history}\n\nЗаменить текущие данные?`;
+    if (!confirm(preview)) return;
+    await DB.importAll(parsed);
+    location.reload();
+  }
+
+  function closeUninstallModal() {
+    $('uninstall-modal').classList.add('hidden');
   }
 
   function renderGrlsTable() {

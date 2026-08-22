@@ -199,8 +199,17 @@
             </div>
             <button id="data-mgmt-btn" class="btn btn-secondary btn-block" onclick="renderGrlsTable()">📊 Данные ГРЛС</button>
             <button id="update-btn" class="btn btn-secondary btn-block">🔄 Проверить обновления</button>
-            <button id="export-btn" class="btn btn-secondary btn-block">📤 Экспорт истории</button>
             <button id="clear-btn" class="btn btn-danger btn-block">🗑 Очистить историю</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">💾 Резервная копия</div>
+          <div class="card-body">
+            <p class="text-muted backup-hint">Данные хранятся только на этом устройстве. Советуем сохранять копию в Telegram («Избранное») или iCloud Drive.</p>
+            <button id="backup-btn" class="btn btn-primary btn-block">⬇️ Скачать резервную копию</button>
+            <button id="import-btn" class="btn btn-secondary btn-block">📂 Восстановить из файла</button>
+            <input type="file" id="import-file" accept=".json,application/json" hidden>
+            <button id="uninstall-btn" class="btn btn-danger btn-block">🗑 Подготовка к удалению приложения</button>
           </div>
         </div>
         <div id="grls-table-section" class="card hidden">
@@ -240,6 +249,26 @@
             <button class="modal-close" id="diary-modal-close">✕</button>
           </div>
           <div class="modal-body" id="diary-modal-body"></div>
+        </div>
+      </div>
+
+      <!-- Pre-uninstall modal -->
+      <div id="uninstall-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modal-title">🗑 Удаление приложения</span>
+            <button class="modal-close" id="uninstall-modal-close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p class="text-muted backup-hint">При удалении приложения все данные о детях будут стёрты: профили, дневник и история приёмов. Скачайте резервную копию заранее.</p>
+            <button id="uninstall-backup-btn" class="btn btn-primary btn-block">⬇️ Скачать резервную копию</button>
+            <p class="text-muted backup-hint">Совет: сохраните файл в Telegram («Избранное») или iCloud Drive — так он переживёт удаление приложения.</p>
+            <div class="form-label uninstall-instructions-title">Как удалить приложение:</div>
+            <p class="text-muted uninstall-instructions">
+              📱 iPhone — зажмите иконку приложения → «Удалить приложение».<br>
+              🤖 Android — зажмите иконку → «Удалить».
+            </p>
+          </div>
         </div>
       </div>
     </main>

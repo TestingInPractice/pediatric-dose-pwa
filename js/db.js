@@ -148,9 +148,115 @@ const DB = {
     return await this.db.history.clear();
   },
 
-  async exportHistory() {
-    const data = await this.db.history.toArray();
-    return JSON.stringify(data, null, 2);
+  // --- Backup / Restore (full) ---
+  buildBackup(data) {
+    const src = data || {};
+    const pick = key => (Array.isArray(src[key]) ? src[key] : []);
+    return {
+      app: 'pediatric-dose-pwa',
+      schema: 1,
+      exportedAt: new Date().toISOString(),
+      data: {
+        patients: pick('patients'),
+        history: pick('history'),
+        symptoms: pick('symptoms'),
+        episodes: pick('episodes')
+      }
+    };
+  },
+
+  parseBackup(text) {
+    if (typeof text !== 'string') {
+      throw new Error('Файл повреждён или это не резервная копия');
+    }
+    let parsed;
+    try {
+      parsed = JSON.parse(text);
+    } catch (e) {
+      throw new Error('Файл повреждён или это не резервная копия');
+    }
+    if (
+      parsed === null ||
+      typeof parsed !== 'object' ||
+      parsed.app !== 'pediatric-dose-pwa' ||
+      typeof parsed.data !== 'object' ||
+      parsed.data === null
+    ) {
+      throw new Error('Это не резервная копия калькулятора дозировок');
+    }
+    const data = {};
+    for (const key of ['patients', 'history', 'symptoms', 'episodes']) {
+      const value = parsed.data[key];
+      if (value === undefined) {
+        data[key] = [];
+      } else if (!Array.isArray(value)) {
+        throw new Error('Это не резервная копия калькулятора дозировок');
+      } else {
+        data[key] = value;
+      }
+    }
+    return {
+      exportedAt:
+        typeof parsed.exportedAt === 'string' && parsed.exportedAt.length > 0 ? parsed.exportedAt : null,
+      counts: {
+        patients: data.patients.length,
+        history: data.history.length,
+        symptoms: data.symptoms.length,
+        episodes: data.episodes.length
+      },
+      data
+    };
+  },
+
+  buildBackupFilename(exportedAtIso) {
+    const datePart =
+      typeof exportedAtIso === 'string' && /^\d{4}-\d{2}-\d{2}/.test(exportedAtIso)
+        ? exportedAtIso.slice(0, 10)
+        : new Date(exportedAtIso).toISOString().slice(0, 10);
+    return `dose-backup-${datePart}.json`;
+  },
+
+  async exportFull() {
+    const data = {
+      patients: await this.db.patients.toArray(),
+      history: await this.db.history.toArray(),
+      symptoms: await this.db.symptoms.toArray(),
+      episodes: await this.db.episodes.toArray()
+    };
+    return JSON.stringify(this.buildBackup(data), null, 2);
+  },
+
+  async importAll(parsed) {
+    const src = parsed && typeof parsed.data === 'object' && parsed.data !== null ? parsed.data : {};
+    const pick = key => (Array.isArray(src[key]) ? src[key] : []);
+    const data = {
+      patients: pick('patients'),
+      history: pick('history'),
+      symptoms: pick('symptoms'),
+      episodes: pick('episodes')
+    };
+    return await this.db.transaction(
+      'rw',
+      this.db.patients,
+      this.db.history,
+      this.db.symptoms,
+      this.db.episodes,
+      async () => {
+        await this.db.patients.clear();
+        await this.db.patients.bulkAdd(data.patients);
+        await this.db.history.clear();
+        await this.db.history.bulkAdd(data.history);
+        await this.db.symptoms.clear();
+        await this.db.symptoms.bulkAdd(data.symptoms);
+        await this.db.episodes.clear();
+        await this.db.episodes.bulkAdd(data.episodes);
+      }
+    ).then(() => ({
+      patients: data.patients.length,
+      history: data.history.length,
+      symptoms: data.symptoms.length,
+      episodes: data.episodes.length
+    }));
   },
 
   // --- Episodes ---
@@ -217,3 +323,10 @@ const DB = {
     return await this.db.symptoms.delete(id);
   }
 };
+
+const buildBackup = DB.buildBackup;
+const parseBackup = DB.parseBackup;
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { DB, buildBackup, parseBackup };
+}
