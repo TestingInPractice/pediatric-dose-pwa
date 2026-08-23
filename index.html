@@ -21,12 +21,22 @@
   <div id="app" class="app">
     <header class="app-header">
       <div class="header-title">💊 Калькулятор дозировок</div>
-      <div class="header-version" id="version-badge">v<span id="data-version">0.0.0</span></div>
+      <div class="header-actions">
+        <div class="header-version" id="version-badge">v<span id="data-version">0.0.0</span></div>
+        <button id="settings-nav-btn" class="header-icon-btn" aria-label="Настройки">⚙️</button>
+      </div>
     </header>
 
     <main class="app-main" id="app-main">
       <!-- Calculator Screen -->
       <section id="screen-calculator" class="screen active">
+        <div id="pending-section" class="hidden">
+          <div class="card">
+            <div class="card-header">⏳ Ожидают подтверждения <span class="nav-badge" id="confirm-nav-badge" style="display:none"></span></div>
+            <div class="card-body" id="pending-body"><p class="text-muted">Нет ожидающих подтверждения</p></div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-body">
             <div class="form-group">
@@ -81,15 +91,6 @@
         </div>
 
         <div id="error-section" class="error-section hidden"></div>
-      </section>
-
-      <!-- Confirm Screen -->
-      <section id="screen-confirm" class="screen">
-        <div class="card">
-          <div class="card-header">⏳ Ожидают подтверждения</div>
-          <div class="card-body" id="confirm-body"><p class="text-muted">Нет ожидающих подтверждения</p></div>
-        </div>
-        <button id="confirm-back-btn" class="btn btn-secondary btn-block">← Назад к расчёту</button>
       </section>
 
       <!-- History Screen -->
@@ -303,9 +304,7 @@
       <button class="nav-btn" data-screen="diary" aria-label="Дневник"><span class="nav-icon">📋</span><span class="nav-label">Дневник</span></button>
       <button class="nav-btn" data-screen="profiles" aria-label="Дети"><span class="nav-icon">👶</span><span class="nav-label">Дети</span></button>
       <button class="nav-btn" data-screen="history" aria-label="История"><span class="nav-icon">📜</span><span class="nav-label">История</span></button>
-      <button class="nav-btn" data-screen="confirm" aria-label="Подтверждение"><span class="nav-icon">⏳<span class="nav-badge" id="confirm-nav-badge"></span></span><span class="nav-label">Приём</span></button>
       <button class="nav-btn" data-screen="drugs" aria-label="Препараты"><span class="nav-icon">📚</span><span class="nav-label">Препараты</span></button>
-      <button class="nav-btn" data-screen="settings" aria-label="Настройки"><span class="nav-icon">⚙️</span><span class="nav-label">Настройки</span></button>
     </nav>
   </div>
 

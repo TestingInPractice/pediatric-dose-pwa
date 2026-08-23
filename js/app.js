@@ -7,7 +7,6 @@
     localStorage.removeItem('dose_pwa_drugs');
     bindNav();
     bindCalculator();
-    bindConfirm();
     bindProfiles();
     bindHistory();
     bindSettings();
@@ -16,7 +15,11 @@
     Theme.init();
     await Store.loadData();
     updateConfirmNavBadge();
-    Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
+    renderPendingSection();
+    if ('Notification' in window && Notification.permission === 'granted') {
+      Reminder.checkOverdue();
+    }
+    Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); renderPendingSection(); });
   }
 
   function navigateTo(screen) {
@@ -24,7 +27,7 @@
     const target = $(`screen-${screen}`);
     if (target) target.classList.add('active');
     qsa('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.screen === screen));
-    if (screen !== 'calculator' && screen !== 'confirm') {
+    if (screen !== 'calculator') {
       $('result-section').classList.add('hidden');
       $('go-to-confirm-btn').classList.add('hidden');
       Store.currentResult = null;
@@ -39,12 +42,12 @@
         if (btn.dataset.screen === 'history') renderHistory();
         if (btn.dataset.screen === 'diary') DiaryScreen.render();
         if (btn.dataset.screen === 'drugs') DrugsScreen.render();
-        if (btn.dataset.screen === 'confirm') renderConfirmScreen();
         if (btn.dataset.screen === 'calculator') {
           Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
         }
       });
     });
+    $('settings-nav-btn').addEventListener('click', () => navigateTo('settings'));
   }
 
   async function updateConfirmNavBadge() {
@@ -54,7 +57,7 @@
       const pending = await DB.getPending();
       if (pending.length > 0) {
         badge.textContent = pending.length > 9 ? '9+' : pending.length;
-        badge.style.display = 'inline';
+        badge.style.display = 'inline-block';
       } else {
         badge.style.display = 'none';
       }
@@ -102,7 +105,7 @@
     drugSelect.addEventListener('change', checkReady);
     calcBtn.addEventListener('click', handleCalculate);
     weightInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !calcBtn.disabled) handleCalculate(); });
-    confirmBtn.addEventListener('click', () => renderConfirmScreen());
+    confirmBtn.addEventListener('click', () => renderPendingSection());
   }
 
   async function handleCalculate() {
@@ -147,6 +150,7 @@
         });
         Store.currentResult.dbId = id;
       } catch (_) {}
+      renderPendingSection();
     } catch (e) { UI.showError(e.message); }
   }
 
@@ -244,12 +248,19 @@
 
   // ===================== CONFIRM =====================
 
-  async function renderConfirmScreen() {
-    navigateTo('confirm');
-    const body = $('confirm-body');
+  async function renderPendingSection() {
+    const section = $('pending-section');
+    const body = $('pending-body');
     const pending = await DB.getPending();
 
-    if (!pending.length) { body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>'; updateConfirmNavBadge(); return; }
+    if (!pending.length) {
+      body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
+      section.classList.add('hidden');
+      updateConfirmNavBadge();
+      return;
+    }
+
+    section.classList.remove('hidden');
 
     const pendingHtml = await Promise.all(pending.map(async h => {
       const patient = Store.patients.find(p => p.id === h.patient_id);
@@ -349,7 +360,7 @@
           <span class="confirm-success-icon">✅</span>
           <div class="confirm-success-text">Подтверждено</div>
         </div>`;
-        setTimeout(() => renderConfirmScreen(), 1200);
+        setTimeout(() => renderPendingSection(), 1200);
       });
     });
 
@@ -358,18 +369,13 @@
         if (!confirm('Отклонить приём? Запись будет удалена.')) return;
         await DB.deleteHistoryItem(parseInt(btn.dataset.id));
         btn.closest('.pending-item').remove();
-        if (!body.querySelector('.pending-item')) body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
+        if (!body.querySelector('.pending-item')) {
+          body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
+          section.classList.add('hidden');
+        }
         updateConfirmNavBadge();
       });
     });
-  }
-
-  function bindConfirm() {
-    $('confirm-back-btn').addEventListener('click', () => navigateTo('calculator'));
-    // Check for overdue reminders
-    if ('Notification' in window && Notification.permission === 'granted') {
-      Reminder.checkOverdue();
-    }
   }
 
   // ===================== PROFILES =====================
