@@ -1,0 +1,890 @@
+(function () {
+  'use strict';
+
+  async function init() {
+    if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(err => console.warn('storage.persist:', err));
+    try { await DB.init(); } catch (e) { console.error('DB init failed:', e); }
+    localStorage.removeItem('dose_pwa_drugs');
+    bindNav();
+    bindCalculator();
+    bindProfiles();
+    bindHistory();
+    bindSettings();
+    $('diary-modal-close').addEventListener('click', UI.closeModal);
+    $('diary-modal').addEventListener('click', e => { if (e.target === $('diary-modal')) UI.closeModal(); });
+    Theme.init();
+    await Store.loadData();
+    updateConfirmNavBadge();
+    renderPendingSection();
+    if ('Notification' in window && Notification.permission === 'granted') {
+      Reminder.checkOverdue();
+    }
+    Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); renderPendingSection(); });
+  }
+
+  function navigateTo(screen) {
+    qsa('.screen').forEach(s => s.classList.remove('active'));
+    const target = $(`screen-${screen}`);
+    if (target) target.classList.add('active');
+    qsa('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.screen === screen));
+    if (screen !== 'calculator') {
+      $('result-section').classList.add('hidden');
+      $('go-to-confirm-btn').classList.add('hidden');
+      Store.currentResult = null;
+    }
+  }
+
+  function bindNav() {
+    qsa('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        navigateTo(btn.dataset.screen);
+        if (btn.dataset.screen === 'profiles') renderPatientsList();
+        if (btn.dataset.screen === 'history') renderHistory();
+        if (btn.dataset.screen === 'diary') DiaryScreen.render();
+        if (btn.dataset.screen === 'drugs') DrugsScreen.render();
+        if (btn.dataset.screen === 'calculator') {
+          Store.loadPatients().then(() => { Store.renderPatientSelect(); $('patient-select').dispatchEvent(new Event('change')); });
+        }
+      });
+    });
+    $('settings-nav-btn').addEventListener('click', () => navigateTo('settings'));
+  }
+
+  async function updateConfirmNavBadge() {
+    const badge = $('confirm-nav-badge');
+    if (!badge) return;
+    try {
+      const pending = await DB.getPending();
+      if (pending.length > 0) {
+        badge.textContent = pending.length > 9 ? '9+' : pending.length;
+        badge.style.display = 'inline-block';
+      } else {
+        badge.style.display = 'none';
+      }
+    } catch (_) { badge.style.display = 'none'; }
+  }
+
+  // ===================== CALCULATOR =====================
+
+  function bindCalculator() {
+    const weightInput = $('weight-input'), drugSelect = $('drug-select');
+    const patientSelect = $('patient-select'), calcBtn = $('calc-btn');
+    const confirmBtn = $('go-to-confirm-btn');
+
+    patientSelect.addEventListener('change', async () => {
+      Store.currentPatientId = patientSelect.value ? parseInt(patientSelect.value) : null;
+      const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+      if (patient && patient.weight) weightInput.value = patient.weight;
+      await updateEpisodeIndicator();
+      checkReady();
+    });
+
+    async function updateEpisodeIndicator() {
+      const indicator = $('episode-indicator');
+      if (!Store.currentPatientId) { indicator.classList.add('hidden'); return; }
+      const active = await DB.getActiveEpisode(Store.currentPatientId);
+      if (active) {
+        indicator.classList.remove('hidden');
+        indicator.innerHTML = `🤒 <span class="episode-indicator-name">${active.name}</span>`;
+      } else {
+        indicator.classList.add('hidden');
+      }
+    }
+
+    function checkReady() {
+      const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+      const hasPatientData = patient && patient.birthDate;
+      calcBtn.disabled = !(weightInput.value && drugSelect.value && hasPatientData);
+      const msg = $('calc-block-msg');
+      if (!Store.patients.length) { msg.textContent = '👶 Добавьте ребёнка в разделе Дети'; msg.classList.remove('hidden'); }
+      else if (!patient) { msg.textContent = '👶 Выберите ребёнка'; msg.classList.remove('hidden'); }
+      else if (!patient.birthDate) { msg.textContent = '📅 Заполните дату рождения в профиле ребёнка'; msg.classList.remove('hidden'); }
+      else { msg.classList.add('hidden'); }
+    }
+    weightInput.addEventListener('input', checkReady);
+    drugSelect.addEventListener('change', checkReady);
+    calcBtn.addEventListener('click', handleCalculate);
+    weightInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !calcBtn.disabled) handleCalculate(); });
+    confirmBtn.addEventListener('click', () => renderPendingSection());
+  }
+
+  async function handleCalculate() {
+    const drugId = parseInt($('drug-select').value);
+    const weight = parseFloat($('weight-input').value);
+    if (!drugId || !weight || weight <= 0) return;
+    const drug = Store.drugs.find(d => d.id === drugId);
+    if (!drug) return;
+
+    const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+    if (!patient) { UI.showError('Выберите ребёнка из списка'); return; }
+    if (!patient.birthDate) { UI.showError('У ребёнка не указана дата рождения. Заполните её в профиле.'); return; }
+    const ageMonths = UI.getAgeMonths(patient.birthDate);
+
+    try {
+      const result = Calculator.calculateDose(drug, weight);
+      Store.currentResult = { drug, weight, result, timestamp: new Date().toISOString() };
+
+      renderResult(drug, weight, result);
+      renderValidationLevels(drug, weight, result, ageMonths);
+      renderInstruction(drug, weight);
+
+      $('result-section').classList.remove('hidden');
+      $('error-section').classList.add('hidden');
+
+      const btn = $('go-to-confirm-btn');
+      if (Store.currentPatientId) btn.classList.remove('hidden');
+      else btn.classList.add('hidden');
+
+      try {
+        let episodeId = null;
+        if (Store.currentPatientId) {
+          const active = await DB.getActiveEpisode(Store.currentPatientId);
+          if (active) episodeId = active.id;
+        }
+        const id = await DB.saveCalculation({
+          patient_id: Store.currentPatientId, drug_id: drug.id, drug_name: drug.name,
+          weight, dose_ml: result.standard_dose_ml, dose_mg: result.standard_dose_mg,
+          dose_form: drug.form || null, dose_qty: result.suppositories_min || null,
+          dose_units: drug.units || 'мг',
+          episode_id: episodeId
+        });
+        Store.currentResult.dbId = id;
+      } catch (_) {}
+      renderPendingSection();
+    } catch (e) { UI.showError(e.message); }
+  }
+
+  function renderResult(drug, weight, result) {
+    $('result-drug').textContent = drug.name;
+    const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+    $('result-weight').textContent = patient ? `${patient.name}, ${weight} кг` : `Вес: ${weight} кг`;
+    let html = '';
+    const doseUnits = drug.units || 'мг';
+    if (result.standard_dose_ml != null) html += UI.doseItem('Стандартная доза (мл)', result.standard_dose_ml + ' мл');
+    if (result.standard_dose_mg != null) html += UI.doseItem(`Стандартная доза (${doseUnits})`, result.standard_dose_mg + ' ' + doseUnits);
+    if (result.high_dose_ml != null) html += UI.doseItem('Повышенная доза (мл)', result.high_dose_ml + ' мл');
+    if (result.suppositories_min != null) {
+      html += UI.doseItem('Обычная доза (свечи)', result.suppositories_min + ' шт');
+      html += UI.doseItem('Повышенная доза (свечи)', result.suppositories_high + ' шт');
+    }
+    if (result.suppositories_max != null) html += UI.doseItem('Макс. в сутки (свечи)', result.suppositories_max + ' шт', true);
+    if (result.max_dose_ml != null) html += UI.doseItem('Макс. в сутки (мл)', result.max_dose_ml + ' мл', true);
+    if (result.formula_parts && result.formula_parts.length) html += `<div class="formula-box">${result.formula_parts.join('\n')}</div>`;
+    if (drug.number_of_times_a_day) html += UI.doseItem('Кратность приёма', drug.number_of_times_a_day);
+    $('result-doses').innerHTML = html;
+  }
+
+  // ===================== VALIDATION =====================
+
+  function renderValidationLevels(drug, weight, result, ageMonths) {
+    const container = $('validation-levels'), section = $('validation-section');
+    const patient = Store.patients.find(p => p.id === Store.currentPatientId);
+    const l2 = Level2Rules.validate(drug, weight, result, ageMonths, patient?.allergies);
+    let html = `<div class="validation-level"><span class="level-icon">${l2.status === 'pass' ? '✅' : '⚠️'}</span><div class="level-content"><div class="level-title">L2: Экспертная система (правила)</div>`;
+    l2.checks.forEach(c => { const icon = c.status === 'pass' ? '✅' : c.status === 'error' ? '🚫' : 'ℹ️'; html += `<div class="level-desc">${icon} ${c.detail}</div>`; });
+    html += `</div></div><div class="validation-level" id="l3-level"><span class="level-icon">⏳</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Загрузка данных...</div></div></div>
+      <div style="margin-top:8px;font-weight:600;font-size:14px">${l2.status === 'pass' ? '✅ Все проверки пройдены' : '⚠️ Есть предупреждения'}</div>`;
+    container.innerHTML = html;
+    section.classList.remove('hidden');
+
+    const l3div = document.getElementById('l3-level');
+    if (l3div) {
+      if (typeof L3 !== 'undefined' && L3.validate) {
+        const isNonMgUnits = drug.units != null && drug.units !== 'мг';
+        const dosePerKg = (!isNonMgUnits && result.standard_dose_mg != null && weight > 0) ? result.standard_dose_mg / weight : 0;
+        if (dosePerKg > 0) {
+          const drugId = L3.getDrugIdForModel(drug);
+          if (drugId !== null) {
+            L3.validate(drugId, ageMonths, weight, dosePerKg, drug).then(l3res => {
+              if (!l3res || l3res.level === -1) {
+                l3div.innerHTML = `<span class="level-icon">${l3res ? l3res.icon : '⏳'}</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">${l3res ? l3res.message : 'Статистика недоступна'}</div></div>`;
+              } else {
+                l3div.innerHTML = `<span class="level-icon">${l3res.icon}</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">${l3res.message}</div></div>`;
+              }
+            }).catch(() => {
+              l3div.innerHTML = `<span class="level-icon">⚠️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Ошибка загрузки данных</div></div>`;
+            });
+          } else {
+            l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет данных FAERS для этого препарата</div></div>`;
+          }
+        } else if (isNonMgUnits) {
+          l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет данных FAERS</div></div>`;
+        } else {
+          l3div.innerHTML = `<span class="level-icon">ℹ️</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Нет дозы для анализа</div></div>`;
+        }
+      } else {
+        l3div.innerHTML = `<span class="level-icon">⏳</span><div class="level-content"><div class="level-title">L3: Статистика FAERS (реальные назначения)</div><div class="level-desc">Модуль L3 не загружен</div></div>`;
+      }
+    }
+  }
+
+  function renderInstruction(drug, weight) {
+    const section = $('instruction-section'), body = $('instruction-body');
+    let html = '';
+    if (drug.instructions) html += `<p style="margin-bottom:12px">${drug.instructions}</p>`;
+    if (drug.dose_table && drug.dose_table.length) {
+      const tableUnits = drug.units || 'мг';
+      html += `<table class="instruction-table"><thead><tr><th>Вес (кг)</th><th>Доза (мл)</th><th>Доза (${tableUnits})</th></tr></thead><tbody>`;
+      let foundMatch = false;
+      drug.dose_table.forEach(row => {
+        const highlight = weight >= row.weight_min && weight < row.weight_max;
+        if (highlight) foundMatch = true;
+        const cls = highlight ? ' class="highlight-row"' : '';
+        let doseDisplay = row.dose_ml;
+        if (drug.form === 'суппозитории') { doseDisplay = row.dose_ml + ' свеча'; if (row.dose_ml > 1) doseDisplay += '(-и)'; }
+        html += `<tr${cls}><td>${row.weight_min}-${row.weight_max}</td><td>${doseDisplay}</td><td>${row.dose_mg} ${tableUnits}</td></tr>`;
+      });
+      if (!foundMatch) html += `<tr class="highlight-row"><td colspan="3">Ваш вес (${weight} кг) — сверьтесь с таблицей</td></tr>`;
+      html += `</tbody></table>`;
+    }
+    const grlsUrl = drug.grls?.url || drug.grls_link;
+    if (grlsUrl) html += `<div class="instruction-source">📎 ГРЛС: <a href="${grlsUrl}" target="_blank" rel="noopener">открыть инструкцию</a></div>`;
+    if (drug.pharmacy_link) html += `<div class="instruction-source">💊 Аптека: <a href="${drug.pharmacy_link}" target="_blank" rel="noopener">проверить цену</a></div>`;
+    const l4html = Level4Images.getImageHtml(drug);
+    if (l4html) html += `<div class="validation-level" style="margin-top:12px"><span class="level-icon">🖼️</span><div class="level-content"><div class="level-title">L4: Визуальная проверка (скриншот инструкции)</div><div class="level-desc">${l4html}</div></div></div>`;
+    body.innerHTML = html;
+    section.classList.remove('hidden');
+  }
+
+  // ===================== CONFIRM =====================
+
+  async function renderPendingSection() {
+    const section = $('pending-section');
+    const body = $('pending-body');
+    const pending = await DB.getPending();
+
+    if (!pending.length) {
+      body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
+      section.classList.add('hidden');
+      updateConfirmNavBadge();
+      return;
+    }
+
+    section.classList.remove('hidden');
+
+    const pendingHtml = await Promise.all(pending.map(async h => {
+      const patient = Store.patients.find(p => p.id === h.patient_id);
+      const drug = Store.drugs.find(d => d.id === h.drug_id);
+      let intervalHtml = '', l3Html = '', canConfirm = true;
+
+      // Interval check
+      const recentConfirmed = (patient && drug) ? await DB.getRecentConfirmed(patient.id, 12) : [];
+      const lastSameDrug = recentConfirmed.find(r => r.drug_id === h.drug_id);
+      const lastSameCategory = drug ? recentConfirmed.find(r => { const rd = Store.drugs.find(d => d.id === r.drug_id); return rd && rd.category_id === drug.category_id; }) : null;
+
+      if (lastSameDrug || lastSameCategory) {
+        const target = lastSameDrug || lastSameCategory;
+        const diffHours = (Date.now() - new Date(target.timestamp).getTime()) / (1000 * 60 * 60);
+        const isSameDrug = !!lastSameDrug;
+        const minInterval = isSameDrug ? 4 : 3;
+        const label = isSameDrug ? 'этого же препарата' : 'препарата той же группы (жаропонижающие/антибиотики)';
+        if (diffHours < minInterval) {
+          const remaining = (minInterval - diffHours).toFixed(1);
+          intervalHtml = `<div class="tracker-alert warning">⚠️ Последний приём ${label} был ${diffHours.toFixed(1)} ч назад. Минимальный интервал: ${minInterval} ч. Подождите ещё ${remaining} ч.</div>`;
+          if (isSameDrug) canConfirm = false;
+        } else {
+          intervalHtml = `<div class="tracker-alert success">✅ Интервал ${minInterval} ч соблюдён.</div>`;
+        }
+      } else if (recentConfirmed.length) {
+        intervalHtml = `<div class="tracker-alert success">✅ Последний приём — препарат из другой группы, интервал не требуется.</div>`;
+      } else {
+        intervalHtml = `<div class="tracker-alert info">ℹ️ Первый приём для этого ребёнка.</div>`;
+      }
+
+      // Daily-max accumulation check
+      let dailyMaxHtml = '';
+      if (drug && drug.mgs_max != null && h.weight > 0 && patient) {
+        const maxMg = h.weight * drug.mgs_max;
+        const dailyConfirmed = await DB.getRecentConfirmed(patient.id, 24);
+        let confirmedMg = 0;
+        dailyConfirmed.forEach(r => {
+          if (r.drug_id === drug.id) {
+            if (r.dose_mg != null) confirmedMg += r.dose_mg;
+            else if (r.dose_qty != null) confirmedMg += r.dose_qty * drug.dose_per_unit;
+          }
+        });
+        const pendingMg = h.dose_mg != null ? h.dose_mg : (h.dose_qty != null ? h.dose_qty * drug.dose_per_unit : 0);
+        const totalMg = confirmedMg + pendingMg;
+        if (totalMg > maxMg) {
+          dailyMaxHtml = `<div class="tracker-alert danger">⬆️ Превышение суточной дозы: уже ${confirmedMg.toFixed(1)} мг, доза добавит ${pendingMg.toFixed(1)} мг, макс. ${maxMg.toFixed(1)} мг/сут</div>`;
+          canConfirm = false;
+        }
+      }
+
+      // L3 check
+      if (drug && h.dose_mg != null && h.weight > 0 && typeof L3 !== 'undefined' && L3.validate) {
+        const dosePerKg = h.dose_mg / h.weight;
+        if (dosePerKg > 0) {
+          try {
+            const l3res = await L3.validate(drug.id, 0, h.weight, dosePerKg, drug);
+            if (l3res && l3res.level === 1) {
+              l3Html = `<div class="tracker-alert danger">⬆️ L3: доза выше 95% реальных назначений (p${l3res.percentile}). Подтверждение заблокировано.</div>`;
+              canConfirm = false;
+            } else if (l3res && l3res.level === -1) {
+              l3Html = `<div class="tracker-alert warning">⏳ ${l3res.message}</div>`;
+            } else if (l3res) {
+              l3Html = `<div class="tracker-alert success">✅ ${l3res.message}</div>`;
+            }
+          } catch (_) {}
+        }
+      }
+
+      const confirmDisabled = !canConfirm;
+      return `<div class="pending-item card" data-id="${h.id}"><div class="card-body">${intervalHtml}${dailyMaxHtml}${l3Html}
+        <div class="confirm-detail-row"><span class="confirm-detail-label">Ребёнок</span><span class="confirm-detail-value">${patient ? patient.name : '—'}</span></div>
+        <div class="confirm-detail-row"><span class="confirm-detail-label">Препарат</span><span class="confirm-detail-value">${h.drug_name || 'Препарат #' + h.drug_id}</span></div>
+        <div class="confirm-detail-row"><span class="confirm-detail-label">Доза</span><span class="confirm-detail-value">${UI.formatDose(h)}</span></div>
+        <div class="confirm-detail-row"><span class="confirm-detail-label">Время расчёта</span><span class="confirm-detail-value">${UI.formatDate(h.timestamp)}</span></div>
+        <div class="pending-actions">
+          <button class="btn ${confirmDisabled ? 'btn-danger' : 'btn-primary'} confirm-item-btn" data-id="${h.id}" ${confirmDisabled ? 'disabled' : ''}>${confirmDisabled ? '🚫 Заблокировано' : '✅ Подтвердить'}</button>
+          <button class="btn btn-secondary reject-item-btn" data-id="${h.id}">✕ Отклонить</button>
+        </div></div></div>`;
+    }));
+
+    body.innerHTML = pendingHtml.join('');
+    updateConfirmNavBadge();
+
+    body.querySelectorAll('.confirm-item-btn:not([disabled])').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = parseInt(btn.dataset.id);
+        const record = await DB.db.history.get(id);
+        if (record && record.patient_id != null && !record.episode_id) {
+          const activeEp = await DB.getActiveEpisode(record.patient_id);
+          if (activeEp) {
+            await DB.db.history.update(id, { episode_id: activeEp.id });
+          }
+        }
+        await DB.confirmAdministration(id);
+        const pendingItem = btn.closest('.pending-item');
+        pendingItem.innerHTML = `<div class="confirm-success">
+          <span class="confirm-success-icon">✅</span>
+          <div class="confirm-success-text">Подтверждено</div>
+        </div>`;
+        setTimeout(() => renderPendingSection(), 1200);
+      });
+    });
+
+    body.querySelectorAll('.reject-item-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        if (!confirm('Отклонить приём? Запись будет удалена.')) return;
+        await DB.deleteHistoryItem(parseInt(btn.dataset.id));
+        btn.closest('.pending-item').remove();
+        if (!body.querySelector('.pending-item')) {
+          body.innerHTML = '<p class="text-muted">Нет ожидающих подтверждения</p>';
+          section.classList.add('hidden');
+        }
+        updateConfirmNavBadge();
+      });
+    });
+  }
+
+  // ===================== PROFILES =====================
+
+  function renderPatientsList() {
+    const container = $('patients-list');
+    if (!Store.patients.length) {
+      container.innerHTML = '<p class="text-muted">Нет добавленных детей</p>' +
+        '<p class="text-muted restore-hint">Раньше пользовались? Восстановите данные: Настройки → Резервная копия</p>';
+      return;
+    }
+    container.innerHTML = Store.patients.map(p => {
+      const age = UI.calcAge(p.birthDate);
+      const sexIcon = p.sex === 'girl' ? '👧' : '👦';
+      return `<div class="patient-card" data-id="${p.id}"><div><div class="patient-card-name">${sexIcon} ${p.name}</div><div class="patient-card-meta">${age}, ${p.weight || '?'} кг${p.height ? ', ' + p.height + ' см' : ''}</div></div><span class="patient-card-arrow">›</span></div>`;
+    }).join('');
+    container.querySelectorAll('.patient-card').forEach(card => {
+      card.addEventListener('click', () => showPatientDetail(parseInt(card.dataset.id)));
+    });
+  }
+
+  function showPatientForm(patient) {
+    $('patient-form-card').classList.remove('hidden');
+    $('patient-detail-card').classList.add('hidden');
+    const title = $('patient-form-title'), id = $('patient-form-id');
+    const sex = patient ? (patient.sex || 'boy') : 'boy';
+    if (patient) {
+      title.textContent = '✏️ Редактировать ребёнка';
+      id.value = patient.id;
+      $('patient-name').value = patient.name;
+      $('patient-birth').value = patient.birthDate || '';
+      $('patient-weight').value = patient.weight || '';
+      $('patient-height').value = patient.height || '';
+      $('patient-allergies').value = patient.allergies || '';
+    } else {
+      title.textContent = '➕ Добавить ребёнка';
+      id.value = '';
+      $('patient-name').value = '';
+      $('patient-birth').value = '';
+      $('patient-weight').value = '';
+      $('patient-height').value = '';
+      $('patient-allergies').value = '';
+    }
+    $('patient-sex').value = sex;
+    document.querySelectorAll('#patient-sex-group .filter-chip').forEach(c => c.classList.toggle('active', c.dataset.sex === sex));
+  }
+
+  async function savePatientForm() {
+    const id = $('patient-form-id').value;
+    const data = {
+      name: $('patient-name').value.trim(),
+      birthDate: $('patient-birth').value,
+      sex: $('patient-sex').value || 'boy',
+      weight: parseFloat($('patient-weight').value) || null,
+      height: parseFloat($('patient-height').value) || null,
+      allergies: $('patient-allergies').value.trim() || ''
+    };
+    if (!data.name) { alert('Введите имя ребёнка'); return; }
+    if (!data.birthDate) { alert('Введите дату рождения'); return; }
+    if (new Date(data.birthDate) > new Date()) { alert('Дата рождения не может быть в будущем'); return; }
+    if (id) { await DB.updatePatient(parseInt(id), data); }
+    else { await DB.addPatient(data); }
+    $('patient-form-card').classList.add('hidden');
+    await Store.loadPatients();
+    Store.renderPatientSelect();
+    renderPatientsList();
+    showPatientDetail(parseInt(id) || Store.patients[Store.patients.length - 1].id);
+  }
+
+  async function showPatientDetail(id) {
+    const p = Store.patients.find(p => p.id === id);
+    if (!p) return;
+    $('patient-detail-card').classList.remove('hidden');
+    $('patient-form-card').classList.add('hidden');
+    const sexIcon = p.sex === 'girl' ? '👧 Девочка' : '👦 Мальчик';
+    $('detail-patient-name').textContent = sexIcon + ' ' + p.name;
+    $('detail-patient-info').innerHTML = `
+      <div><strong>Дата рождения:</strong> ${p.birthDate || '—'}</div>
+      <div><strong>Возраст:</strong> ${UI.calcAge(p.birthDate)}</div>
+      <div><strong>Пол:</strong> ${p.sex === 'girl' ? 'Девочка' : 'Мальчик'}</div>
+      <div><strong>Вес:</strong> ${p.weight ? p.weight + ' кг' : '—'}</div>
+      <div><strong>Рост:</strong> ${p.height ? p.height + ' см' : '—'}</div>
+      <div><strong>Аллергии:</strong> ${p.allergies || 'нет'}</div>`;
+    $('detail-edit-btn').onclick = () => showPatientForm(p);
+    $('detail-delete-btn').onclick = async () => {
+      if (confirm(`Удалить профиль ${p.name} и всю историю приёмов?`)) {
+        await DB.deletePatient(p.id);
+        $('patient-detail-card').classList.add('hidden');
+        if (Store.currentPatientId === p.id) Store.currentPatientId = null;
+        if (Store.diaryPatientId === p.id) Store.diaryPatientId = null;
+        await Store.loadPatients();
+        Store.renderPatientSelect();
+        renderPatientsList();
+      }
+    };
+    const history = await DB.getHistory(50, p.id);
+    const histContainer = $('detail-patient-history');
+    if (!history.length) { histContainer.innerHTML = '<p class="text-muted">Нет записей</p>'; }
+    else {
+      histContainer.innerHTML = history.map(h => `
+        <div class="patient-history-item">
+          <div class="drug-name">${h.drug_name || 'Препарат #' + h.drug_id}</div>
+          <div class="history-meta">${UI.formatDose(h)} · ${UI.formatDate(h.timestamp)}</div>
+        </div>
+      `).join('');
+    }
+    $('detail-report-btn').onclick = () => generateReport(p);
+    $('detail-growth-btn').onclick = () => GrowthCharts.open(p);
+  }
+
+  function bindProfiles() {
+    $('add-patient-btn').addEventListener('click', () => showPatientForm(null));
+    $('patient-form-cancel').addEventListener('click', () => $('patient-form-card').classList.add('hidden'));
+    $('patient-form-save').addEventListener('click', savePatientForm);
+    $('patient-name').addEventListener('keydown', e => { if (e.key === 'Enter') savePatientForm(); });
+    document.querySelectorAll('#patient-sex-group .filter-chip').forEach(c => {
+      c.addEventListener('click', () => {
+        document.querySelectorAll('#patient-sex-group .filter-chip').forEach(ch => ch.classList.remove('active'));
+        c.classList.add('active');
+        $('patient-sex').value = c.dataset.sex;
+      });
+    });
+  }
+
+  // ===================== HISTORY =====================
+
+  function bindHistory() {
+    qsa('.history-filters .filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        qsa('.history-filters .filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        Store.historyFilterDays = chip.dataset.days ? parseInt(chip.dataset.days) : null;
+        renderHistory();
+      });
+    });
+
+    $('history-patient-filters').addEventListener('click', e => {
+      const chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+      Store.historyPatientFilter = chip.dataset.patient === '' ? null : parseInt(chip.dataset.patient, 10);
+      renderHistory();
+    });
+
+    $('hist-mode-drugs').addEventListener('click', () => {
+      $('hist-mode-drugs').classList.add('active');
+      $('hist-mode-episodes').classList.remove('active');
+      $('history-filters').classList.remove('hidden');
+      $('history-export-btn').style.display = '';
+      renderHistory();
+    });
+    $('hist-mode-episodes').addEventListener('click', () => {
+      $('hist-mode-episodes').classList.add('active');
+      $('hist-mode-drugs').classList.remove('active');
+      $('history-filters').classList.add('hidden');
+      $('history-export-btn').style.display = 'none';
+      renderEpisodesList();
+    });
+
+    const searchInput = $('history-search');
+    const dateInput = $('history-date');
+    const dateClear = $('history-date-clear');
+
+    let searchTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { Store.historySearchQuery = searchInput.value.trim().toLowerCase(); renderHistory(); }, 250);
+    });
+
+    dateInput.addEventListener('change', () => {
+      Store.historyDateFilter = dateInput.value || null;
+      renderHistory();
+    });
+
+    dateClear.addEventListener('click', () => {
+      dateInput.value = '';
+      Store.historyDateFilter = null;
+      renderHistory();
+    });
+
+    $('history-export-btn').addEventListener('click', async () => {
+      try {
+        const all = await DB.getHistory(200);
+        const filtered = applyHistoryFilters(all);
+        if (!filtered.length) { alert('Нет записей для экспорта'); return; }
+        printHtml(buildHistoryExportHtml(filtered));
+      } catch (e) {
+        console.warn('Export error:', e);
+        alert('Не удалось сформировать экспорт');
+      }
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function buildHistoryExportHtml(filtered) {
+    const patient = Store.historyPatientFilter != null
+      ? Store.patients.find(p => p.id === Store.historyPatientFilter)
+      : null;
+    const childSuffix = patient ? ` — ${patient.name}` : '';
+    const docTitle = `История приёмов${childSuffix}`;
+    const childrenLine = patient ? `Ребёнок: ${escapeHtml(patient.name)}` : 'Дети: Все дети';
+    const generatedAt = new Date().toLocaleString('ru-RU');
+
+    const grouped = {};
+    filtered.forEach(h => { const day = h.timestamp ? h.timestamp.slice(0, 10) : 'unknown'; if (!grouped[day]) grouped[day] = []; grouped[day].push(h); });
+    const days = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
+
+    const sections = days.map(day => {
+      const rows = grouped[day].map(h => {
+        const p = Store.patients.find(pt => pt.id === h.patient_id);
+        const childCell = patient ? '' : `<td>${p ? escapeHtml(p.name) : '—'}</td>`;
+        return `<tr>
+          <td class="t">${UI.formatTime(h.timestamp)}</td>
+          <td><strong>${escapeHtml(h.drug_name || 'Препарат')}</strong></td>
+          <td>${UI.formatDose(h)}</td>
+          ${childCell}
+          <td>✅ Принято</td>
+        </tr>`;
+      }).join('');
+      return `<h2>${UI.formatDayLabel(day)}</h2>
+        <table>
+          <thead><tr><th class="t">Время</th><th>Препарат</th><th>Доза</th>${patient ? '' : '<th>Ребёнок</th>'}<th>Статус</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }).join('');
+
+    return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>${escapeHtml(docTitle)}</title>
+<style>
+  @page { margin: 14mm; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color: #1a1a1a; margin: 0; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { font-size: 12px; color: #555; margin: 0 0 16px; line-height: 1.5; }
+  h2 { font-size: 14px; margin: 18px 0 6px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 8px; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+  th { font-weight: 600; font-size: 12px; color: #444; background: #f7f7f7; }
+  td.t, th.t { white-space: nowrap; width: 52px; }
+</style>
+</head>
+<body>
+  <h1>📜 История приёмов</h1>
+  <p class="subtitle">
+    ${childrenLine}<br>
+    Период: ${historyPeriodLabel()}<br>
+    Сформировано: ${generatedAt}
+  </p>
+  ${sections}
+</body>
+</html>`;
+  }
+
+  function applyHistoryFilters(all) {
+    let filtered = all;
+    if (Store.historyFilterDays) {
+      const cutoff = Date.now() - Store.historyFilterDays * 86400000;
+      filtered = filtered.filter(h => new Date(h.timestamp).getTime() >= cutoff);
+    }
+    if (Store.historyDateFilter) {
+      const d = Store.historyDateFilter;
+      filtered = filtered.filter(h => h.timestamp && h.timestamp.slice(0, 10) === d);
+    }
+    if (Store.historyPatientFilter != null) {
+      filtered = filtered.filter(h => h.patient_id === Store.historyPatientFilter);
+    }
+    if (Store.historySearchQuery) {
+      const q = Store.historySearchQuery;
+      filtered = filtered.filter(h => {
+        const drug = (h.drug_name || '').toLowerCase();
+        const patient = h.patient_id ? (Store.patients.find(p => p.id === h.patient_id)?.name || '').toLowerCase() : '';
+        return drug.includes(q) || patient.includes(q) || (h.dose_ml && h.dose_ml.toString().includes(q));
+      });
+    }
+    return filtered;
+  }
+
+  function historyPeriodLabel() {
+    if (Store.historyDateFilter) {
+      const parts = Store.historyDateFilter.split('-');
+      return `Дата: ${parts[2]}.${parts[1]}.${parts[0]}`;
+    }
+    if (Store.historyFilterDays === 1) return 'Сегодня';
+    if (Store.historyFilterDays === 7) return 'За 7 дней';
+    if (Store.historyFilterDays === 30) return 'За 30 дней';
+    return 'Всё время';
+  }
+
+  function renderHistoryPatientChips() {
+    const box = $('history-patient-filters');
+    if (!box) return;
+    let html = `<button class="filter-chip${Store.historyPatientFilter == null ? ' active' : ''}" data-patient="">👶 Все дети</button>`;
+    Store.patients.forEach(p => {
+      html += `<button class="filter-chip${Store.historyPatientFilter === p.id ? ' active' : ''}" data-patient="${p.id}">${escapeHtml(p.name)}</button>`;
+    });
+    box.innerHTML = html;
+  }
+
+  function renderHistory() {
+    renderHistoryPatientChips();
+    if ($('hist-mode-episodes').classList.contains('active')) { renderEpisodesList(); return; }
+
+    DB.getHistory(200).then(all => {
+      const container = $('history-list');
+      container.innerHTML = '';
+      const filtered = applyHistoryFilters(all);
+      if (!filtered.length) { container.innerHTML = '<p class="text-muted">Нет записей за этот период</p>'; return; }
+
+      const grouped = {};
+      filtered.forEach(h => { const day = h.timestamp ? h.timestamp.slice(0, 10) : 'unknown'; if (!grouped[day]) grouped[day] = []; grouped[day].push(h); });
+
+      Object.keys(grouped).sort((a, b) => b.localeCompare(a)).forEach(day => {
+        container.innerHTML += `<div class="history-day-header">${UI.formatDayLabel(day)}</div>`;
+        grouped[day].forEach(h => {
+          const patient = Store.patients.find(p => p.id === h.patient_id);
+          const div = document.createElement('div');
+          div.className = 'history-item';
+          div.innerHTML = `<div class="history-drug">${h.drug_name || 'Препарат'}</div>
+            <div class="history-meta">${UI.formatDose(h)} · ${UI.formatTime(h.timestamp)}${patient ? ' · ' + patient.name : ''} · ✅ Принято</div>
+            <button class="btn btn-sm btn-danger history-delete-btn" data-id="${h.id}" style="margin-top:4px">🗑 Удалить</button>`;
+          container.appendChild(div);
+        });
+      });
+
+      container.querySelectorAll('.history-delete-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!confirm('Удалить запись из истории?')) return;
+          if (!confirm('Вы уверены? Это действие нельзя отменить. Вся ответственность за удаление лежит на вас.')) return;
+          await DB.deleteHistoryItem(parseInt(btn.dataset.id));
+          btn.closest('.history-item').remove();
+        });
+      });
+    }).catch(() => {});
+  }
+
+  async function renderEpisodesList() {
+    renderHistoryPatientChips();
+    const container = $('history-list');
+    container.innerHTML = '<div class="spinner" style="margin:20px auto"></div>';
+
+    const allPatients = await DB.getPatients();
+    let allEpisodes = [];
+    for (const p of allPatients) {
+      const eps = await DB.getEpisodes(p.id);
+      eps.forEach(e => { e._patient = p; });
+      allEpisodes = allEpisodes.concat(eps);
+    }
+    if (Store.historyPatientFilter != null) {
+      allEpisodes = allEpisodes.filter(ep => ep.patient_id === Store.historyPatientFilter);
+    }
+    allEpisodes.sort((a, b) => (a.startDate < b.startDate ? 1 : -1));
+
+    if (!allEpisodes.length) { container.innerHTML = '<p class="text-muted">Нет эпизодов</p>'; return; }
+
+    container.innerHTML = allEpisodes.map(ep => {
+      const start = new Date(ep.startDate).toLocaleDateString('ru-RU');
+      const end = ep.endDate ? new Date(ep.endDate).toLocaleDateString('ru-RU') : 'продолжается';
+      const pName = ep._patient ? ep._patient.name : '—';
+      const status = ep.endDate ? '✅ Завершён' : '🟢 Активен';
+      return `<div class="episode-history-item">
+        <div class="episode-history-header">
+          <span class="episode-history-name">🤒 ${ep.name}</span>
+          <span class="episode-history-status">${status}</span>
+        </div>
+        <div class="episode-history-meta">${pName} · ${start} — ${end}</div>
+        ${ep.notes ? `<div class="episode-history-notes">${ep.notes}</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  // ===================== SETTINGS =====================
+
+  function bindSettings() {
+    $('clear-btn').addEventListener('click', async () => { if (confirm('Очистить всю историю расчётов?')) { await DB.clearHistory(); renderHistory(); } });
+    $('dose-audit-run').addEventListener('click', () => DoseAudit.runAndRender($('dose-audit-results')));
+    $('backup-btn').addEventListener('click', downloadBackup);
+    $('uninstall-backup-btn').addEventListener('click', downloadBackup);
+    $('uninstall-btn').addEventListener('click', () => $('uninstall-modal').classList.remove('hidden'));
+    $('uninstall-modal-close').addEventListener('click', closeUninstallModal);
+    $('uninstall-modal').addEventListener('click', e => { if (e.target === $('uninstall-modal')) closeUninstallModal(); });
+    $('import-btn').addEventListener('click', () => $('import-file').click());
+    $('import-file').addEventListener('change', handleImportFile);
+    $('donate-btn').addEventListener('click', () => {
+      UI.openModal('💜 Поддержать проект', `
+        <p style="margin:0 0 12px;line-height:1.5">Приложение полностью бесплатное, без рекламы и сборов данных — всё считается на вашем устройстве.</p>
+        <p style="margin:0 0 16px;line-height:1.5">Если оно было полезным, вы можете поддержать разработку:</p>
+        <a href="https://pay.cloudtips.ru/p/866cf60d" target="_blank" rel="noopener" class="btn btn-primary btn-block" style="text-decoration:none">💜 Поддержать через CloudTips</a>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="donate-close">Закрыть</button>
+        </div>`);
+      $('donate-close').onclick = UI.closeModal;
+    });
+    $('update-btn').addEventListener('click', async () => {
+      $('update-btn').textContent = '⏳ Очистка кэша...'; $('update-btn').disabled = true;
+      try {
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+        const theme = localStorage.getItem('dose_pwa_theme');
+        localStorage.clear();
+        if (theme) localStorage.setItem('dose_pwa_theme', theme);
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map(r => r.unregister()));
+        }
+        const resp = await fetch('data/manifest.json?_=' + Date.now());
+        const remote = await resp.json();
+        $('settings-version').textContent = remote.version;
+        $('settings-updated').textContent = remote.updated;
+        $('update-btn').textContent = '✅ Перезагрузка...';
+        setTimeout(() => location.reload(), 800);
+      } catch (e) {
+        $('update-btn').textContent = '❌ Ошибка';
+        setTimeout(() => { $('update-btn').textContent = '🔄 Проверить обновления'; $('update-btn').disabled = false; }, 2000);
+      }
+    });
+  }
+
+  async function downloadBackup() {
+    try {
+      const text = await DB.exportFull();
+      const file = new File([text], DB.buildBackupFilename(new Date().toISOString()), { type: 'application/json' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: 'Резервная копия' });
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return;
+          console.warn('navigator.share failed, falling back to download:', err);
+        }
+      }
+      const url = URL.createObjectURL(file);
+      const a = document.createElement('a');
+      a.href = url; a.download = file.name; a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.warn('downloadBackup failed:', err);
+      alert('Не удалось создать резервную копию: ' + err.message);
+    }
+  }
+
+  async function handleImportFile(e) {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    let parsed;
+    try {
+      parsed = DB.parseBackup(await file.text());
+    } catch (err) {
+      alert(err.message);
+      return;
+    }
+    const exportedAt = parsed.exportedAt ? UI.formatDate(parsed.exportedAt) : 'неизвестной даты';
+    const preview = `Восстановлено из копии от ${exportedAt}:\n• Профилей: ${parsed.counts.patients}\n• Записей дневника: ${parsed.counts.history}\n\nЗаменить текущие данные?`;
+    if (!confirm(preview)) return;
+    await DB.importAll(parsed);
+    location.reload();
+  }
+
+  function closeUninstallModal() {
+    $('uninstall-modal').classList.add('hidden');
+  }
+
+  function renderGrlsTable() {
+    const section = $('grls-table-section');
+    const body = $('grls-table-body');
+    const summary = $('grls-summary');
+    const isVisible = !section.classList.contains('hidden');
+    if (isVisible) { section.classList.add('hidden'); return; }
+
+    const fields = ['reg_number', 'inn', 'manufacturer', 'atx', 'url'];
+    const fieldLabels = { reg_number: 'РУ', inn: 'МНН', manufacturer: 'Произв.', atx: 'АТХ', url: 'Ссылка' };
+    let totalScore = 0, maxScore = Store.drugs.length * fields.length;
+
+    let html = '<table class="grls-table"><thead><tr><th>Препарат</th>';
+    fields.forEach(f => { html += `<th>${fieldLabels[f]}</th>`; });
+    html += '<th>L4</th><th>Полнота</th></tr></thead><tbody>';
+
+    Store.drugs.forEach(d => {
+      const grls = d.grls || {};
+      let drugScore = 0;
+      html += `<tr><td class="grls-drug-name">${d.name}</td>`;
+      fields.forEach(f => {
+        const val = grls[f];
+        const ok = val && val.trim() !== '' && (f !== 'url' || val !== 'https://grls.rosminzdrav.ru/');
+        if (ok) drugScore++;
+        html += `<td><span class="grls-dot ${ok ? 'ok' : 'miss'}"></span></td>`;
+      });
+      html += `<td>${Level4Images.getImageIcon(d)}</td>`;
+      totalScore += drugScore;
+      const pct = Math.round(drugScore / fields.length * 100);
+      html += `<td><div class="grls-progress"><div class="grls-progress-fill" style="width:${pct}%;background:${pct===100?'var(--color-success)':pct>0?'var(--color-warning)':'var(--color-border)'}"></div></div></td>`;
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    body.innerHTML = html;
+
+    const overall = Math.round(totalScore / maxScore * 100);
+    summary.textContent = `${Store.drugs.filter(d => { const g=d.grls||{}; return fields.every(f => g[f]&&g[f].trim()!==''&&(f!=='url'||g[f]!=='https://grls.rosminzdrav.ru/')); }).length}/${Store.drugs.length} полных`;
+    section.classList.remove('hidden');
+  }
+
+  window.renderGrlsTable = renderGrlsTable;
+
+  document.addEventListener('DOMContentLoaded', init);
+})();

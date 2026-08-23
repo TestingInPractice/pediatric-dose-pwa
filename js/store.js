@@ -1,0 +1,108 @@
+(function () {
+  'use strict';
+
+  window.$ = (id) => document.getElementById(id);
+  window.qsa = (sel) => document.querySelectorAll(sel);
+
+  const Store = {
+    drugs: [],
+    categories: [],
+    patients: [],
+    currentResult: null,
+    currentPatientId: null,
+    historyFilterDays: null,
+    historySearchQuery: null,
+    historyDateFilter: null,
+    historyPatientFilter: null,
+    diaryPatientId: null,
+    diaryActiveEpisode: null,
+
+    async loadData() {
+      try {
+        const resp = await fetch('data/drugs.json?_=' + Date.now());
+        const data = await resp.json();
+        this.drugs = data.drugs || [];
+        this.categories = data.categories || [];
+        this.renderDrugSelect();
+        this.updateVersion();
+      } catch (e) {
+        try {
+          const stored = localStorage.getItem('dose_pwa_drugs');
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            if (parsed.drugs && parsed.drugs.length) {
+              this.drugs = parsed.drugs;
+              this.categories = parsed.categories || [];
+              this.renderDrugSelect();
+              this.updateVersion();
+              return;
+            }
+          }
+        } catch (_) {}
+        if (typeof UI !== 'undefined') {
+          UI.showError('Ошибка загрузки данных: ' + e.message);
+        }
+      }
+    },
+
+    renderDrugSelect() {
+      const select = $('drug-select');
+      if (!select) return;
+      select.innerHTML = '<option value="">— Выберите препарат —</option>';
+      this.categories.forEach(cat => {
+        const group = document.createElement('optgroup');
+        group.label = cat.name;
+        const catDrugs = this.drugs.filter(d => d.category_id === cat.id);
+        catDrugs.forEach(d => {
+          const opt = document.createElement('option');
+          opt.value = d.id;
+          opt.textContent = d.name;
+          group.appendChild(opt);
+        });
+        select.appendChild(group);
+      });
+    },
+
+    async updateVersion() {
+      const badge = $('version-badge'), ver = $('data-version');
+      let v = localStorage.getItem('dose_pwa_data_version');
+      try {
+        const resp = await fetch('data/manifest.json?_=' + Date.now());
+        const manifest = await resp.json();
+        if (manifest.version) {
+          v = manifest.version;
+          localStorage.setItem('dose_pwa_data_version', v);
+        }
+      } catch (_) {}
+      if (v && ver) ver.textContent = v;
+      if (badge) badge.style.display = v ? 'inline' : 'none';
+    },
+
+    async loadPatients() {
+      try { this.patients = await DB.getPatients(); } catch (e) { this.patients = []; }
+    },
+
+    renderPatientSelect() {
+      const select = $('patient-select');
+      if (!select) return;
+      const currentVal = select.value;
+      select.innerHTML = '';
+      this.patients.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = `${p.name} (${UI.calcAge(p.birthDate)}, ${p.weight || '?'} кг)`;
+        select.appendChild(opt);
+      });
+      if (this.patients.length) {
+        if (currentVal && this.patients.find(p => p.id == currentVal)) {
+          select.value = currentVal;
+        } else {
+          select.value = this.patients[0].id;
+          select.dispatchEvent(new Event('change'));
+        }
+      }
+    }
+  };
+
+  window.Store = Store;
+})();

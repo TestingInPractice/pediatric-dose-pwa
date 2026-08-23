@@ -1,0 +1,133 @@
+const Level2Rules = {
+  validate(drug, weight, calculatedDose, patientAgeMonths, patientAllergies) {
+    const checks = [];
+    let allPassed = true;
+
+    if (drug.min_age_months != null) {
+      if (patientAgeMonths != null) {
+        if (patientAgeMonths < drug.min_age_months) {
+          allPassed = false;
+          checks.push({
+            icon: '🚫',
+            title: 'Возрастное ограничение',
+            status: 'error',
+            detail: `Ребёнку ${patientAgeMonths} мес., а препарат разрешён только с ${drug.min_age_months} мес.`
+          });
+        } else {
+          checks.push({
+            icon: '✅',
+            title: 'Возрастное ограничение',
+            status: 'pass',
+            detail: `${patientAgeMonths} мес. ≥ ${drug.min_age_months} мес.`
+          });
+        }
+      } else {
+        checks.push({
+          icon: 'ℹ️',
+          title: 'Возрастное ограничение',
+          status: 'info',
+          detail: `Препарат разрешён с ${drug.min_age_months} мес. (укажите дату рождения в профиле)`
+        });
+      }
+    }
+
+    if (drug.min_weight_kg != null && weight < drug.min_weight_kg) {
+      allPassed = false;
+      checks.push({
+        icon: '🚫',
+        title: 'Вес ниже минимального',
+        status: 'error',
+        detail: `Минимальный вес для этого препарата: ${drug.min_weight_kg} кг. Ваш вес: ${weight} кг.`
+      });
+    } else if (drug.min_weight_kg != null) {
+      checks.push({
+        icon: '✅',
+        title: 'Минимальный вес',
+        status: 'pass',
+        detail: `${weight} кг ≥ ${drug.min_weight_kg} кг`
+      });
+    }
+
+    if (calculatedDose.standard_dose_mg != null && drug.mgs_var != null) {
+      const mg_per_kg = weight > 0 ? calculatedDose.standard_dose_mg / weight : 0;
+      const range_note = drug.mgs_range || `~${drug.mgs_var} мг/кг`;
+
+      if (range_note) {
+        checks.push({
+          icon: '📏',
+          title: 'Доза на кг веса',
+          status: 'pass',
+          detail: `${mg_per_kg.toFixed(1)} мг/кг (норма: ${range_note})`
+        });
+      }
+    }
+
+    if (calculatedDose.max_dose_mg != null && calculatedDose.standard_dose_mg != null) {
+      const isInRange = calculatedDose.standard_dose_mg <= calculatedDose.max_dose_mg;
+      if (!isInRange) {
+        allPassed = false;
+        checks.push({
+          icon: '⚠️',
+          title: 'Превышение суточной дозы',
+          status: 'error',
+          detail: `Разовая доза ${calculatedDose.standard_dose_mg} мг превышает макс. суточную ${calculatedDose.max_dose_mg} мг.`
+        });
+      } else {
+        checks.push({
+          icon: '✅',
+          title: 'Суточная доза',
+          status: 'pass',
+          detail: `В пределах нормы (макс: ${calculatedDose.max_dose_mg} мг/сут)`
+        });
+      }
+    }
+
+    if (Array.isArray(drug.allergens) && drug.allergens.length) {
+      if (patientAllergies && typeof patientAllergies === 'string' && patientAllergies.trim()) {
+        const text = patientAllergies.toLowerCase();
+        const matchedAllergen = drug.allergens.find(a => text.includes(a.toLowerCase()));
+        if (matchedAllergen) {
+          allPassed = false;
+          checks.push({
+            icon: '🚫',
+            title: 'Аллергия',
+            status: 'error',
+            detail: `У ребёнка указана аллергия: «${patientAllergies}». Препарат противопоказан (аллергия на ${matchedAllergen}).`
+          });
+        } else {
+          checks.push({
+            icon: '✅',
+            title: 'Аллергии',
+            status: 'pass',
+            detail: 'Аллергий, ограничивающих приём, не найдено'
+          });
+        }
+      } else {
+        checks.push({
+          icon: '✅',
+          title: 'Аллергии',
+          status: 'pass',
+          detail: 'Аллергий, ограничивающих приём, не найдено'
+        });
+      }
+    }
+
+    if (drug.contraindications) {
+      checks.push({
+        icon: '📋',
+        title: 'Противопоказания',
+        status: 'info',
+        detail: drug.contraindications
+      });
+    }
+
+    return {
+      status: allPassed ? 'pass' : 'warn',
+      checks
+    };
+  }
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { Level2Rules };
+}

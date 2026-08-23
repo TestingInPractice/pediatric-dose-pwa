@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Дозировки">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1976d2">
+  <meta name="description" content="Калькулятор детских дозировок лекарств. Расчёт по весу с 4-уровневой проверкой.">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+
+  <title>Детский калькулятор дозировок</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header">
+      <div class="header-title">💊 Калькулятор дозировок</div>
+      <div class="header-actions">
+        <div class="header-version" id="version-badge">v<span id="data-version">0.0.0</span></div>
+        <button id="settings-nav-btn" class="header-icon-btn" aria-label="Настройки">⚙️</button>
+      </div>
+    </header>
+
+    <main class="app-main" id="app-main">
+      <!-- Calculator Screen -->
+      <section id="screen-calculator" class="screen active">
+        <div id="pending-section" class="hidden">
+          <div class="card">
+            <div class="card-header">⏳ Ожидают подтверждения <span class="nav-badge" id="confirm-nav-badge" style="display:none"></span></div>
+            <div class="card-body" id="pending-body"><p class="text-muted">Нет ожидающих подтверждения</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label" for="patient-select">Ребёнок</label>
+              <select id="patient-select" class="form-select">
+              </select>
+              <div id="episode-indicator" class="episode-indicator hidden"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="drug-select">Препарат</label>
+              <select id="drug-select" class="form-select">
+                <option value="">— Выберите препарат —</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="weight-input">Вес ребёнка (кг)</label>
+              <div class="weight-input-group">
+                <input type="number" id="weight-input" class="form-input weight-input" placeholder="0" min="0.5" max="150" step="0.1" inputmode="decimal">
+                <span class="weight-unit">кг</span>
+              </div>
+            </div>
+            <button id="calc-btn" class="btn btn-primary btn-block" disabled>Рассчитать</button>
+            <div id="calc-block-msg" class="calc-block-msg hidden"></div>
+          </div>
+        </div>
+
+        <div id="result-section" class="result-section hidden">
+          <div class="card result-card">
+            <div class="card-header">📋 Результат расчёта</div>
+            <div class="card-body">
+              <div id="result-drug" class="result-drug"></div>
+              <div id="result-weight" class="result-weight"></div>
+              <div class="result-doses" id="result-doses"></div>
+            </div>
+          </div>
+
+          <button id="go-to-confirm-btn" class="btn btn-primary btn-block confirm-nav-btn hidden">💊 Подтвердить приём</button>
+
+          <div id="validation-section" class="validation-section hidden">
+            <div class="card">
+              <div class="card-header">🔍 Проверка расчёта</div>
+              <div class="card-body" id="validation-levels"></div>
+            </div>
+          </div>
+
+          <div id="instruction-section" class="instruction-section hidden">
+            <div class="card">
+              <div class="card-header">📄 Инструкция (ГРЛС)</div>
+              <div class="card-body" id="instruction-body"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="error-section" class="error-section hidden"></div>
+      </section>
+
+      <!-- History Screen -->
+      <section id="screen-history" class="screen">
+        <div class="card">
+          <div class="card-header">📜 История</div>
+          <div class="card-body">
+            <div class="history-mode-switcher" style="display:flex;gap:6px;margin-bottom:10px">
+              <button class="filter-chip active" id="hist-mode-drugs" data-mode="drugs">💊 Препараты</button>
+              <button class="filter-chip" id="hist-mode-episodes" data-mode="episodes">📋 Эпизоды</button>
+            </div>
+            <div class="history-filters" id="history-patient-filters" style="margin-bottom:10px"></div>
+            <div class="history-filters" id="history-filters">
+              <button class="filter-chip active" data-days="">Всё</button>
+              <button class="filter-chip" data-days="1">Сегодня</button>
+              <button class="filter-chip" data-days="7">7 дней</button>
+              <button class="filter-chip" data-days="30">30 дней</button>
+            </div>
+            <div style="display:flex;gap:6px;margin-bottom:10px">
+              <input type="text" id="history-search" class="form-input" placeholder="🔍 Поиск по препарату..." style="flex:1;font-size:14px;padding:8px 10px">
+              <input type="date" id="history-date" class="form-input" style="flex:0 0 auto;width:140px;font-size:14px;padding:8px 10px">
+              <button id="history-date-clear" class="btn btn-sm btn-secondary" style="padding:8px 10px">✕</button>
+            </div>
+            <button id="history-export-btn" class="btn btn-secondary btn-block" style="margin-bottom:10px">⬇️ Экспорт в PDF</button>
+            <div id="history-list"><p class="text-muted">История пуста</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profiles Screen -->
+      <section id="screen-profiles" class="screen">
+        <div class="card">
+          <div class="card-header">👶 Дети <button id="add-patient-btn" class="btn btn-sm btn-primary">+ Добавить</button></div>
+          <div class="card-body" id="patients-list"><p class="text-muted">Нет добавленных детей</p></div>
+        </div>
+
+        <div id="patient-form-card" class="card hidden">
+          <div class="card-header" id="patient-form-title">➕ Добавить ребёнка</div>
+          <div class="card-body">
+            <input type="hidden" id="patient-form-id" value="">
+            <div class="form-group">
+              <label class="form-label" for="patient-name">Имя</label>
+              <input type="text" id="patient-name" class="form-input" placeholder="Например: Миша">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="patient-birth">Дата рождения</label>
+              <input type="date" id="patient-birth" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Пол</label>
+              <div id="patient-sex-group" style="display:flex;gap:6px">
+                <button class="filter-chip active" data-sex="boy">👦 Мальчик</button>
+                <button class="filter-chip" data-sex="girl">👧 Девочка</button>
+              </div>
+              <input type="hidden" id="patient-sex" value="boy">
+            </div>
+            <div class="form-row">
+              <div class="form-group form-group-half">
+                <label class="form-label" for="patient-weight">Вес (кг)</label>
+                <input type="number" id="patient-weight" class="form-input" step="0.1" min="0.5">
+              </div>
+              <div class="form-group form-group-half">
+                <label class="form-label" for="patient-height">Рост (см)</label>
+                <input type="number" id="patient-height" class="form-input" step="1" min="20">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="patient-allergies">Аллергии</label>
+              <input type="text" id="patient-allergies" class="form-input" placeholder="Нет">
+            </div>
+            <div style="display:flex;gap:8px">
+              <button id="patient-form-cancel" class="btn btn-secondary" style="flex:1">Отмена</button>
+              <button id="patient-form-save" class="btn btn-primary" style="flex:2">Сохранить</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="patient-detail-card" class="card hidden">
+          <div class="card-header" id="detail-patient-name"></div>
+          <div class="card-body">
+            <div id="detail-patient-info" class="patient-info"></div>
+            <div id="detail-patient-actions" style="display:flex;gap:8px;margin-top:12px">
+              <button id="detail-edit-btn" class="btn btn-secondary" style="flex:1">✏️ Редактировать</button>
+              <button id="detail-delete-btn" class="btn btn-danger" style="flex:1">🗑 Удалить</button>
+            </div>
+            <div style="margin-top:16px">
+              <div class="form-label">📜 История приёмов</div>
+              <div id="detail-patient-history" class="patient-history-list"><p class="text-muted">Нет записей</p></div>
+            </div>
+            <button id="detail-report-btn" class="btn btn-secondary btn-block" style="margin-top:12px">📋 Доктор-репорт</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Drugs Reference Screen -->
+      <section id="screen-drugs" class="screen">
+        <div class="card" id="drugs-list-card">
+          <div class="card-header">📚 Справочник препаратов</div>
+          <div class="card-body">
+            <input type="text" id="drugs-search" class="form-input" placeholder="🔍 Название или действующее вещество…" style="margin-bottom:10px">
+            <div id="drugs-list"></div>
+          </div>
+        </div>
+
+        <div class="card hidden" id="drug-detail-card">
+          <div class="card-header" style="display:flex;align-items:center;gap:8px">📄 Инструкция <button id="drug-detail-back" class="btn btn-sm btn-secondary" style="margin-left:auto;padding:4px 12px">← Назад</button></div>
+          <div class="card-body" id="drug-detail-body"></div>
+        </div>
+      </section>
+
+      <!-- Settings Screen -->
+      <section id="screen-settings" class="screen">
+        <div class="card">
+          <div class="card-header">⚙️ Настройки</div>
+          <div class="card-body">
+            <button id="donate-btn" class="btn btn-primary btn-block" style="margin-bottom:8px">💜 Поддержать проект</button>
+            <div class="settings-item"><span>Версия данных</span><span id="settings-version">—</span></div>
+            <div class="settings-item"><span>Последнее обновление</span><span id="settings-updated">—</span></div>
+            <div class="settings-item">
+              <span>🌗 Тема</span>
+              <div class="theme-switcher" id="theme-switcher">
+                <button class="filter-chip active" data-theme="light">☀️</button>
+                <button class="filter-chip" data-theme="auto">🔄</button>
+                <button class="filter-chip" data-theme="dark">🌙</button>
+              </div>
+            </div>
+            <button id="data-mgmt-btn" class="btn btn-secondary btn-block" onclick="renderGrlsTable()">📊 Данные ГРЛС</button>
+            <button id="update-btn" class="btn btn-secondary btn-block">🔄 Проверить обновления</button>
+            <details class="audit-details">
+              <summary>🧪 Самопроверка дозировок</summary>
+              <p class="text-muted" style="font-size:12px;margin:8px 0">Прогоняет все препараты по сетке весов 3–40 кг и сверяет формулы, таблицы дозирования и суточные лимиты между собой.</p>
+              <button id="dose-audit-run" class="btn btn-secondary btn-block">▶️ Запустить проверку</button>
+              <div id="dose-audit-results"></div>
+            </details>
+            <button id="clear-btn" class="btn btn-danger btn-block">🗑 Очистить историю</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">💾 Резервная копия</div>
+          <div class="card-body">
+            <p class="text-muted backup-hint">Данные хранятся только на этом устройстве. Советуем сохранять копию в Telegram («Избранное») или iCloud Drive.</p>
+            <button id="backup-btn" class="btn btn-primary btn-block">⬇️ Скачать резервную копию</button>
+            <button id="import-btn" class="btn btn-secondary btn-block">📂 Восстановить из файла</button>
+            <input type="file" id="import-file" accept=".json,application/json" hidden>
+            <button id="uninstall-btn" class="btn btn-danger btn-block">🗑 Подготовка к удалению приложения</button>
+          </div>
+        </div>
+        <div id="grls-table-section" class="card hidden">
+          <div class="card-header">📊 Данные ГРЛС <span class="grls-summary" id="grls-summary"></span></div>
+          <div class="card-body" id="grls-table-body"></div>
+        </div>
+        <div class="card disclaimer-card">
+          <div class="card-body">
+            <p class="disclaimer-text">⚠️ Калькулятор предназначен для ознакомительных целей. Перед применением любых лекарств проконсультируйтесь с врачом. Все расчёты проверяйте по официальной инструкции к препарату.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diary Screen -->
+      <section id="screen-diary" class="screen">
+        <div class="card">
+          <div class="card-header">📋 Дневник</div>
+          <div class="card-body">
+            <div id="diary-patient-selector" class="diary-patient-selector"></div>
+            <div id="diary-episode-header" class="diary-episode-header"></div>
+            <div id="diary-quick-actions" class="diary-quick-actions hidden">
+              <button class="quick-btn" data-action="temperature">🌡</button>
+              <button class="quick-btn" data-action="vomit">🤮</button>
+              <button class="quick-btn" data-action="stool">💩</button>
+              <button class="quick-btn" data-action="symptom">🤒</button>
+            </div>
+            <div id="diary-timeline" class="diary-timeline"><p class="text-muted">Выберите ребёнка</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div id="diary-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modal-title" id="diary-modal-title"></span>
+            <button class="modal-close" id="diary-modal-close">✕</button>
+          </div>
+          <div class="modal-body" id="diary-modal-body"></div>
+        </div>
+      </div>
+
+      <!-- Pre-uninstall modal -->
+      <div id="uninstall-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modal-title">🗑 Удаление приложения</span>
+            <button class="modal-close" id="uninstall-modal-close">✕</button>
+          </div>
+          <div class="modal-body">
+            <p class="text-muted backup-hint">При удалении приложения все данные о детях будут стёрты: профили, дневник и история приёмов. Скачайте резервную копию заранее.</p>
+            <button id="uninstall-backup-btn" class="btn btn-primary btn-block">⬇️ Скачать резервную копию</button>
+            <p class="text-muted backup-hint">Совет: сохраните файл в Telegram («Избранное») или iCloud Drive — так он переживёт удаление приложения.</p>
+            <div class="form-label uninstall-instructions-title">Как удалить приложение:</div>
+            <p class="text-muted uninstall-instructions">
+              📱 iPhone — зажмите иконку приложения → «Удалить приложение».<br>
+              🤖 Android — зажмите иконку → «Удалить».
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <nav class="app-nav" id="app-nav">
+      <button class="nav-btn active" data-screen="calculator" aria-label="Калькулятор"><span class="nav-icon">💊</span><span class="nav-label">Расчёт</span></button>
+      <button class="nav-btn" data-screen="diary" aria-label="Дневник"><span class="nav-icon">📋</span><span class="nav-label">Дневник</span></button>
+      <button class="nav-btn" data-screen="profiles" aria-label="Дети"><span class="nav-icon">👶</span><span class="nav-label">Дети</span></button>
+      <button class="nav-btn" data-screen="history" aria-label="История"><span class="nav-icon">📜</span><span class="nav-label">История</span></button>
+      <button class="nav-btn" data-screen="drugs" aria-label="Препараты"><span class="nav-icon">📚</span><span class="nav-label">Препараты</span></button>
+    </nav>
+  </div>
+
+  <script src="https://unpkg.com/dexie@3.2.6/dist/dexie.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.21.0/dist/ort.min.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/level2_rules.js"></script>
+  <script src="js/level4_images.js"></script>
+  <script src="js/level3_onnx.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/diary.js"></script>
+  <script src="js/report.js"></script>
+  <script src="js/growth_data.js"></script>
+  <script src="js/growth_charts.js"></script>
+  <script src="js/reminders.js"></script>
+  <script src="js/updater.js"></script>
+<script src="js/drugs.js"></script>
+<script src="js/dose_audit.js"></script>
+<script src="js/app.js"></script>
+  <script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('service-worker.js'); }</script>
+</body>
+</html>
