@@ -218,6 +218,12 @@
             </div>
             <button id="data-mgmt-btn" class="btn btn-secondary btn-block" onclick="renderGrlsTable()">📊 Данные ГРЛС</button>
             <button id="update-btn" class="btn btn-secondary btn-block">🔄 Проверить обновления</button>
+            <details class="audit-details">
+              <summary>🧪 Самопроверка дозировок</summary>
+              <p class="text-muted" style="font-size:12px;margin:8px 0">Прогоняет все препараты по сетке весов 3–40 кг и сверяет формулы, таблицы дозирования и суточные лимиты между собой.</p>
+              <button id="dose-audit-run" class="btn btn-secondary btn-block">▶️ Запустить проверку</button>
+              <div id="dose-audit-results"></div>
+            </details>
             <button id="clear-btn" class="btn btn-danger btn-block">🗑 Очистить историю</button>
           </div>
         </div>
@@ -318,8 +324,9 @@
   <script src="js/growth_charts.js"></script>
   <script src="js/reminders.js"></script>
   <script src="js/updater.js"></script>
-  <script src="js/drugs.js"></script>
-  <script src="js/app.js"></script>
+<script src="js/drugs.js"></script>
+<script src="js/dose_audit.js"></script>
+<script src="js/app.js"></script>
   <script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('service-worker.js'); }</script>
 </body>
 </html>

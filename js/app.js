@@ -748,6 +748,7 @@
 
   function bindSettings() {
     $('clear-btn').addEventListener('click', async () => { if (confirm('Очистить всю историю расчётов?')) { await DB.clearHistory(); renderHistory(); } });
+    $('dose-audit-run').addEventListener('click', () => DoseAudit.runAndRender($('dose-audit-results')));
     $('backup-btn').addEventListener('click', downloadBackup);
     $('uninstall-backup-btn').addEventListener('click', downloadBackup);
     $('uninstall-btn').addEventListener('click', () => $('uninstall-modal').classList.remove('hidden'));
